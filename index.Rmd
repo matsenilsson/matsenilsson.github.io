@@ -44,7 +44,7 @@ The notes summarizes the topics discussed
 at the seminar. If you find the content elementary, you probably don't need to
 attend the seminar. If the notes make no sense at all, please visit the seminar
 where everything will be explained in detail. A list of seminars is found
-[here](index.html) 
+[here](content.html) 
 
 
 \ 
