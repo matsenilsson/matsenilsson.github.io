@@ -323,11 +323,11 @@ str(conds)</code></pre>
 <pre class="r"><code>iq &lt;- rnorm(500, 100, 15)
 iq_stats &lt;- c(mean(iq), sd(iq), max(iq))
 iq_stats</code></pre>
-<pre><code>## [1] 101.64712  14.62467 144.46805</code></pre>
+<pre><code>## [1]  99.60658  14.55428 137.82517</code></pre>
 <pre class="r"><code>names(iq_stats) &lt;- c(&#39;mean&#39;, &#39;sd&#39;, &#39;maxímum&#39;)
 iq_stats</code></pre>
 <pre><code>##      mean        sd   maxímum 
-## 101.64712  14.62467 144.46805</code></pre>
+##  99.60658  14.55428 137.82517</code></pre>
 </div>
 </div>
 <div id="data-frames" class="section level3">
@@ -341,13 +341,13 @@ my_data &lt;- data.frame(id, group, performance)</code></pre>
 <pre class="r"><code>table(my_data$group)</code></pre>
 <pre><code>## 
 ## female   male 
-##    113     87</code></pre>
+##    108     92</code></pre>
 <p>You have to fix this manually, using <code>levels()</code> (use $ to select a column from a data frame. More on subsetting in REX003):</p>
 <pre class="r"><code>levels(my_data$group) &lt;- c(&#39;male&#39;, &#39;female&#39;, &#39;other&#39;)
 table(my_data$group)</code></pre>
 <pre><code>## 
 ##   male female  other 
-##    113     87      0</code></pre>
+##    108     92      0</code></pre>
 <p>(The may use the argument <code>stringAsFactors = FALSE</code> when calling the <code>data.frame()</code> function to keep character vectors as they are.)</p>
 </div>
 <div id="exercises" class="section level3">
@@ -388,10 +388,12 @@ where <span class="math inline">\(Y_0\)</span> is the potential outcome if untre
 </div>
 </div>
 
-<span style="color:#336699">
 
-<p>Mats E. Nilsson, Gösta Ekman Laboratory, Department of Psychology, 
-Stockholm University<br>mats.nilsson@psychology.su.se</p>
+
+<span style = grey>
+<hr>
+<p>&copy Mats E. Nilsson<br>Gösta Ekman Laboratory, 
+Department of Psychology, Stockholm University</p>
 
 </span>
 
