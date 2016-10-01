@@ -1,0 +1,47 @@
+---
+title: FALSE
+author: "Mats E. Nilsson"
+---
+
+\  
+\  
+
+# learn R by EXample (REX)
+
+\ 
+
+## Content
+
+Seminar| R topics               | by EXample: Writing a script
+-------| ---------------------- | ----------------------
+[001](rex001.html) | Getting started with R and R-studio | Script1: Simulation of a randomized experiment 
+[002](rex002.html) | Data types and structures | Script1, random assignment 
+[003](rex003.html) | Subsetting | Script1, potential outcomes 
+[004](rex004.html) | Functions | Script1, true and estimated causal effects
+[005](rex005.html) | Random numbers  | Script1,  introduce non-compliance 
+[006](rex006.html) | All of the above | Script1, as-treated, intent-to-treat, and instrumental variable analyses
+---                |---         | ---
+101 | R again (review), importing data | Script2: Analyzing a real data set
+102 | Missing data   | Script2, data screening 
+103 | Recoding     | Script2, descriptive analyses and plots
+104 | Outputs are objects   | Script2, model fitting
+105 | Write functions | Script2, model fitting, continued
+106 | Customize plots  | Script2, plots for publication
+107 | Export plots   | Script2, plots for publication, continued
+
+
+
+
+\ 
+
+### When and where?
+Seminars 001, 002, ... run as satellite to the master-program course Method1: Click here for [Schedule fall semester 2016](https://fastreg.psychology.su.se/KursWeb/ScheduleKronologisk.aspx?MomentID=71&termin=H16)
+
+Seminars 101, 102, ... run as satellite to the master-program course Stat1:
+Click here for [Schedule fall semester 2016](https://fastreg.psychology.su.se/KursWeb/ScheduleKronologisk.aspx?MomentID=61&termin=H16)
+
+
+
+\
+\ 
+

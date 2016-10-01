@@ -1,0 +1,224 @@
+---
+title: False
+author: "Mats E. Nilsson"
+---
+
+```{r setup, cache = FALSE, echo = FALSE}
+# THis will allow error messages to be converted to HTML
+knitr::opts_chunk$set(error = TRUE)
+```
+
+\  
+\  
+
+
+# Notes REX002
+This seminar will first review the fundamentals of how R deals with data.
+After that, we will continue our work on Script 1, today with random assignment
+of our simulated participants to treatment and control conditions.
+
+## How R deals with data
+Please spend some time on this topic. It may seem abstract, even boring, but 
+it is worthwhile studying. You don't have to memorize all this, just play around 
+with the examples below to get a feel of data storage in R.  
+
+One lesson to learn is that R sometimes 'help' you to make sense. This can indeed
+be helpful, if you know what you are doing, but may cause strange errors if you
+don't; errors that may hard to fix if you lack basic understanding of
+how R deals with data.  
+
+In R, data are contained in data structures. We will mainly work with two types
+of data structures: Atomic vectors and data frames, so let's concentrate on 
+them (and save lists, matrices and arrays for later).
+
+### Vectors
+Atomic vectors, or vectors for short, are 1-dimensional collections of elements
+of the same type. The most important vector types are
+
+1. Integer vectors
+2. Numeric (or double) vectors
+3. Character vectors
+4. Logical vectors
+
+Note that R treats a single data element as a vector with one element (i.e., R
+has no scalars).  
+When you work with numbers in R, they will most often be be defined as
+numeric vectors. If you input a non-fractional number, R will treat it
+as a numeric vector unless you tell it otherwise.
+```{r}
+a <- 4
+str(a)  
+b <- 4L  # you need to add an L to make it an integer
+str(b)
+```
+
+Character vectors are defined using single (or double) quotes:
+```{r}
+x <- 'four'
+str(x)
+question <- "Did you hear a tone?"
+str(question)
+```
+
+Logicals have two values, TRUE or FALSE. Typically, you get a logical
+data element by making a statement:
+```{r}
+x <- 4 > 5  # I say: "4 is greater than 5". R answers: "FALSE"
+x
+str(x)
+```
+
+Sometimes you can and sometimes you can't do operations on elements of different
+types. Always be careful when you can, to make sure you get what you expect.  
+```{r}
+# Adding numeric and integer works fine, output is numeric
+x <- 4 + 4L  
+x
+str(x)
+
+# Adding numeric and character doesn't work
+y <- 4 + 'four'
+
+# Adding a numeric and logical element works (surprisingly); useful for recodings of 
+# variables, more on this later on ...
+z <- 4 + TRUE
+z
+str(z)  # output is numeric
+
+```
+
+\ 
+
+You may combine several data elements (i.e., one-element vectors) in a vector 
+using the concatenation function `c()`.
+```{r}
+x <- c(1, 2, 3, 5, 8, 13, 21)
+x
+
+y <- c('1', '2', '3')
+y
+
+z <- c(TRUE, 2 != 5, FALSE)  # (2 != 5) is the same as !(2 == 5)
+z
+
+w <- c(1, '2', 3)  # Here R simply assumes that you want a character vector
+w
+```
+
+#### Factors
+Factors stores categorical data, and can contain only predefined values. For example, 
+you may have a numeric vector ```conditions```  with three values, 1, 2, 3, 
+representing treatment group, placebo group, and no-placebo-control group.
+
+```{r}
+conditions <- rep(c(1, 2, 3), 3) 
+str(conds)
+```
+You may use this vector to define a new vector that is a factor:
+```{r}
+conds_factor <- factor(conditionss, levels = c(1, 2, 3), 
+                       labels = c('treatment', 'placebo', 'no-placebo'))
+str(conds_factor)
+conds_factor
+```
+A factor is in fact an integer vector with specific attributes that (i) defines
+the set of allowed values (levels) and (ii) changes its behavior compared to an
+ordinary integer vector. For example, you cannot do arithmetic on a factor. If
+you try, missing data, ```NA```, is generated. 
+```{r}
+conds_factor - 1  # No error message, but a warning that NA's has been generated
+conds - 1  # Arithmetic on the numeric vector of course works fine
+```
+It may therefore be a good idea to keep the original numeric (or integer) vector
+and define the factor as a new variable (as done in the example above)
+
+
+#### Names of vector elements
+You may name elements of a vector to help you remember what they stand for.
+Names are attributes (meta-data) attached to vectors:
+```{r}
+iq <- rnorm(500, 100, 15)
+iq_stats <- c(mean(iq), sd(iq), max(iq))
+iq_stats
+names(iq_stats) <- c('mean', 'sd', 'maxímum')
+iq_stats
+```
+
+
+### Data frames
+A data frame is a 2-dimensional data structure, that combines vectors of equal
+length in rows and columns. Each vector (column) must contain the same type of
+elements,but different columns may contain different types of elements. The code
+below creates three vectors and then combines them into a data frame using the
+```data.frame()``` function.
+```{r}
+id <- seq(1, 200)
+group <- sample(c('male', 'female'), 200, replace = TRUE)  # character vector
+performance <- rnorm(200, 100, 20)
+my_data <- data.frame(id, group, performance)
+```
+
+```my_data``` is a data frame with 200 observations in 3 columns. Note that the
+second column ```group``` contains a factor (not a character vector as one
+would have expected). This is an example where R's helpfulness may cause problems. 
+The intention is good, because you often want character vectors to be factors.
+But assume that your data were based on a gender question with a third alternative,
+'other', that no-one in your sample selected. R would assume that there were only 
+two alternatives:
+```{r}
+table(my_data$group)
+```
+You have to fix this manually, using ```levels()``` (use $ to select a column
+from a data frame. More on subsetting in REX003):
+```{r}
+levels(my_data$group) <- c('male', 'female', 'other')
+table(my_data$group)
+```
+(The may use the argument ```stringAsFactors = FALSE``` when calling the 
+```data.frame()``` function to keep character vectors as they are.) 
+
+### Exercises
+1. What's happening here? Explain line by line.
+```{r}
+set.seed(123)
+new_data <- rnorm(100)
+above_average <- 1 * (new_data   > 0)
+group <- factor(above_average, levels = c(0, 1), labels = c('blue', 'green'))
+my_frame <- data.frame(new_data, above_average, group)
+str(my_frame)
+```
+
+
+
+## Script 1: Randomized experiment (continued)
+Click
+<a href="script1_1.R" target="_blank">here to view</a>
+Script1 as we left it after the last seminar (if you missed it, please copy and
+paste the content into a new script file). 
+
+Today we will do the following:
+
+1. Combine created variables in a data frame using the function ```data.frame()```
+2. Randomly assign to treatment conditions, using the function call ```sample(c(0, 1), 
+replace = TRUE, size = n)```, where ```size = n``` refer to sample size. That is,
+randomization using the Bernoulli trial method.
+3. Do some checks of balance between treatment and control group in socio-economic
+status (SES). If random assignment works, the groups should be approximately equal 
+in SES (indeed on all variables, measured and unmeasured!)
+
+### Exercises
+In the next seminar (REX003) we will simulate potential and observed outcomes.
+Please give it a try already now.  
+Remember from Method1, that the observed outcome
+, $Y_{obs}$ is given by  
+
+\ 
+$Y_{obs} = DY_1 + (1-D)Y_0$,   
+\
+where $Y_0$ is the potential outcome if untreated,$Y_1$ the potential outcome 
+if treated, $D = 1$ for those that received treatment, and $D = 0$
+for those who didn't (assume, for now, that assigned and received
+treatments are identical).
+
+\  
+\  

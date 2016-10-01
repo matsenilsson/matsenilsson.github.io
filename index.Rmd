@@ -1,0 +1,62 @@
+---
+title: FALSE
+author: "Mats E. Nilsson"
+---
+
+\  
+\  
+
+# learn R by EXample (REX)
+
+\ 
+
+### What is it? 
+REX is a seminar series introducing the statistical software R and its 
+help-program R studio. The best way to learn R is to use R,
+so the pedagogic philosophy of REX is learning by doing.  
+
+The seminars are run as satellites to the master-program
+courses Research Methods 1 ("Method1", PSMT30) and Statistics 1 ("Stat1", PSMT15)
+at the Department of Psychology, Stockholm university. The primary goal of REX is
+to prepare the students of these courses for the obligatory assignments
+that requires coding in R. 
+
+\ 
+
+### For whom?
+The seminars are primarily designed for Method1 and Stat1 students, but the
+content will suit anyone interested in learning R from the beginning. So
+anyone at the Department of Psychology, including registered students at all 
+levels and staff are welcome to participate. It is highly recommended that you 
+bring a laptop computer with R and R-studio installed to the seminars, because, 
+as you already know, the best way to learn R is to use R. 
+
+\ 
+
+### What's in it?
+The REX seminars work on scripts designed to solve given tasks: simulating
+a randomized experiment (Script1) and conducting a full data analysis of a 
+given data set (script2). The scripts will evolve gradually over the seminars and 
+the current version of a script will be available for download before the start
+of each seminar, so anyone can join REX at any stage. Seminar notes are available 
+on this website summarizing the content of each seminar (see links above).
+The notes summarizes the topics discussed
+at the seminar. If you find the content elementary, you probably don't need to
+attend the seminar. If the notes make no sense at all, please visit the seminar
+where everything will be explained in detail. A list of seminars is found
+[here](index.html) 
+
+
+\ 
+
+### When and where?
+Part 1 (seminars 001, 002, ...) run as satellite to the master-program course 
+**Method1**:
+Click here for [Schedule fall semester 2016](https://fastreg.psychology.su.se/KursWeb/ScheduleKronologisk.aspx?MomentID=71&termin=H16)
+
+Part 2 (seminars 101, 102, ...) run as satellite to the master-program course 
+**Stat1**:
+Click here for [Schedule fall semester 2016](https://fastreg.psychology.su.se/KursWeb/ScheduleKronologisk.aspx?MomentID=61&termin=H16)
+
+\ 
+\ 

@@ -1,0 +1,188 @@
+---
+title: False
+---
+
+```{r setup, cache = FALSE, echo = FALSE}
+# THis will allow error messages to be converted to HTML
+knitr::opts_chunk$set(error = TRUE)
+
+```
+
+\  
+\  
+
+
+# Notes REX004
+You have already used several R functions. Today we'll take a closer look at 
+how they work. After that we'll continue working on the script: it's finally 
+time to do some statistical analyses of the result of our imaginary experiment. 
+
+## Functions
+Functions are small programs that do things. Most functions require that you
+specify what you want to be done by providing arguments, but some functions can
+be run without arguments: 
+```{r}
+getwd()
+setwd()
+```
+
+A function's arguments is listed in its help page. Many functions have 
+arguments with default values. For example, the `mean()`
+function has as default not to excluded missing data: `na.rm = FALSE`. This
+is a bit annoying, because R will give you an NA where you expected a number. But 
+it is in fact helpful since it reminds you that your data contain missing values. 
+```{r}
+my_data <- rnorm(1000)
+my_data[my_data > 2 ] <- NA  # Turn values > 2 into missing data (NA)
+mean(my_data)  # The mean is NA if NAs are included
+mean(my_data, na.rm = TRUE)  # This gives the mean after removing NAs
+```
+
+If you don't specify what argument your are providing, R will assume 
+that you're entering them in the same order as specified by the function. For
+example, our favorite `rnorm()` has this order of arguments: 
+`rnorm(n, mean = 0, sd = 1)`. 
+
+So if you call `rnorm(3, 100, 15)`, R will assume that you mean n = 3,
+mean = 100 and sd = 15 and give you three random numbers from N(100, 15). 
+```{r}
+set.seed(1)
+rnorm(3, 100, 15)
+```
+
+Note that you can input them in another order if you specify each argument: 
+```{r}
+set.seed(1)
+rnorm(sd = 15, n = 3, mean = 100)
+```
+When writing a script, it's generally a good idea to specify arguments also 
+when they are provided in the right order. This reminds you and others reading 
+your code what the arguments stand for.
+
+### Writing your own functions
+You can easily create your own functions. Here is an example of a function that
+takes a numeric vector as input and returns a z-transformed version of the data. 
+```{r}
+z_transform <- function(x) {
+  zvalue <- (x - mean(x)) / sd(x)
+  zvalue  # This returns the output 
+}
+```
+When you run this code, it is stored as an object in R's memory (you should see it 
+in R-Studio's Global Environment panel) and will be available until you
+close R or clear its workspace with `rm(list = ls())` .
+```{r}
+my_data <- c(1, 4, 9, 9, 14, 17)
+my_z <- z_transform(my_data) 
+my_z 
+```
+
+Note that the objects created inside a function (e.g., `zvalue` in 
+`z_transform()`), 
+are not available outside the function, so this will generate an error:
+```{r}
+zvalue
+```
+
+Here's a user-made function that calculates sample statistics (three digits as
+default) and outputs these values in a named vector
+```{r}
+calculate_stats <- function(x, digits = 3) {
+  n <- length(x)
+  m <- mean(x)
+  md <- median(x)
+  s <- sd(x)
+  minimum <- min(x)
+  maximum <- max(x)
+  out <- round(c(n, m, s, md, minimum, maximum), digits)
+  names(out) <- c('n', 'mean', 'sd', 'median', 'min', 'max')
+  out
+}
+```
+
+Here's another user-made function:
+```{r}
+create_rsample <- function(n = 100, m = 100, s = 15) {
+  # Creates a random sample of n observations with a specified mean (m) and 
+  # standard deviation (s). The data is drawn from the normal distribution and
+  # then linearly transformed to the specified mean and standard deviation.
+  x <- rnorm(n)
+  x <- (x - mean(x)) / sd(x)  # Sets mean(x) = 0 and sd(x) = 1
+  x <- (x * s) + m  # Sets mean(x) = m and sd(x) = s
+  x  # Return x
+}
+```
+
+And here are both functions in action:
+```{r}
+sample1 <- create_rsample()
+calculate_stats(sample1)
+sample2 <- create_rsample(10, 50, 10)
+calculate_stats(sample2)
+```
+If these were your first functions: Congratulations, you just wrote your first
+computer programs!  
+
+Note that it's a very good idea to comment your code carefully, including your 
+functions (as I did above for `create_rsample()`). The time spend on commenting
+your code is usually much less then the time you will need to understand your 
+uncommented code when revisited on another day. 
+
+### Exercises
+This code creates an integer vector randomly drawn with replacement from the set
+of integers between 1 and 10. 
+```{r}
+set.seed(123)
+randint <- sample(seq(1, 10), 10, replace = TRUE)
+randint
+```
+
+Create a function that takes a vector created in this way as input and returns
+a vector with three statistics: (i) the number of unique integers, (ii) their mean
+value (excluding the duplicates), and (iii) the mean of the non-included integers
+between 1 and 10.  
+If the `randint` vector defined above would be given as input to this function,
+something like this would be returned:
+```{r, echo = FALSE}
+do_exc1 <- function(x, n) {
+  uni <- unique(x)
+  a <- length(uni)
+  b <- mean(uni)
+  nonin <- setdiff(1:n, uni)
+  c <- mean(nonin)
+  out <- c(a, b, c)
+  names(out) <- c('#included', 'mean-included', 'mean-not-included')
+  out
+}
+do_exc1(randint, 10)
+```
+
+\ 
+
+## Script 1: Randomized experiment (continued)
+Click
+<a href="script1_3.R" target="_blank">here to view</a>
+Script1 as we left it after the last seminar (if you missed it, please copy and
+paste the content into a new script file). 
+
+Today we will analyse true and estimated casual effects
+
+1. Single-unit causal effects
+2. Average treatment effect (ATE) and Average treatment effect on the treated
+(ATT) in our sample and asymptotically (by increasing the sample size to a very 
+large number)
+3. Conduct as-treated and intent-to-treat analyses to estimate ATE and ATT 
+
+
+### Exercises
+Next time we will complicate things by introducing non-compliance. Specifically,
+we will simulate a causal relationship between socioeconomic status (SES) and 
+risk of being a never-taker (an individual who will not receive treatment, no matter
+assignment; everyone else in our scenario will be a complier: treated as
+assigned). Give it a try already now. Start by formulating a plausible model, 
+then try to implement it in R-code (this is an implausible model: "Everyone low 
+in SES is a never-taker, everyone high in SES is a complier").
+
+\  
+\  
+

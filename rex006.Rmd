@@ -1,0 +1,163 @@
+---
+title: False
+author: "Mats E. Nilsson"
+---
+
+```{r setup, cache = FALSE, echo = FALSE}
+# THis will allow error messages to be converted to HTML
+knitr::opts_chunk$set(error = TRUE)
+```
+
+\  
+\  
+
+# Notes REX006
+Today we will mainly work with finalizing our script. First just a brief
+quiz on R fundamentals (a few questions of this type will be included in the 
+written exam of Method1).
+
+## R quiz
+For each block of code, select the output you would expect. Use R to 
+check your answers.
+
+**Q1**
+```{r, eval = FALSE}
+5 + 4 - 3 * 3
+```
+1. 18
+2. 0
+3. 8
+4. error message
+
+**Q2**
+```{r, eval = FALSE}
+a <- c(1, 2, 3.5)
+str(a)
+```
+1. chr [1:3] 1 2 3.5
+2. int [1:3] 1 2 3.5
+3. num [1:3] 1 2 3.5
+4. error message
+
+**Q3**
+```{r, eval = FALSE}
+a <- 100
+b <- 50
+c <- 25
+test <- (b > c) & !(a < b)
+test
+```
+1. FALSE
+2. TRUE
+3. NA
+4. error message
+
+**Q4**
+```{r, eval = FALSE}
+a <- 100
+b <- c(25, 50, 100)
+test <- b > a
+test
+```
+1. FALSE
+2. FALSE FALSE FALSE
+3. FALSE FALSE TRUE
+4. error message
+
+**Q5**
+```{r, eval = FALSE}
+a <- c('red', 'blue', 'green')
+b <- c(25, 50)
+d <- data.frame(a, b)
+d$a[1]
+```
+1. 'red'
+2. 'red', 'blue', 'green' 
+3. 25, 50
+4. error message
+
+
+**Q6**
+```{r, eval = FALSE}
+a <- c(3, 7, 4, 5, 6)
+a[c(3, 5)]
+```
+1. 3 5
+2. 4 6
+3. NA
+4. error message
+
+**Q7**
+```{r, eval = FALSE}
+b <- c(3, 7, 4, 5, 6)
+b[-2]
+```
+1. 3 4 5 6
+2. -7
+3. 7
+4. error message
+
+**Q8**
+```{r, eval = FALSE}
+a <- c(1, 3, 5)
+b <- c(2, 1, 6, 3, 10)
+b[a]
+```
+1. 1 3 5
+2. 2 6 10
+3. NA NA NA
+4. error message
+
+
+**Q9**
+```{r, eval = FALSE}
+a <- c(1, 3, 5)
+b <- c(7, 3, 4)
+c <- c(3, 4, 5)
+d <- data.frame(a, b, c)
+d[ , 2]
+```
+1. 3 3 4
+2. 7 3 4
+3. 3
+4. error message
+
+
+**Q10**
+```{r, eval = FALSE}
+check_order <- function(x, y, z) {
+  strict_order <- 1 * ((x < y) & (y < z))
+  strict_order
+}
+check_order(pi, 4, 2^2)
+```
+1. 1
+2. 0
+3. FALSE
+4. error message
+
+\  
+\  
+
+## Script 1: Randomized experiment (finalized)
+Click
+<a href="script1_5.R" target="_blank">here to view</a>
+Script1 as we left it after the last seminar (if you missed it, please copy and
+paste the content into a new script file). 
+
+We will end our work on the simulated experiment by:
+
+1. Calculating the Locale average treatment effect (LATE), i.e., the true
+average causal effect on the compliers.
+2. Do an instrumental-variable analysis to estimate LATE from observed data
+
+\  
+
+### Exercises
+In our scenario, LATE is the same as ATT. If we include always-takers and assume
+that the causal effect is larger on them than on compliers (still assuming no
+defiers), LATE and ATT may differ. Illustrate by modifying the simulation.
+
+\  
+\  
+

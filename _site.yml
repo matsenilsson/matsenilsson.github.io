@@ -1,0 +1,33 @@
+name: "matni_rex"
+output_dir: "."
+include: ["script1*.R"]
+navbar:
+  title: "Learn R by EXample"
+  left:
+    - text: "About"
+      href: index.html 
+    - text: "Content"
+      href: content.html
+    - text: "Seminar notes"
+      menu:
+        - text: "001"
+          href: rex001.html
+        - text: "002"
+          href: rex002.html
+        - text: "003"
+          href: rex003.html
+        - text: "004"
+          href: rex004.html
+        - text: "005"
+          href: rex005.html
+        - text: "006"
+          href: rex006.html
+output:
+  html_document:
+    theme: spacelab
+    highlight: default
+    fig_height: 4
+    fig_width: 5
+    include:
+      after_body: footer.html
+

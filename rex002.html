@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Mats E. Nilsson" />
+
+
+<title></title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/spacelab.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet"
+      href="site_libs/highlight/default.css"
+      type="text/css" />
+<script src="site_libs/highlight/highlight.js"></script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 52px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+
+.section h2 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h3 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h4 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h5 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h6 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script src="site_libs/navigation-1.0/tabsets.js"></script>
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Learn R by EXample</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">About</a>
+</li>
+<li>
+  <a href="content.html">Content</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Seminar notes
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="rex001.html">001</a>
+    </li>
+    <li>
+      <a href="rex002.html">002</a>
+    </li>
+    <li>
+      <a href="rex003.html">003</a>
+    </li>
+    <li>
+      <a href="rex004.html">004</a>
+    </li>
+    <li>
+      <a href="rex005.html">005</a>
+    </li>
+    <li>
+      <a href="rex006.html">006</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<p>   </p>
+<div id="notes-rex002" class="section level1">
+<h1>Notes REX002</h1>
+<p>This seminar will first review the fundamentals of how R deals with data. After that, we will continue our work on Script 1, today with random assignment of our simulated participants to treatment and control conditions.</p>
+<div id="how-r-deals-with-data" class="section level2">
+<h2>How R deals with data</h2>
+<p>Please spend some time on this topic. It may seem abstract, even boring, but it is worthwhile studying. You don’t have to memorize all this, just play around with the examples below to get a feel of data storage in R.</p>
+<p>One lesson to learn is that R sometimes ‘help’ you to make sense. This can indeed be helpful, if you know what you are doing, but may cause strange errors if you don’t; errors that may hard to fix if you lack basic understanding of how R deals with data.</p>
+<p>In R, data are contained in data structures. We will mainly work with two types of data structures: Atomic vectors and data frames, so let’s concentrate on them (and save lists, matrices and arrays for later).</p>
+<div id="vectors" class="section level3">
+<h3>Vectors</h3>
+<p>Atomic vectors, or vectors for short, are 1-dimensional collections of elements of the same type. The most important vector types are</p>
+<ol style="list-style-type: decimal">
+<li>Integer vectors</li>
+<li>Numeric (or double) vectors</li>
+<li>Character vectors</li>
+<li>Logical vectors</li>
+</ol>
+<p>Note that R treats a single data element as a vector with one element (i.e., R has no scalars).<br />
+When you work with numbers in R, they will most often be be defined as numeric vectors. If you input a non-fractional number, R will treat it as a numeric vector unless you tell it otherwise.</p>
+<pre class="r"><code>a &lt;- 4
+str(a)  </code></pre>
+<pre><code>##  num 4</code></pre>
+<pre class="r"><code>b &lt;- 4L  # you need to add an L to make it an integer
+str(b)</code></pre>
+<pre><code>##  int 4</code></pre>
+<p>Character vectors are defined using single (or double) quotes:</p>
+<pre class="r"><code>x &lt;- &#39;four&#39;
+str(x)</code></pre>
+<pre><code>##  chr &quot;four&quot;</code></pre>
+<pre class="r"><code>question &lt;- &quot;Did you hear a tone?&quot;
+str(question)</code></pre>
+<pre><code>##  chr &quot;Did you hear a tone?&quot;</code></pre>
+<p>Logicals have two values, TRUE or FALSE. Typically, you get a logical data element by making a statement:</p>
+<pre class="r"><code>x &lt;- 4 &gt; 5  # I say: &quot;4 is greater than 5&quot;. R answers: &quot;FALSE&quot;
+x</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>str(x)</code></pre>
+<pre><code>##  logi FALSE</code></pre>
+<p>Sometimes you can and sometimes you can’t do operations on elements of different types. Always be careful when you can, to make sure you get what you expect.</p>
+<pre class="r"><code># Adding numeric and integer works fine, output is numeric
+x &lt;- 4 + 4L  
+x</code></pre>
+<pre><code>## [1] 8</code></pre>
+<pre class="r"><code>str(x)</code></pre>
+<pre><code>##  num 8</code></pre>
+<pre class="r"><code># Adding numeric and character doesn&#39;t work
+y &lt;- 4 + &#39;four&#39;</code></pre>
+<pre><code>## Error in 4 + &quot;four&quot;: non-numeric argument to binary operator</code></pre>
+<pre class="r"><code># Adding a numeric and logical element works (surprisingly); useful for recodings of 
+# variables, more on this later on ...
+z &lt;- 4 + TRUE
+z</code></pre>
+<pre><code>## [1] 5</code></pre>
+<pre class="r"><code>str(z)  # output is numeric</code></pre>
+<pre><code>##  num 5</code></pre>
+<p> </p>
+<p>You may combine several data elements (i.e., one-element vectors) in a vector using the concatenation function <code>c()</code>.</p>
+<pre class="r"><code>x &lt;- c(1, 2, 3, 5, 8, 13, 21)
+x</code></pre>
+<pre><code>## [1]  1  2  3  5  8 13 21</code></pre>
+<pre class="r"><code>y &lt;- c(&#39;1&#39;, &#39;2&#39;, &#39;3&#39;)
+y</code></pre>
+<pre><code>## [1] &quot;1&quot; &quot;2&quot; &quot;3&quot;</code></pre>
+<pre class="r"><code>z &lt;- c(TRUE, 2 != 5, FALSE)  # (2 != 5) is the same as !(2 == 5)
+z</code></pre>
+<pre><code>## [1]  TRUE  TRUE FALSE</code></pre>
+<pre class="r"><code>w &lt;- c(1, &#39;2&#39;, 3)  # Here R simply assumes that you want a character vector
+w</code></pre>
+<pre><code>## [1] &quot;1&quot; &quot;2&quot; &quot;3&quot;</code></pre>
+<div id="factors" class="section level4">
+<h4>Factors</h4>
+<p>Factors stores categorical data, and can contain only predefined values. For example, you may have a numeric vector <code>conditions</code> with three values, 1, 2, 3, representing treatment group, placebo group, and no-placebo-control group.</p>
+<pre class="r"><code>conditions &lt;- rep(c(1, 2, 3), 3) 
+str(conds)</code></pre>
+<pre><code>## Error in str(conds): object &#39;conds&#39; not found</code></pre>
+<p>You may use this vector to define a new vector that is a factor:</p>
+<pre class="r"><code>conds_factor &lt;- factor(conditionss, levels = c(1, 2, 3), 
+                       labels = c(&#39;treatment&#39;, &#39;placebo&#39;, &#39;no-placebo&#39;))</code></pre>
+<pre><code>## Error in factor(conditionss, levels = c(1, 2, 3), labels = c(&quot;treatment&quot;, : object &#39;conditionss&#39; not found</code></pre>
+<pre class="r"><code>str(conds_factor)</code></pre>
+<pre><code>## Error in str(conds_factor): object &#39;conds_factor&#39; not found</code></pre>
+<pre class="r"><code>conds_factor</code></pre>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;conds_factor&#39; not found</code></pre>
+<p>A factor is in fact an integer vector with specific attributes that (i) defines the set of allowed values (levels) and (ii) changes its behavior compared to an ordinary integer vector. For example, you cannot do arithmetic on a factor. If you try, missing data, <code>NA</code>, is generated.</p>
+<pre class="r"><code>conds_factor - 1  # No error message, but a warning that NA&#39;s has been generated</code></pre>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;conds_factor&#39; not found</code></pre>
+<pre class="r"><code>conds - 1  # Arithmetic on the numeric vector of course works fine</code></pre>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;conds&#39; not found</code></pre>
+<p>It may therefore be a good idea to keep the original numeric (or integer) vector and define the factor as a new variable (as done in the example above)</p>
+</div>
+<div id="names-of-vector-elements" class="section level4">
+<h4>Names of vector elements</h4>
+<p>You may name elements of a vector to help you remember what they stand for. Names are attributes (meta-data) attached to vectors:</p>
+<pre class="r"><code>iq &lt;- rnorm(500, 100, 15)
+iq_stats &lt;- c(mean(iq), sd(iq), max(iq))
+iq_stats</code></pre>
+<pre><code>## [1] 101.64712  14.62467 144.46805</code></pre>
+<pre class="r"><code>names(iq_stats) &lt;- c(&#39;mean&#39;, &#39;sd&#39;, &#39;maxímum&#39;)
+iq_stats</code></pre>
+<pre><code>##      mean        sd   maxímum 
+## 101.64712  14.62467 144.46805</code></pre>
+</div>
+</div>
+<div id="data-frames" class="section level3">
+<h3>Data frames</h3>
+<p>A data frame is a 2-dimensional data structure, that combines vectors of equal length in rows and columns. Each vector (column) must contain the same type of elements,but different columns may contain different types of elements. The code below creates three vectors and then combines them into a data frame using the <code>data.frame()</code> function.</p>
+<pre class="r"><code>id &lt;- seq(1, 200)
+group &lt;- sample(c(&#39;male&#39;, &#39;female&#39;), 200, replace = TRUE)  # character vector
+performance &lt;- rnorm(200, 100, 20)
+my_data &lt;- data.frame(id, group, performance)</code></pre>
+<p><code>my_data</code> is a data frame with 200 observations in 3 columns. Note that the second column <code>group</code> contains a factor (not a character vector as one would have expected). This is an example where R’s helpfulness may cause problems. The intention is good, because you often want character vectors to be factors. But assume that your data were based on a gender question with a third alternative, ‘other’, that no-one in your sample selected. R would assume that there were only two alternatives:</p>
+<pre class="r"><code>table(my_data$group)</code></pre>
+<pre><code>## 
+## female   male 
+##    113     87</code></pre>
+<p>You have to fix this manually, using <code>levels()</code> (use $ to select a column from a data frame. More on subsetting in REX003):</p>
+<pre class="r"><code>levels(my_data$group) &lt;- c(&#39;male&#39;, &#39;female&#39;, &#39;other&#39;)
+table(my_data$group)</code></pre>
+<pre><code>## 
+##   male female  other 
+##    113     87      0</code></pre>
+<p>(The may use the argument <code>stringAsFactors = FALSE</code> when calling the <code>data.frame()</code> function to keep character vectors as they are.)</p>
+</div>
+<div id="exercises" class="section level3">
+<h3>Exercises</h3>
+<ol style="list-style-type: decimal">
+<li>What’s happening here? Explain line by line.</li>
+</ol>
+<pre class="r"><code>set.seed(123)
+new_data &lt;- rnorm(100)
+above_average &lt;- 1 * (new_data   &gt; 0)
+group &lt;- factor(above_average, levels = c(0, 1), labels = c(&#39;blue&#39;, &#39;green&#39;))
+my_frame &lt;- data.frame(new_data, above_average, group)
+str(my_frame)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    100 obs. of  3 variables:
+##  $ new_data     : num  -0.5605 -0.2302 1.5587 0.0705 0.1293 ...
+##  $ above_average: num  0 0 1 1 1 1 1 0 0 0 ...
+##  $ group        : Factor w/ 2 levels &quot;blue&quot;,&quot;green&quot;: 1 1 2 2 2 2 2 1 1 1 ...</code></pre>
+</div>
+</div>
+<div id="script-1-randomized-experiment-continued" class="section level2">
+<h2>Script 1: Randomized experiment (continued)</h2>
+<p>Click <a href="script1_1.R" target="_blank">here to view</a> Script1 as we left it after the last seminar (if you missed it, please copy and paste the content into a new script file).</p>
+<p>Today we will do the following:</p>
+<ol style="list-style-type: decimal">
+<li>Combine created variables in a data frame using the function <code>data.frame()</code></li>
+<li>Randomly assign to treatment conditions, using the function call <code>sample(c(0, 1),  replace = TRUE, size = n)</code>, where <code>size = n</code> refer to sample size. That is, randomization using the Bernoulli trial method.</li>
+<li>Do some checks of balance between treatment and control group in socio-economic status (SES). If random assignment works, the groups should be approximately equal in SES (indeed on all variables, measured and unmeasured!)</li>
+</ol>
+<div id="exercises-1" class="section level3">
+<h3>Exercises</h3>
+<p>In the next seminar (REX003) we will simulate potential and observed outcomes. Please give it a try already now.<br />
+Remember from Method1, that the observed outcome , <span class="math inline">\(Y_{obs}\)</span> is given by</p>
+<p>  <span class="math inline">\(Y_{obs} = DY_1 + (1-D)Y_0\)</span>,<br />
+<br />
+where <span class="math inline">\(Y_0\)</span> is the potential outcome if untreated,<span class="math inline">\(Y_1\)</span> the potential outcome if treated, <span class="math inline">\(D = 1\)</span> for those that received treatment, and <span class="math inline">\(D = 0\)</span> for those who didn’t (assume, for now, that assigned and received treatments are identical).</p>
+<p>   </p>
+</div>
+</div>
+</div>
+
+<span style="color:#336699">
+
+<p>Mats E. Nilsson, Gösta Ekman Laboratory, Department of Psychology, 
+Stockholm University<br>mats.nilsson@psychology.su.se</p>
+
+</span>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

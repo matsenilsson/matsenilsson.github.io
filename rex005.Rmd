@@ -1,0 +1,173 @@
+---
+title: False
+author: "Mats E. Nilsson"
+---
+
+
+```{r setup, cache = FALSE, echo = FALSE}
+# THis will allow error messages to be converted to HTML
+knitr::opts_chunk$set(error = TRUE)
+```
+
+
+\  
+\  
+
+# Notes REX005
+We have already generated a lot of random numbers using R. Today some more details 
+on how this works, before we continue with our simulated experiment.
+
+## Random numbers
+Computers cannot generate true randomness. What you get is pseudo-random
+numbers. Fortunately, these behave almost exactly as truly random numbers so
+most users, including us, will not notice the difference. A good thing
+we pseudo-randomness is that it allows us to make our analyses reproducible, 
+using the `set.seed()` function:
+```{r}
+set.seed(13)  # Use any integer as argument
+rnorm(5)  # Random numbers
+rnorm(5)  # New numbers
+set.seed(13)
+rnorm(5)  # Same as first above
+```
+
+Any script generating random numbers should set the seed at the
+beginning to assure that you or someone else can reproduce the results.
+The use of random number generators for statistical data analysis has
+increased markedly with the popularity of resampling methods, e.g., bootstrapping. 
+If you are conducting such analyses, don't forget to set the seed.
+
+### Random number generators
+So far, we have used two random-number generators, `sample()` and
+`rnorm()`. The first let us sample with or without replacement from any 
+vector (int, num, cha, or logi), irrespective of the distribution of values in
+that vector. The second  samples from a normal distribution of infinite size
+(so sampling with or without replacement is not an issue). R has random number 
+generators for a large set of probability distributions. This code uses three of 
+these.  
+```{r, fig.width = 7, fig.height = 4}
+n <- 10^5
+a <- rnorm(n)
+b <- rexp(n)
+c <- runif(n)
+par(mfrow = c(1,3))  # Locate three subplots in one row
+hist(a, main = 'Normal')
+hist(b, main = 'Exponential')
+hist(c, main = 'Uniform')
+```
+
+### Model simulation using random numbers
+This is a causal model of the relationship between three variables, 
+intelligence (iq), social skills (ss) and income: 
+
+$iq\rightarrow{income}\leftarrow{ss}$.  
+
+In words: intelligence and social skills
+are independent and both influences income. To be more specific, we may assume
+that the causal effects leads to a linear relationship between social skills on 
+the one hand and iq and ss on the other:  
+$income = \beta_0 + \beta_1iq + \beta_2ss +\epsilon$  
+
+Below a simulation of this linear model, using random numbers drawn 
+from the standard normal distribution (mean = 0, sd = 1, default values of 
+`rnorm()`).
+```{r}
+# One possible set of beta weights
+betaw <- c(0, 0.5, 0.5) 
+# Sample size
+n = 10^4
+# Random numbers representing iq
+iq <- rnorm(n)  
+# Random numbers representing ss
+ss <- rnorm(n) 
+# Income influenced by both iq and ss (added to 'baseline' income)
+income <- betaw[1] + betaw[2] * iq + betaw[2] * ss + rnorm(n)  
+simul <- data.frame(iq, ss, income)
+```
+
+A scatter plot matrix and a correlation matrix suggest that our simulation is 
+consistent with the model: iq and ss are independent, and both are positively
+correlated with income.
+```{r}
+pairs(~iq + ss + income, data = simul)  # Scatter plot matrix
+round(cor(simul), 3)  # Pearson coefficients of correlation (to 3 decimals)
+```
+
+As expected, a multiple regression model will recover the beta coefficients, 
+plus minus some random error.
+```{r}
+lm(income ~ iq + ss)
+```
+  
+We may use this simulated data to illustrate Collider stratification bias
+(e.g., Elwert & Winship, 2014. Endogenous selection bias: the problem of 
+conditioning on a collider variable. *Annual Review of Sociology*, 40, 31-53).  
+
+A researcher is interested in the relationship between intelligence and social
+skills. His hypothesis is that intelligent individuals tend to spend time on
+solitary tasks as reading books and therefore have less time to develop their
+social skills. He therefore predicts a negative correlation between intelligence 
+(iq) and social skills (ss), and test this on a sample of people with similar income. 
+This, he thinks, is a strength of his designs as it controls for income by restriction. 
+This plot shows the relationship between iq and ss in the full sample 
+(open symbols, black line) and restricted to high-income people 
+(blue symbols, blue line).  
+```{r, fig.width = 5, fig.height = 5}
+plot(simul$iq, simul$ss, xlab = 'Intelligence (iq)', ylab = 'Social skills (ss)')
+
+# Regression based on all data
+full_model <- lm(simul$ss ~ simul$iq)
+abline(full_model)
+
+# Regression based on restricted data
+points(simul$iq[simul$income > 2], simul$ss[simul$income > 2],
+       col = 'blue', pch = 16, cex = 0.5)
+restricted_model <- lm(simul$ss[simul$income > 2] ~ simul$iq[simul$income > 2])
+abline(restricted_model, col = 'blue')
+
+```
+
+The restricted model (blue symbols and line) support the researcher's hypothesis. 
+But we know he is wrong, because iq and ss are independent (by assumption). This
+is an example where controlling or adjusting for a potentially cofounding 
+variable introduces bias. Note that indeed it is true that there is a negative
+correlation between iq and ss in high-income individuals (in our simulated 
+world); it's the researcher's *causal* hypothesis that is wrong, not his prediction
+of a negative correlation.
+
+
+## Script 1: Randomized experiment (continued)
+Click
+<a href="script1_4.R" target="_blank">here to view</a>
+Script1 as we left it after the last seminar (if you missed it, please copy and
+paste the content into a new script file). 
+Today we will complicate things by introducing non-compliance. Specifically:
+
+1. Define 'never-takers' (participants who will not receive treatment no matter 
+if they are assigned or not to treatment), 
+2. Simulate that risk for being a never-taker is related to both treatment and 
+outcome
+3. Explore what this means for the validity of as-treated and intent-to-treat
+analysis.
+
+### Exercises
+In our scenario, the only way to received treatment (extra music lessons) is to
+be assigned to the treatment group. This means that there can only be two types of 
+participants: compliers and never-takers. In other scenarios, all four types
+are possible: compliers, never-takers, always-takers and defiers.
+
+1. Assume a positive causal effect of treatment on outcome. What happens 
+(asymptotically) to the as-treated and intent-to-treat causal estimates in the
+four extreme scenarios with only one type of individuals.
+
+2. Write code that simulates a scenario in which all four types exists in plausible
+proportions and relationships with socio-economic status.  
+Explore what happens to the as-treated and intent-to-treat causal estimates in
+this scenario. 
+
+
+\  
+
+\  
+
+

@@ -1,0 +1,194 @@
+---
+title: False
+author: "Mats E. Nilsson"
+---
+
+```{r setup, cache = FALSE, echo = FALSE}
+# THis will allow error messages to be converted to HTML
+knitr::opts_chunk$set(error = TRUE)
+```
+\  
+\
+
+
+# Notes REX001
+This seminar takes a first look at R and R-Studio. We'll
+start with R-Studio's Console, where you may interact directly with R. We will then
+move to text editor and start working on the simulation of a randomized experiment 
+that we will continue to work on in the next several seminars. 
+
+## Getting started with R and R-studio
+Make sure you have R (the statistical software) and R-studio (an interface
+to R) installed on you laptop before this seminar. You may run R without R-studio
+(but not vice versa), but I strongly recommend that you use R-Studio; it makes 
+working with R much easier.
+
+### The Console
+You may interact directly with R through R-Studio's the Console (typically the 
+bottom left panel in R-studio). Here are some examples, just type the commands 
+and hit Enter.
+
+#### Use as calculator
+a. $27 - 13$
+```{r}
+27 - 13
+```
+
+b. $(5+3)8^{1/3}$ 
+```{r}
+(5 + 3) * 8^(1/3)
+```
+
+c. $7!$ 
+```{r}
+factorial(7)
+```
+
+d. ${7 \choose 2}$
+```{r}
+choose(7, 2)
+```
+
+\  
+
+#### Get help (this opens a page in the Help panel of R-studio) 
+```{r, eval = FALSE}
+help(choose)
+```
+
+\  
+
+#### Store data
+a. Store a set of numbers in a vector called x
+```{r}
+x <- c(1, 7, 7, 3, 23, -4, 2^3)
+```
+
+Note that x is not displayed in the Console unless called specifically
+```{r}
+x  # This is shorthand for print(x)
+```
+
+b. Randomly select (with replacement) 10 integers 
+between 1 and 20, and store them in a vector called y
+```{r}
+y <- sample(seq(1, 20), size = 10, replace = TRUE)
+y
+```
+
+c. Repeat 'red', 'green' four times and store them in a vector called condition
+```{r}
+condition <- rep(c('red', 'green'), 4)
+condition
+``` 
+
+\  
+
+#### Check objects
+The Console is useful for checking properties of R objects, for example, the 
+number of elements in a vector, or its first (or last) values.
+```{r}
+a <- rep(month.abb, 5)  # help(month.abb) answers your question
+length(a)  # Number of elements in vector a
+head(a, 7)  # The first 7 values of vector a
+tail(a, 5)  # The last 5 values of vector a
+```
+
+A common mistake is to try to do things on the wrong type of data, such as
+trying to do math on a character (or string) vector.
+Experienced R-users often use the `str()` function to remind them about what
+type of data they are working with (some of this information is also displayed in
+the Environment panel of R-studio). 
+```{r}
+a + 4
+str(a)
+```
+
+
+\  
+
+#### Asking the Console to produce plots works fine:
+```{r}
+random_data <- rnorm(10^4)
+hist(random_data)
+```
+
+\  
+
+#### Exercises 
+1. Calculate $\left|\sqrt{10}/(\pi-4)\right|$. Remember that 
+Google is your best friend. Use it to find out how R implements the 
+square-root function, the absolute function, and the constant $\pi$.
+The expression equals:
+```{r, echo = FALSE}
+abs(sqrt(10) / (pi - 4))
+```
+2. Use R's help function to find out what this function does. If the help 
+page doesn't make sense, use Google to find out (R's help-pages take some
+time to get used to).
+```{r}
+z <- combn(7, 2)
+```
+3. What's the difference between the `sort()` and the `order()` function?
+Try this to find out.
+```{r}
+my_data <- sample(10)
+a <- sort(my_data)
+b <- order(my_data)
+```
+
+\  
+
+### Script files
+You will do most of your typing in the script window (typically located above
+the Console in R-Studio). Here you write blocks of code in a script file
+(select File/New File/R Script or press Ctrl+Shft+N in  R-Studio to open a new 
+script). The code in the script is not executed unless you ask for it, 
+for example by pressing Ctrl-R. If you just want to run a part of the script, 
+selected this part and then hit Ctrl-R. If you just want to run a single line, 
+just put the cursor on the line and hit Ctrl-R. 
+
+\  
+
+### Script1: Randomized experiment
+Click
+<a href="script1_0.R" target="_blank">here to view</a>
+a script file (Script1), to be completed it in the following seminars (copy and
+paste its content into a new script file).  
+
+The simulated scenario is a simple randomized experiment on the effect of extra 
+music lessons during a semester on sixth-graders performance on a math test taken
+at the end of the semester.  
+(loosely inspired by Schellenberg, E.G. (2004). Music lessons enhance IQ. 
+*Psychological Science*, 15, 511-514.) 
+
+Key variables:
+
+1. Independent variable: At the start of grade 6, all children at a school
+are randomly assigned to receive either extra music lessons (treatment) or no extra
+music lessons (control).    
+2. Background (or pre-treatment) variable: Socioeconomic status, defined based 
+on residential area. The children are either from a high-income residential area
+or a low-income area. 
+3. Outcome variable: Score on a math test taken at the end of the semester.
+
+Today, we will just set the scene:
+
+1. Decide sample size and define a variable with id-numbers for each 
+simulated participant
+2. Simulate values on the pre-treatment variable (socio-economic status), using
+the `sample()` function.
+3. Sanity check using the `table()` function.
+
+#### Exercises
+In the following seminar (REX002), we will randomly assign children to experimental
+conditions. Please try it beforehand. Note that there are different
+approaches to random assignment, and for each, there are different ways to 
+implement them in R-code.
+
+
+\  
+\  
+
+
+
