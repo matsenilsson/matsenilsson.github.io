@@ -2,7 +2,7 @@ name: "matni_rex"
 output_dir: "."
 include: ["script1*.R"]
 navbar:
-  title: "Learn R by EXample"
+  title: "learn R by EXample"
   left:
     - text: "About"
       href: index.html 
