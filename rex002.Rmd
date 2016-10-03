@@ -17,8 +17,8 @@ This seminar first reviews the fundamentals of how R deals with data.
 After that, we will continue our work on Script 1, today with random assignment
 of our simulated participants to treatment and control conditions.  
 
-The treatment of data structures (below), subsetting (REX002) and 
-functions (REX003) is inspired by Hadley Wickham's book 
+The treatment of data structures (below), subsetting (REX003) and 
+functions (REX004) is inspired by Hadley Wickham's book 
 [Advanced R](http://adv-r.had.co.nz/), where you will find a much deeper 
 treatment of how R works. Note that we will adhere to Wickham's
 guide for [good coding style](http://adv-r.had.co.nz/Style.html) when writing our
