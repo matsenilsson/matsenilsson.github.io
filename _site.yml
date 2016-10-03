@@ -4,7 +4,7 @@ include: ["script1*.R"]
 navbar:
   title: "learn R by EXample"
   left:
-    - text: "About"
+    - text: "Home"
       href: index.html 
     - text: "Content"
       href: content.html

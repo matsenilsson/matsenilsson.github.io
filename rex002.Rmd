@@ -13,9 +13,18 @@ knitr::opts_chunk$set(error = TRUE)
 
 
 # Notes REX002
-This seminar will first review the fundamentals of how R deals with data.
+This seminar first reviews the fundamentals of how R deals with data.
 After that, we will continue our work on Script 1, today with random assignment
-of our simulated participants to treatment and control conditions.
+of our simulated participants to treatment and control conditions.  
+
+The treatment of data structures (below), subsetting (REX002) and 
+functions (REX003) is inspired by Hadley Wickham's book 
+[Advanced R](http://adv-r.had.co.nz/), where you will find a much deeper 
+treatment of how R works. Note that we will adhere to Wickham's
+guide for [good coding style](http://adv-r.had.co.nz/Style.html) when writing our
+scripts.
+
+\  
 
 ## How R deals with data
 Please spend some time on this topic. It may seem abstract, even boring, but 
@@ -24,7 +33,7 @@ with the examples below to get a feel of data storage in R.
 
 One lesson to learn is that R sometimes 'help' you to make sense. This can indeed
 be helpful, if you know what you are doing, but may cause strange errors if you
-don't; errors that may hard to fix if you lack basic understanding of
+don't; errors that may be hard to fix if you lack basic understanding of
 how R deals with data.  
 
 In R, data are contained in data structures. We will mainly work with two types
@@ -52,6 +61,9 @@ b <- 4L  # you need to add an L to make it an integer
 str(b)
 ```
 
+\  
+
+
 Character vectors are defined using single (or double) quotes:
 ```{r}
 x <- 'four'
@@ -67,6 +79,9 @@ x <- 4 > 5  # I say: "4 is greater than 5". R answers: "FALSE"
 x
 str(x)
 ```
+
+\  
+
 
 Sometimes you can and sometimes you can't do operations on elements of different
 types. Always be careful when you can, to make sure you get what you expect.  
@@ -98,16 +113,19 @@ x
 y <- c('1', '2', '3')
 y
 
-z <- c(TRUE, 2 != 5, FALSE)  # (2 != 5) is the same as !(2 == 5)
+z <- c(TRUE, 2 != 5, FALSE) 
 z
 
-w <- c(1, '2', 3)  # Here R simply assumes that you want a character vector
+w <- c(1, 'two', 3)  # R simply assumes that you want a character vector
 w
 ```
 
+\  
+
+
 #### Factors
 Factors stores categorical data, and can contain only predefined values. For example, 
-you may have a numeric vector ```conditions```  with three values, 1, 2, 3, 
+you may have a numeric vector `conditions`  with three values, 1, 2, 3, 
 representing treatment group, placebo group, and no-placebo-control group.
 
 ```{r}
@@ -124,7 +142,7 @@ conds_factor
 A factor is in fact an integer vector with specific attributes that (i) defines
 the set of allowed values (levels) and (ii) changes its behavior compared to an
 ordinary integer vector. For example, you cannot do arithmetic on a factor. If
-you try, missing data, ```NA```, is generated. 
+you try, missing data, `NA`, is generated. 
 ```{r}
 conds_factor - 1  # No error message, but a warning that NA's has been generated
 conds - 1  # Arithmetic on the numeric vector of course works fine
@@ -132,6 +150,7 @@ conds - 1  # Arithmetic on the numeric vector of course works fine
 It may therefore be a good idea to keep the original numeric (or integer) vector
 and define the factor as a new variable (as done in the example above)
 
+\  
 
 #### Names of vector elements
 You may name elements of a vector to help you remember what they stand for.
@@ -145,12 +164,15 @@ iq_stats
 ```
 
 
+\  
+
+
 ### Data frames
 A data frame is a 2-dimensional data structure, that combines vectors of equal
 length in rows and columns. Each vector (column) must contain the same type of
-elements,but different columns may contain different types of elements. The code
+elements, but different columns may contain different types of elements. The code
 below creates three vectors and then combines them into a data frame using the
-```data.frame()``` function.
+`data.frame()` function.
 ```{r}
 id <- seq(1, 200)
 group <- sample(c('male', 'female'), 200, replace = TRUE)  # character vector
@@ -158,8 +180,8 @@ performance <- rnorm(200, 100, 20)
 my_data <- data.frame(id, group, performance)
 ```
 
-```my_data``` is a data frame with 200 observations in 3 columns. Note that the
-second column ```group``` contains a factor (not a character vector as one
+`my_data` is a data frame with 200 observations in 3 columns. Note that the
+second column `group` contains a factor (not a character vector as one
 would have expected). This is an example where R's helpfulness may cause problems. 
 The intention is good, because you often want character vectors to be factors.
 But assume that your data were based on a gender question with a third alternative,
@@ -168,14 +190,17 @@ two alternatives:
 ```{r}
 table(my_data$group)
 ```
-You have to fix this manually, using ```levels()``` (use $ to select a column
+You have to fix this manually, using `levels()` (use $ to select a column
 from a data frame. More on subsetting in REX003):
 ```{r}
 levels(my_data$group) <- c('male', 'female', 'other')
 table(my_data$group)
 ```
-(The may use the argument ```stringAsFactors = FALSE``` when calling the 
-```data.frame()``` function to keep character vectors as they are.) 
+(The may use the argument `stringAsFactors = FALSE` when calling the 
+`data.frame()` function to keep character vectors as they are.) 
+
+\  
+
 
 ### Exercises
 1. What's happening here? Explain line by line.
@@ -189,22 +214,26 @@ str(my_frame)
 ```
 
 
+\  
+\ 
+
 
 ## Script 1: Randomized experiment (continued)
 Click
-<a href="script1_1.R" target="_blank">here to view</a>
-Script1 as we left it after the last seminar (if you missed it, please copy and
-paste the content into a new script file). 
+<a href="script1_1.R" target="_blank">here</a>
+for Script1 as we left it after the last seminar. 
 
 Today we will do the following:
 
-1. Combine created variables in a data frame using the function ```data.frame()```
-2. Randomly assign to treatment conditions, using the function call ```sample(c(0, 1), 
-replace = TRUE, size = n)```, where ```size = n``` refer to sample size. That is,
-randomization using the Bernoulli trial method.
+1. Combine created variables in a data frame using the function `data.frame()`
+2. Randomly assign to treatment conditions, using the function call
+`sample(c(0, 1), replace = TRUE, size = n)`, where `size = n` refer to sample size. 
+That is, random assignment using the Bernoulli trial method.
 3. Do some checks of balance between treatment and control group in socio-economic
 status (SES). If random assignment works, the groups should be approximately equal 
 in SES (indeed on all variables, measured and unmeasured!)
+
+\ 
 
 ### Exercises
 In the next seminar (REX003) we will simulate potential and observed outcomes.

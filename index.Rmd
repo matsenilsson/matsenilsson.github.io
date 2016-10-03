@@ -11,7 +11,7 @@ author: "Mats E. Nilsson"
 \ 
 
 ### What is it? 
-REX is a seminar series introducing the statistical software R and its 
+REX is a seminar series that introduces the statistical software R and its 
 help-program R studio. The best way to learn R is to use R,
 so the pedagogic philosophy of REX is learning by doing.  
 
@@ -34,14 +34,13 @@ as you already know, the best way to learn R is to use R.
 \ 
 
 ### What's in it?
-The REX seminars work on scripts designed to solve given tasks: simulating
+At the REX seminars we work on scripts designed to solve given tasks: simulating
 a randomized experiment (Script1) and conducting a full data analysis of a 
 given data set (script2). The scripts will evolve gradually over the seminars and 
 the current version of a script will be available for download before the start
-of each seminar, so anyone can join REX at any stage. Seminar notes are available 
-on this website summarizing the content of each seminar (see links above).
-The notes summarizes the topics discussed
-at the seminar. If you find the content elementary, you probably don't need to
+of each seminar. Seminar notes are available 
+on this website summarizing the topics discussed
+at each seminar. If you find the content elementary, you probably don't need to
 attend the seminar. If the notes make no sense at all, please visit the seminar
 where everything will be explained in detail. A list of seminars is found
 [here](content.html) 

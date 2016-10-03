@@ -17,6 +17,9 @@ knitr::opts_chunk$set(error = TRUE)
 We have already generated a lot of random numbers using R. Today some more details 
 on how this works, before we continue with our simulated experiment.
 
+
+\  
+
 ## Random numbers
 Computers cannot generate true randomness. What you get is pseudo-random
 numbers. Fortunately, these behave almost exactly as truly random numbers so
@@ -37,6 +40,9 @@ The use of random number generators for statistical data analysis has
 increased markedly with the popularity of resampling methods, e.g., bootstrapping. 
 If you are conducting such analyses, don't forget to set the seed.
 
+\  
+
+
 ### Random number generators
 So far, we have used two random-number generators, `sample()` and
 `rnorm()`. The first let us sample with or without replacement from any 
@@ -56,6 +62,9 @@ hist(b, main = 'Exponential')
 hist(c, main = 'Uniform')
 ```
 
+\  
+
+
 ### Model simulation using random numbers
 This is a causal model of the relationship between three variables, 
 intelligence (iq), social skills (ss) and income: 
@@ -63,7 +72,7 @@ intelligence (iq), social skills (ss) and income:
 $iq\rightarrow{income}\leftarrow{ss}$.  
 
 In words: intelligence and social skills
-are independent and both influences income. To be more specific, we may assume
+are independent and both influence income. To be more specific, we may assume
 that the causal effects leads to a linear relationship between social skills on 
 the one hand and iq and ss on the other:  
 $income = \beta_0 + \beta_1iq + \beta_2ss +\epsilon$  
@@ -99,18 +108,18 @@ plus minus some random error.
 lm(income ~ iq + ss)
 ```
   
-We may use this simulated data to illustrate Collider stratification bias
+We may use this simulated data to illustrate *Collider stratification bias*
 (e.g., Elwert & Winship, 2014. Endogenous selection bias: the problem of 
 conditioning on a collider variable. *Annual Review of Sociology*, 40, 31-53).  
 
 A researcher is interested in the relationship between intelligence and social
 skills. His hypothesis is that intelligent individuals tend to spend time on
-solitary tasks as reading books and therefore have less time to develop their
+reading books and other solitary tasksand therefore have less time to develop their
 social skills. He therefore predicts a negative correlation between intelligence 
 (iq) and social skills (ss), and test this on a sample of people with similar income. 
-This, he thinks, is a strength of his designs as it controls for income by restriction. 
-This plot shows the relationship between iq and ss in the full sample 
-(open symbols, black line) and restricted to high-income people 
+He considers this to be a strength of his designs as it controls for income by restriction. 
+The code generates a plot that shows the relationship between iq and ss in the 
+full sample (open symbols, black line) and restricted to high-income people 
 (blue symbols, blue line).  
 ```{r, fig.width = 5, fig.height = 5}
 plot(simul$iq, simul$ss, xlab = 'Intelligence (iq)', ylab = 'Social skills (ss)')
@@ -127,20 +136,22 @@ abline(restricted_model, col = 'blue')
 
 ```
 
-The restricted model (blue symbols and line) support the researcher's hypothesis. 
-But we know he is wrong, because iq and ss are independent (by assumption). This
+The restricted data (blue symbols and line) support the researcher's hypothesis. 
+But we know he's wrong, because iq and ss are independent (by assumption). This
 is an example where controlling or adjusting for a potentially cofounding 
-variable introduces bias. Note that indeed it is true that there is a negative
+variable introduces bias. Note that it is true that there is a negative
 correlation between iq and ss in high-income individuals (in our simulated 
-world); it's the researcher's *causal* hypothesis that is wrong, not his prediction
-of a negative correlation.
+world); it's the researcher's *causal* hypothesis that is wrong, not his 
+prediction of a negative correlation.
+
+\  
 
 
 ## Script 1: Randomized experiment (continued)
 Click
-<a href="script1_4.R" target="_blank">here to view</a>
-Script1 as we left it after the last seminar (if you missed it, please copy and
-paste the content into a new script file). 
+<a href="script1_4.R" target="_blank">for</a>
+Script1 as we left it after the last seminar. 
+
 Today we will complicate things by introducing non-compliance. Specifically:
 
 1. Define 'never-takers' (participants who will not receive treatment no matter 
@@ -150,8 +161,11 @@ outcome
 3. Explore what this means for the validity of as-treated and intent-to-treat
 analysis.
 
+\  
+
+
 ### Exercises
-In our scenario, the only way to received treatment (extra music lessons) is to
+In our scenario, the only way to receive treatment (extra music lessons) is to
 be assigned to the treatment group. This means that there can only be two types of 
 participants: compliers and never-takers. In other scenarios, all four types
 are possible: compliers, never-takers, always-takers and defiers.
@@ -163,11 +177,10 @@ four extreme scenarios with only one type of individuals.
 2. Write code that simulates a scenario in which all four types exists in plausible
 proportions and relationships with socio-economic status.  
 Explore what happens to the as-treated and intent-to-treat causal estimates in
-this scenario. 
+your new scenario. 
 
 
 \  
-
 \  
 
 

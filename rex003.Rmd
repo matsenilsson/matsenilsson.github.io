@@ -16,6 +16,9 @@ Today we'll practice 'subsetting', i.e., extracting elements from data structure
 R will make a lot more sense, once you have understood the basics of
 subsetting. Then we will continue working on our simulated experiment.
 
+\  
+
+
 ## Subsetting
 Please spend time on the examples below; modify and extend them to get a grip of
 the various ways to extract parts of R objects. I've heard of people who gave up 
@@ -24,14 +27,16 @@ It's not totally intuitive, but once you know how, it's easy. And more
 important, subsetting in R is extremely powerful, allowing you to analyze any 
 subsets of your data. 
 
+\  
+
 ### Vectors
-Elements of vectors are indexed 1, 2, ..., n. 
 ```{r}
 z <- seq(1, 100, 7)
 z
 ```
 
-Use square brackets to subset parts of a vector.
+Use square brackets to subset parts of a vector (elements of vectors are 
+indexed 1, 2, ..., n).
 ```{r}
 z[2]  # Second element
 z[-2]  # All but the second element
@@ -59,6 +64,8 @@ gender <- sample(c('male', 'female', 'other'), length(iq),
 gender_smartest <- gender[iq > 145]  
 table(gender_smartest)
 ```
+
+\  
 
 ### Data frames
 A data frame is a collection of vectors of the same length organized in rows
@@ -95,6 +102,8 @@ g1b <- d[d[,2] == 1,]
 identical(g1, g1b)
 ```
 
+\  
+
 ### Exercises
 Create a vector called `x` with 1000 random numbers drawn from N(0,1):
 `x <- rnorm(1000)`.
@@ -115,11 +124,12 @@ is useful]
 6. A data frame with ID-numbers and outcomes for the five patients with largest
 gain in extra sleep. 
 
+\  
+
 ## Script 1: Randomized experiment (continued)
 Click
-<a href="script1_2.R" target="_blank">here to view</a>
-Script1 as we left it after the last seminar (if you missed it, please copy and
-paste the content into a new script file).  
+<a href="script1_2.R" target="_blank">here</a>
+for Script1 as we left it after the last seminar.  
 
 Today we will do the following:
 
@@ -135,6 +145,8 @@ where $Y_0$ is the potential outcome if untreated,$Y_1$ the potential outcome
 if treated, $D = 1$ for those that received treatment, and $D = 0$
 for those who didn't (assume, for now, that assigned and received
 treatments are identical).
+
+\  
 
 ### Exercises
 Next time we will analyze our outcome data (potential and observed). You may
