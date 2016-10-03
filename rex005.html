@@ -178,7 +178,7 @@ $(document).ready(function () {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">About</a>
+  <a href="index.html">Home</a>
 </li>
 <li>
   <a href="content.html">Content</a>
@@ -230,6 +230,7 @@ $(document).ready(function () {
 <div id="notes-rex005" class="section level1">
 <h1>Notes REX005</h1>
 <p>We have already generated a lot of random numbers using R. Today some more details on how this works, before we continue with our simulated experiment.</p>
+<p> </p>
 <div id="random-numbers" class="section level2">
 <h2>Random numbers</h2>
 <p>Computers cannot generate true randomness. What you get is pseudo-random numbers. Fortunately, these behave almost exactly as truly random numbers so most users, including us, will not notice the difference. A good thing we pseudo-randomness is that it allows us to make our analyses reproducible, using the <code>set.seed()</code> function:</p>
@@ -242,6 +243,7 @@ rnorm(5)  # Random numbers</code></pre>
 rnorm(5)  # Same as first above</code></pre>
 <pre><code>## [1]  0.5543269 -0.2802719  1.7751634  0.1873201  1.1425261</code></pre>
 <p>Any script generating random numbers should set the seed at the beginning to assure that you or someone else can reproduce the results. The use of random number generators for statistical data analysis has increased markedly with the popularity of resampling methods, e.g., bootstrapping. If you are conducting such analyses, don’t forget to set the seed.</p>
+<p> </p>
 <div id="random-number-generators" class="section level3">
 <h3>Random number generators</h3>
 <p>So far, we have used two random-number generators, <code>sample()</code> and <code>rnorm()</code>. The first let us sample with or without replacement from any vector (int, num, cha, or logi), irrespective of the distribution of values in that vector. The second samples from a normal distribution of infinite size (so sampling with or without replacement is not an issue). R has random number generators for a large set of probability distributions. This code uses three of these.</p>
@@ -254,12 +256,13 @@ hist(a, main = &#39;Normal&#39;)
 hist(b, main = &#39;Exponential&#39;)
 hist(c, main = &#39;Uniform&#39;)</code></pre>
 <p><img src="rex005_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p> </p>
 </div>
 <div id="model-simulation-using-random-numbers" class="section level3">
 <h3>Model simulation using random numbers</h3>
 <p>This is a causal model of the relationship between three variables, intelligence (iq), social skills (ss) and income:</p>
 <p><span class="math inline">\(iq\rightarrow{income}\leftarrow{ss}\)</span>.</p>
-<p>In words: intelligence and social skills are independent and both influences income. To be more specific, we may assume that the causal effects leads to a linear relationship between social skills on the one hand and iq and ss on the other:<br />
+<p>In words: intelligence and social skills are independent and both influence income. To be more specific, we may assume that the causal effects leads to a linear relationship between social skills on the one hand and iq and ss on the other:<br />
 <span class="math inline">\(income = \beta_0 + \beta_1iq + \beta_2ss +\epsilon\)</span></p>
 <p>Below a simulation of this linear model, using random numbers drawn from the standard normal distribution (mean = 0, sd = 1, default values of <code>rnorm()</code>).</p>
 <pre class="r"><code># One possible set of beta weights
@@ -290,8 +293,8 @@ simul &lt;- data.frame(iq, ss, income)</code></pre>
 ## Coefficients:
 ## (Intercept)           iq           ss  
 ##     0.01083      0.50512      0.49443</code></pre>
-<p>We may use this simulated data to illustrate Collider stratification bias (e.g., Elwert &amp; Winship, 2014. Endogenous selection bias: the problem of conditioning on a collider variable. <em>Annual Review of Sociology</em>, 40, 31-53).</p>
-<p>A researcher is interested in the relationship between intelligence and social skills. His hypothesis is that intelligent individuals tend to spend time on solitary tasks as reading books and therefore have less time to develop their social skills. He therefore predicts a negative correlation between intelligence (iq) and social skills (ss), and test this on a sample of people with similar income. This, he thinks, is a strength of his designs as it controls for income by restriction. This plot shows the relationship between iq and ss in the full sample (open symbols, black line) and restricted to high-income people (blue symbols, blue line).</p>
+<p>We may use this simulated data to illustrate <em>Collider stratification bias</em> (e.g., Elwert &amp; Winship, 2014. Endogenous selection bias: the problem of conditioning on a collider variable. <em>Annual Review of Sociology</em>, 40, 31-53).</p>
+<p>A researcher is interested in the relationship between intelligence and social skills. His hypothesis is that intelligent individuals tend to spend time on reading books and other solitary tasksand therefore have less time to develop their social skills. He therefore predicts a negative correlation between intelligence (iq) and social skills (ss), and test this on a sample of people with similar income. He considers this to be a strength of his designs as it controls for income by restriction. The code generates a plot that shows the relationship between iq and ss in the full sample (open symbols, black line) and restricted to high-income people (blue symbols, blue line).</p>
 <pre class="r"><code>plot(simul$iq, simul$ss, xlab = &#39;Intelligence (iq)&#39;, ylab = &#39;Social skills (ss)&#39;)
 
 # Regression based on all data
@@ -304,27 +307,29 @@ points(simul$iq[simul$income &gt; 2], simul$ss[simul$income &gt; 2],
 restricted_model &lt;- lm(simul$ss[simul$income &gt; 2] ~ simul$iq[simul$income &gt; 2])
 abline(restricted_model, col = &#39;blue&#39;)</code></pre>
 <p><img src="rex005_files/figure-html/unnamed-chunk-6-1.png" width="480" /></p>
-<p>The restricted model (blue symbols and line) support the researcher’s hypothesis. But we know he is wrong, because iq and ss are independent (by assumption). This is an example where controlling or adjusting for a potentially cofounding variable introduces bias. Note that indeed it is true that there is a negative correlation between iq and ss in high-income individuals (in our simulated world); it’s the researcher’s <em>causal</em> hypothesis that is wrong, not his prediction of a negative correlation.</p>
+<p>The restricted data (blue symbols and line) support the researcher’s hypothesis. But we know he’s wrong, because iq and ss are independent (by assumption). This is an example where controlling or adjusting for a potentially cofounding variable introduces bias. Note that it is true that there is a negative correlation between iq and ss in high-income individuals (in our simulated world); it’s the researcher’s <em>causal</em> hypothesis that is wrong, not his prediction of a negative correlation.</p>
+<p> </p>
 </div>
 </div>
 <div id="script-1-randomized-experiment-continued" class="section level2">
 <h2>Script 1: Randomized experiment (continued)</h2>
-<p>Click <a href="script1_4.R" target="_blank">here to view</a> Script1 as we left it after the last seminar (if you missed it, please copy and paste the content into a new script file). Today we will complicate things by introducing non-compliance. Specifically:</p>
+<p>Click <a href="script1_4.R" target="_blank">for</a> Script1 as we left it after the last seminar.</p>
+<p>Today we will complicate things by introducing non-compliance. Specifically:</p>
 <ol style="list-style-type: decimal">
 <li>Define ‘never-takers’ (participants who will not receive treatment no matter if they are assigned or not to treatment),</li>
 <li>Simulate that risk for being a never-taker is related to both treatment and outcome</li>
 <li>Explore what this means for the validity of as-treated and intent-to-treat analysis.</li>
 </ol>
+<p> </p>
 <div id="exercises" class="section level3">
 <h3>Exercises</h3>
-<p>In our scenario, the only way to received treatment (extra music lessons) is to be assigned to the treatment group. This means that there can only be two types of participants: compliers and never-takers. In other scenarios, all four types are possible: compliers, never-takers, always-takers and defiers.</p>
+<p>In our scenario, the only way to receive treatment (extra music lessons) is to be assigned to the treatment group. This means that there can only be two types of participants: compliers and never-takers. In other scenarios, all four types are possible: compliers, never-takers, always-takers and defiers.</p>
 <ol style="list-style-type: decimal">
 <li><p>Assume a positive causal effect of treatment on outcome. What happens (asymptotically) to the as-treated and intent-to-treat causal estimates in the four extreme scenarios with only one type of individuals.</p></li>
 <li><p>Write code that simulates a scenario in which all four types exists in plausible proportions and relationships with socio-economic status.<br />
-Explore what happens to the as-treated and intent-to-treat causal estimates in this scenario.</p></li>
+Explore what happens to the as-treated and intent-to-treat causal estimates in your new scenario.</p></li>
 </ol>
-<p> </p>
-<p> </p>
+<p>   </p>
 </div>
 </div>
 </div>
