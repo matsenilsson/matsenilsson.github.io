@@ -303,21 +303,23 @@ w</code></pre>
 <h4>Factors</h4>
 <p>Factors stores categorical data, and can contain only predefined values. For example, you may have a numeric vector <code>conditions</code> with three values, 1, 2, 3, representing treatment group, placebo group, and no-placebo-control group.</p>
 <pre class="r"><code>conditions &lt;- rep(c(1, 2, 3), 3) 
-str(conds)</code></pre>
-<pre><code>## Error in str(conds): object 'conds' not found</code></pre>
+str(conditions)</code></pre>
+<pre><code>##  num [1:9] 1 2 3 1 2 3 1 2 3</code></pre>
 <p>You may use this vector to define a new vector that is a factor:</p>
-<pre class="r"><code>conds_factor &lt;- factor(conditionss, levels = c(1, 2, 3), 
-                       labels = c('treatment', 'placebo', 'no-placebo'))</code></pre>
-<pre><code>## Error in factor(conditionss, levels = c(1, 2, 3), labels = c(&quot;treatment&quot;, : object 'conditionss' not found</code></pre>
-<pre class="r"><code>str(conds_factor)</code></pre>
-<pre><code>## Error in str(conds_factor): object 'conds_factor' not found</code></pre>
+<pre class="r"><code>conds_factor &lt;- factor(conditions, levels = c(1, 2, 3), 
+                       labels = c('treatment', 'placebo', 'no-placebo'))
+str(conds_factor)</code></pre>
+<pre><code>##  Factor w/ 3 levels &quot;treatment&quot;,&quot;placebo&quot;,..: 1 2 3 1 2 3 1 2 3</code></pre>
 <pre class="r"><code>conds_factor</code></pre>
-<pre><code>## Error in eval(expr, envir, enclos): object 'conds_factor' not found</code></pre>
+<pre><code>## [1] treatment  placebo    no-placebo treatment  placebo    no-placebo
+## [7] treatment  placebo    no-placebo
+## Levels: treatment placebo no-placebo</code></pre>
 <p>A factor is in fact an integer vector with specific attributes that (i) defines the set of allowed values (levels) and (ii) changes its behavior compared to an ordinary integer vector. For example, you cannot do arithmetic on a factor. If you try, missing data, <code>NA</code>, is generated.</p>
 <pre class="r"><code>conds_factor - 1  # No error message, but a warning that NA's has been generated</code></pre>
-<pre><code>## Error in eval(expr, envir, enclos): object 'conds_factor' not found</code></pre>
-<pre class="r"><code>conds - 1  # Arithmetic on the numeric vector of course works fine</code></pre>
-<pre><code>## Error in eval(expr, envir, enclos): object 'conds' not found</code></pre>
+<pre><code>## Warning in Ops.factor(conds_factor, 1): '-' not meaningful for factors</code></pre>
+<pre><code>## [1] NA NA NA NA NA NA NA NA NA</code></pre>
+<pre class="r"><code>conditions - 1  # Arithmetic on the numeric vector of course works fine</code></pre>
+<pre><code>## [1] 0 1 2 0 1 2 0 1 2</code></pre>
 <p>It may therefore be a good idea to keep the original numeric (or integer) vector and define the factor as a new variable (as done in the example above)</p>
 <p> </p>
 </div>
@@ -327,11 +329,11 @@ str(conds)</code></pre>
 <pre class="r"><code>iq &lt;- rnorm(500, 100, 15)
 iq_stats &lt;- c(mean(iq), sd(iq), max(iq))
 iq_stats</code></pre>
-<pre><code>## [1]  99.90414  14.72464 148.66120</code></pre>
+<pre><code>## [1] 100.45224  15.02628 159.58515</code></pre>
 <pre class="r"><code>names(iq_stats) &lt;- c('mean', 'sd', 'maxímum')
 iq_stats</code></pre>
 <pre><code>##      mean        sd   maxímum 
-##  99.90414  14.72464 148.66120</code></pre>
+## 100.45224  15.02628 159.58515</code></pre>
 <p> </p>
 </div>
 </div>
@@ -346,13 +348,13 @@ my_data &lt;- data.frame(id, group, performance)</code></pre>
 <pre class="r"><code>table(my_data$group)</code></pre>
 <pre><code>## 
 ## female   male 
-##     99    101</code></pre>
+##     93    107</code></pre>
 <p>You have to fix this manually, using <code>levels()</code> (use $ to select a column from a data frame. More on subsetting in REX003):</p>
 <pre class="r"><code>levels(my_data$group) &lt;- c('male', 'female', 'other')
 table(my_data$group)</code></pre>
 <pre><code>## 
 ##   male female  other 
-##     99    101      0</code></pre>
+##     93    107      0</code></pre>
 <p>(The may use the argument <code>stringAsFactors = FALSE</code> when calling the <code>data.frame()</code> function to keep character vectors as they are.)</p>
 <p> </p>
 </div>

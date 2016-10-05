@@ -130,11 +130,11 @@ representing treatment group, placebo group, and no-placebo-control group.
 
 ```{r}
 conditions <- rep(c(1, 2, 3), 3) 
-str(conds)
+str(conditions)
 ```
 You may use this vector to define a new vector that is a factor:
 ```{r}
-conds_factor <- factor(conditionss, levels = c(1, 2, 3), 
+conds_factor <- factor(conditions, levels = c(1, 2, 3), 
                        labels = c('treatment', 'placebo', 'no-placebo'))
 str(conds_factor)
 conds_factor
@@ -145,7 +145,7 @@ ordinary integer vector. For example, you cannot do arithmetic on a factor. If
 you try, missing data, `NA`, is generated. 
 ```{r}
 conds_factor - 1  # No error message, but a warning that NA's has been generated
-conds - 1  # Arithmetic on the numeric vector of course works fine
+conditions - 1  # Arithmetic on the numeric vector of course works fine
 ```
 It may therefore be a good idea to keep the original numeric (or integer) vector
 and define the factor as a new variable (as done in the example above)
