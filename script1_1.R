@@ -36,18 +36,5 @@ ses <- sample(c(0, 1), replace = TRUE, size = n, prob = p_ses)
 table(ses) / n  # Sanity check
 # ------------------------------------------------------------------------------
 
-# Create data-frame ------------------------------------------------------------
-d <- data.frame(id, ses)
-rm(id, ses)  # Not necssary, but it doesnt hurt to clean up
-# ------------------------------------------------------------------------------
 
-# Randomly assign to treat and control -----------------------------------------
-d$assign <- sample(c(0, 1), replace = TRUE, size = n)  # Ebrnoulli trial method
-table(d$assign, dnn = "group")
-#Balance check
-table(d$ses, d$assign, dnn = c('ses', 'group'))
-# ------------------------------------------------------------------------------
-
-
-# Simulate potential outcomes --------------------------------------------------
-# To be continued at REX003 ...
+# To be continued at REX002 ...
