@@ -17,12 +17,13 @@
 # Clear things and set random seed ---------------------------------------------
 rm(list = ls())
 graphics.off()
+cat("\014")
 set.seed(123)
 # ------------------------------------------------------------------------------
 
 
 # Set these parameters ---------------------------------------------------------
-n <- 600  # Sample size
+n <- 6e2  # Sample size
 p_ses <- c(0.7, 0.3)  # Proportions ses = lo and ses = hi
 # ------------------------------------------------------------------------------
 
@@ -35,7 +36,18 @@ ses <- sample(c(0, 1), replace = TRUE, size = n, prob = p_ses)
 table(ses) / n  # Sanity check
 # ------------------------------------------------------------------------------
 
+# Create data-frame ------------------------------------------------------------
+d <- data.frame(id, ses)
+rm(id, ses)  # Not necssary, but it doesnt hurt to clean up
+# ------------------------------------------------------------------------------
+
+# Randomly assign to treat and control -----------------------------------------
+d$assign <- sample(c(0, 1), replace = TRUE, size = n)  # Ebrnoulli trial method
+table(d$assign, dnn = "group")
+#Balance check
+table(d$ses, d$assign, dnn = c('ses', 'group'))
+# ------------------------------------------------------------------------------
 
 
-
-# To be continued at REX002 ...
+# Simulate potential outcomes --------------------------------------------------
+# To be continued at REX003 ...
