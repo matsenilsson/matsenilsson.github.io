@@ -11,7 +11,7 @@
 #     on residential area (either high-income or low-income area). 
 #  3. Outcome variable: Score on math test taken at the end of the semester.
 #
-# Mats Nilsson (mats.nilsson@psychology.su.se), revised: 2016-09-28
+# Mats Nilsson (mats.nilsson@psychology.su.se), revised: 2016-10-29
 
 
 
@@ -22,9 +22,13 @@ cat("\014")     # clear console (same as Ctrl-L in console)
 set.seed(123)   # Makes your simulation reproducable, use any number as input
 #-------------------------------------------------------------------------------
 
+# Load stuff -------------------------------------------------------------------
+# install.packages("dagitty")  # You need to do this only once
+library(dagitty)  # For DAG analysis
+# ------------------------------------------------------------------------------
 
 # Set these parameters ---------------------------------------------------------
-n <- 6e6  # Sample size
+n <- 600  # Sample size
 p_ses <- c(0.7, 0.3)  # Proportions ses = lo or hi
 base <- c(50, 10)  # N(mean, sd) math at 'baseline' (no hi-ses and no treatment)
 cses <- c(6, 2)  # N(mean, sd) casual effect of ses on math
@@ -73,6 +77,9 @@ table(d$ses, d$assign, dnn = c('ses', 'assign'))
 
 # Received treatment (with 100 % compliers) -------------------------------------
 d$received <- d$assign  # This code is for scenario without non-compliance
+d$complier_status <- rep(1, length(d$received)) 
+d$complier_status <- factor(d$complier_status, levels = c(1, 2, 3, 4),
+                            labels = c('c', 'a', 'n', 'd'))
 # ------------------------------------------------------------------------------
 
 
@@ -81,7 +88,7 @@ d$received <- d$assign  # This code is for scenario without non-compliance
 comp_seshi <- d$ses * sample(c(1, 2, 3, 4), size = n, replace = TRUE, 
                              prob = pcomp_seshi)
 
-# imulate complier status for ses == lo
+# Simulate complier status for ses == lo
 comp_seslo <- (1 - d$ses) * sample(c(1, 2, 3, 4), size = n, replace = TRUE, 
                                    prob = pcomp_seslo)
 
@@ -131,4 +138,19 @@ effects <- c(ATE, ATT, ATC, LATE, as_treated, intent_to_treat, lambda)
 names(effects) <- c('ATE', 'ATT', 'ATC', 'LATE', 
                     'as-treated', 'intent_to_treat', 'iv-analysis')
 print(effects)
+# ------------------------------------------------------------------------------
+
+
+# DAG illustrating the scenario ------------------------------------------------
+# library(dagitty) needed
+
+randexp <- dagitty( "dag {
+   Assignment -> Treatment -> Mathscore
+   Treatment <- SES -> Mathscore
+}")
+
+plot(graphLayout(randexp))
+impliedConditionalIndependencies(randexp)
+adjustmentSets(randexp, exposure = "Treatment", outcome = "Mathscore")
+instrumentalVariables(randexp, exposure = "Treatment", outcome = "Mathscore")
 # ------------------------------------------------------------------------------
