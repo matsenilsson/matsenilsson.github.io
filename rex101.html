@@ -224,105 +224,134 @@ $(document).ready(function () {
 </div>
 
 
+<p> <br />
+</p>
+<div id="notes-rex101" class="section level1">
+<h1>Notes REX101</h1>
+<p>This seminar deals with importing data to R. There are many ways to do this; we’ll use the function <code>read.delim()</code>. Once this has been mastered, we will import some real data and start working on a full data analysis of data from an experiment (Script2, to be completed in the following REX seminars).</p>
+<p> </p>
+<div id="set-the-working-directory" class="section level3">
+<h3>Set the working directory</h3>
+<p>The best way to start of a data analysis project is to first create a directory dedicated to project. This directory will contain data files, codebooks, your R-scripts, and, later on, output from your analyses (e.g., figures).</p>
+<p>The code below checks the current directory, and then changes it to a directory containing the data set to be analysed. The functions <code>list.dirs()</code> and <code>list.files()</code> do what their names imply (as function names should do!).</p>
+<pre class="r"><code>getwd()</code></pre>
+<pre><code>## [1] &quot;C:/Users/MATNI/Dropbox/_MN2015/undervisning/rex_website&quot;</code></pre>
+<pre class="r"><code>list.dirs()  # List directories in the current directory</code></pre>
+<pre><code>##  [1] &quot;.&quot;                                    
+##  [2] &quot;./rex001_files&quot;                       
+##  [3] &quot;./rex001_files/figure-html&quot;           
+##  [4] &quot;./site_libs&quot;                          
+##  [5] &quot;./site_libs/bootstrap-3.3.5&quot;          
+##  [6] &quot;./site_libs/bootstrap-3.3.5/css&quot;      
+##  [7] &quot;./site_libs/bootstrap-3.3.5/css/fonts&quot;
+##  [8] &quot;./site_libs/bootstrap-3.3.5/fonts&quot;    
+##  [9] &quot;./site_libs/bootstrap-3.3.5/js&quot;       
+## [10] &quot;./site_libs/bootstrap-3.3.5/shim&quot;     
+## [11] &quot;./site_libs/highlight&quot;                
+## [12] &quot;./site_libs/navigation-1.0&quot;           
+## [13] &quot;./stat1&quot;</code></pre>
+<pre class="r"><code>setwd(&quot;./stat1&quot;)  # Move to new directory ( . means current directory)
+getwd()  # Check that we are in the new directory </code></pre>
+<pre><code>## [1] &quot;C:/Users/MATNI/Dropbox/_MN2015/undervisning/rex_website/stat1&quot;</code></pre>
+<pre class="r"><code>list.files()  # List files in the (new) current directory</code></pre>
+<pre><code>## [1] &quot;background_data.txt&quot;  &quot;codebooks.txt&quot;        &quot;script2_dataanalys.R&quot;
+## [4] &quot;threshold_data.txt&quot;</code></pre>
+<p> </p>
+</div>
+<div id="import-data" class="section level3">
+<h3>Import data</h3>
+<p>We will use the function <code>read.delim()</code> to import data in R. The function imports a text file with data ordered in columns. The output is a data frame. The function’s first argument is the path to the text file. If you just give a file name, R will look in the current directory (if it is not there R will through you an error message). If you want to import a dataset located in another directory you have to specify the path (or change R’s current directory using <code>setwd()</code>).</p>
+<p>In the example below, the to be imported text-file has variable names in the first line and the columns are separated by commas, hence the arguments <code>header = TRUE</code> and <code>sep = &quot;,&quot;</code>. The data is from <a href="howell_table_15_1.txt" target="_blank">Howell’s Table 15.1</a></p>
+<pre class="r"><code>d &lt;- read.delim(&quot;howell_table_15_1.txt&quot;, header = TRUE, sep = &quot;,&quot;)</code></pre>
+<p> </p>
+<div id="initial-data-screening" class="section level4">
+<h4>Initial data screening</h4>
+<p>Below some initial checks of teh imported data. Note from the output of <code>strd(d)</code> that R imports variables with decimal values as type <code>num</code>, variables with integers as type <code>int</code>, and that variables with characters (strings) are imported as factors.</p>
+<pre class="r"><code># Check that d is a data frame. 
+str(d)</code></pre>
+<pre><code>## 'data.frame':    50 obs. of  11 variables:
+##  $ id     : int  1 2 3 4 5 6 7 8 9 10 ...
+##  $ State  : Factor w/ 50 levels &quot;Alabama&quot;,&quot;Alaska&quot;,..: 1 2 3 4 5 6 7 8 9 10 ...
+##  $ Expend : num  4.41 8.96 4.78 4.46 4.99 ...
+##  $ PTratio: num  17.2 17.6 19.3 17.1 24 18.4 14.4 16.6 19.1 16.3 ...
+##  $ Salary : num  31.1 48 32.2 28.9 41.1 ...
+##  $ PctSAT : int  8 47 27 6 45 29 81 68 48 65 ...
+##  $ Verbal : int  491 445 448 482 417 462 431 429 420 406 ...
+##  $ Math   : int  538 489 496 523 485 518 477 468 469 448 ...
+##  $ SAT    : int  1029 934 944 1005 902 980 908 897 889 854 ...
+##  $ PctACT : int  61 32 27 66 11 62 3 3 36 16 ...
+##  $ ACT    : num  20.2 21 21.1 20.3 21 21.5 21.7 21 20.7 20.2 ...</code></pre>
+<pre class="r"><code># List column names
+colnames(d)</code></pre>
+<pre><code>##  [1] &quot;id&quot;      &quot;State&quot;   &quot;Expend&quot;  &quot;PTratio&quot; &quot;Salary&quot;  &quot;PctSAT&quot;  &quot;Verbal&quot; 
+##  [8] &quot;Math&quot;    &quot;SAT&quot;     &quot;PctACT&quot;  &quot;ACT&quot;</code></pre>
+<pre class="r"><code># Check that the data looks alright, by looking at the first few lines
+head(d)</code></pre>
+<pre><code>##   id   State Expend PTratio Salary PctSAT Verbal Math  SAT PctACT  ACT
+## 1  1 Alabama  4.405    17.2 31.144      8    491  538 1029     61 20.2
+## 2  2  Alaska  8.963    17.6 47.951     47    445  489  934     32 21.0
+## 3  3 Arizona  4.778    19.3 32.175     27    448  496  944     27 21.1
+## 4  4     Ark  4.459    17.1 28.934      6    482  523 1005     66 20.3
+## 5  5   Calif  4.992    24.0 41.078     45    417  485  902     11 21.0
+## 6  6     Col  5.443    18.4 34.571     29    462  518  980     62 21.5</code></pre>
+<pre class="r"><code># ... and at the last few lines
+tail(d)</code></pre>
+<pre><code>##    id   State Expend PTratio Salary PctSAT Verbal Math  SAT PctACT  ACT
+## 45 45 Vermont  6.750    13.8 35.406     68    429  472  901      7 21.9
+## 46 46      Va  5.327    14.6 33.987     65    428  468  896      6 20.7
+## 47 47    Wash  5.906    20.2 36.151     48    443  494  937     16 22.4
+## 48 48      WV  6.107    14.8 31.944     17    448  484  932     57 20.0
+## 49 49    Wisc  6.930    15.9 37.746      9    501  572 1073     64 22.3
+## 50 50 Wyoming  6.160    14.9 31.285     10    476  525 1001     70 21.4</code></pre>
+<pre class="r"><code># Some summary statistics
+summary(d)</code></pre>
+<pre><code>##        id            State        Expend         PTratio     
+##  Min.   : 1.00   Alabama: 1   Min.   :3.656   Min.   :13.80  
+##  1st Qu.:13.25   Alaska : 1   1st Qu.:4.882   1st Qu.:15.22  
+##  Median :25.50   Arizona: 1   Median :5.768   Median :16.60  
+##  Mean   :25.50   Ark    : 1   Mean   :5.905   Mean   :16.86  
+##  3rd Qu.:37.75   Calif  : 1   3rd Qu.:6.434   3rd Qu.:17.57  
+##  Max.   :50.00   Col    : 1   Max.   :9.774   Max.   :24.30  
+##                  (Other):44                                  
+##      Salary          PctSAT          Verbal           Math      
+##  Min.   :25.99   Min.   : 4.00   Min.   :401.0   Min.   :443.0  
+##  1st Qu.:30.98   1st Qu.: 9.00   1st Qu.:427.2   1st Qu.:474.8  
+##  Median :33.29   Median :28.00   Median :448.0   Median :497.5  
+##  Mean   :34.83   Mean   :35.24   Mean   :457.1   Mean   :508.8  
+##  3rd Qu.:38.55   3rd Qu.:63.00   3rd Qu.:490.2   3rd Qu.:539.5  
+##  Max.   :50.05   Max.   :81.00   Max.   :516.0   Max.   :592.0  
+##                                                                 
+##       SAT             PctACT           ACT       
+##  Min.   : 844.0   Min.   : 2.00   Min.   :18.70  
+##  1st Qu.: 897.2   1st Qu.:11.25   1st Qu.:20.62  
+##  Median : 945.5   Median :47.00   Median :21.30  
+##  Mean   : 965.9   Mean   :40.52   Mean   :21.05  
+##  3rd Qu.:1032.0   3rd Qu.:65.75   3rd Qu.:21.60  
+##  Max.   :1107.0   Max.   :83.00   Max.   :22.40  
+## </code></pre>
+<pre class="r"><code># Here I add two NA's, just for illustration
+d[c(7, 31), 5] &lt;- NA
+# Summary statistics again, note the NA's
+summary(d[, 5])</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+##   25.99   31.09   33.29   34.64   38.53   47.95       2</code></pre>
+<pre class="r"><code>sum(is.na(d))  # This counts the NA's in the data frame</code></pre>
+<pre><code>## [1] 2</code></pre>
 <p>   </p>
-<div id="learn-r-by-example-rex" class="section level1">
-<h1>learn R by EXample (REX)</h1>
+</div>
+</div>
+<div id="script2-analysing-data-from-a-psychoacoustic-experiment" class="section level3">
+<h3>Script2: Analysing data from a psychoacoustic experiment</h3>
+<p>Click <a href="script2_0.R" target="_blank">here</a> for a script file (Script2), to be completed it in the following seminars.</p>
+<p>The data is from a listening experiment involving blind and sighted listeners, conducted at the Gösta Ekman Laboratory in 2016. The experiment measured auditory thresholds for abilities potentially involved in human echolocation.</p>
+<p>The data is stored in two files. The first file contains <a href="./stat1/threshold_data.txt" target="_blank">threshold data</a>, the second file contains <a href="./stat1/background_data.txt" target="_blank">background data</a> (age, sex, …). Please see the file <a href="./stat1/codebooks.txt" target="_blank">codebooks.txt</a> for details on the variables stored in the data files.</p>
+<p>The hypotheses of the experiment were straight forward: (1) Blind listeners were expected to perform better (have lower thresholds) than the sighted listeners on all four conditions, but (2) age may moderate this effect, so differences between groups of blind and sighted listeners were expected to be larger for the age-matched than the young group of sighted listeners.</p>
+<p>Today we will just import the data files and do some preliminary screening tests to make sure the data was imported correctly.</p>
 <p> </p>
-<div id="content" class="section level2">
-<h2>Content</h2>
-<table style="width:75%;">
-<colgroup>
-<col width="11%"></col>
-<col width="31%"></col>
-<col width="31%"></col>
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">Seminar</th>
-<th align="left">R topics</th>
-<th align="left">by EXample: Writing a script</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left"><a href="rex001.html">001</a></td>
-<td align="left">Getting started with R and R-studio</td>
-<td align="left">Script1: Simulation of a randomized experiment</td>
-</tr>
-<tr class="even">
-<td align="left"><a href="rex002.html">002</a></td>
-<td align="left">Data types and structures</td>
-<td align="left">Script1, random assignment</td>
-</tr>
-<tr class="odd">
-<td align="left"><a href="rex003.html">003</a></td>
-<td align="left">Subsetting</td>
-<td align="left">Script1, potential outcomes</td>
-</tr>
-<tr class="even">
-<td align="left"><a href="rex004.html">004</a></td>
-<td align="left">Functions</td>
-<td align="left">Script1, true and estimated causal effects</td>
-</tr>
-<tr class="odd">
-<td align="left"><a href="rex005.html">005</a></td>
-<td align="left">Random numbers</td>
-<td align="left">Script1, introduce non-compliance</td>
-</tr>
-<tr class="even">
-<td align="left"><a href="rex006.html">006</a></td>
-<td align="left">All of the above</td>
-<td align="left">Script1, as-treated, intent-to-treat, and instrumental variable analyses</td>
-</tr>
-<tr class="odd">
-<td align="left">—</td>
-<td align="left">—</td>
-<td align="left">—</td>
-</tr>
-<tr class="even">
-<td align="left"><a href="rex101.html">101</a></td>
-<td align="left">R again (review), importing data</td>
-<td align="left">Script2: Analyzing a real data set</td>
-</tr>
-<tr class="odd">
-<td align="left">102</td>
-<td align="left">Missing data</td>
-<td align="left">Script2, data screening</td>
-</tr>
-<tr class="even">
-<td align="left">103</td>
-<td align="left">Recoding</td>
-<td align="left">Script2, descriptive analyses and plots</td>
-</tr>
-<tr class="odd">
-<td align="left">104</td>
-<td align="left">Outputs are objects</td>
-<td align="left">Script2, model fitting</td>
-</tr>
-<tr class="even">
-<td align="left">105</td>
-<td align="left">Write functions</td>
-<td align="left">Script2, model fitting, continued</td>
-</tr>
-<tr class="odd">
-<td align="left">106</td>
-<td align="left">Customize plots</td>
-<td align="left">Script2, plots for publication</td>
-</tr>
-<tr class="even">
-<td align="left">107</td>
-<td align="left">Export plots</td>
-<td align="left">Script2, plots for publication, continued</td>
-</tr>
-</tbody>
-</table>
-<p> </p>
-<div id="when-and-where" class="section level3">
-<h3>When and where?</h3>
-<p>Seminars 001, 002, … run as satellite to the master-program course Method1: Click here for <a href="https://fastreg.psychology.su.se/KursWeb/ScheduleKronologisk.aspx?MomentID=71&amp;termin=H16">Schedule fall semester 2016</a></p>
-<p>Seminars 101, 102, … run as satellite to the master-program course Stat1: Click here for <a href="https://fastreg.psychology.su.se/KursWeb/ScheduleKronologisk.aspx?MomentID=61&amp;termin=H16">Schedule fall semester 2016</a></p>
-<p><br />
- </p>
+<div id="exercises" class="section level4">
+<h4>Exercises</h4>
+<p>Try to do some initial between-group comparisons of thresholds, separately for each of the four experimental conditions.</p>
+<p>   </p>
 </div>
 </div>
 </div>
