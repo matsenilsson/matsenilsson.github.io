@@ -228,11 +228,11 @@ $(document).ready(function () {
 </p>
 <div id="notes-rex101" class="section level1">
 <h1>Notes REX101</h1>
-<p>This seminar deals with importing data to R. There are many ways to do this; we’ll use the function <code>read.delim()</code>. Once this has been mastered, we will import some real data and start working on a full data analysis of data from an experiment (Script2, to be completed in the following REX seminars).</p>
+<p>This seminar deals with importing data to R. There are many ways to do this; we’ll use the function <code>read.table()</code>. Once this has been mastered, we will import some real data and start working on a full data analysis of data from an experiment (Script2, to be completed in the following REX seminars).</p>
 <p> </p>
 <div id="set-the-working-directory" class="section level3">
 <h3>Set the working directory</h3>
-<p>The best way to start of a data analysis project is to first create a directory dedicated to project. This directory will contain data files, codebooks, your R-scripts, and, later on, output from your analyses (e.g., figures).</p>
+<p>The way to start a data analysis project is to first create a directory dedicated to project. This directory will contain data files, codebooks, your R-scripts, and, later on, output from your analyses (e.g., figures).</p>
 <p>The code below checks the current directory, and then changes it to a directory containing the data set to be analysed. The functions <code>list.dirs()</code> and <code>list.files()</code> do what their names imply (as function names should do!).</p>
 <pre class="r"><code>getwd()</code></pre>
 <pre><code>## [1] &quot;C:/Users/MATNI/Dropbox/_MN2015/undervisning/rex_website&quot;</code></pre>
@@ -260,9 +260,9 @@ getwd()  # Check that we are in the new directory </code></pre>
 </div>
 <div id="import-data" class="section level3">
 <h3>Import data</h3>
-<p>We will use the function <code>read.delim()</code> to import data in R. The function imports a text file with data ordered in columns. The output is a data frame. The function’s first argument is the path to the text file. If you just give a file name, R will look in the current directory (if it is not there R will through you an error message). If you want to import a dataset located in another directory you have to specify the path (or change R’s current directory using <code>setwd()</code>).</p>
+<p>We will use the function <code>read.table()</code> to import data in R. The function imports a text file with data ordered in columns. The output is a data frame. The function’s first argument is the path to the text file. If you just give a file name, R will look in the current directory (if it is not there R will through you an error message). If you want to import a dataset located in another directory you have to specify the path (or change R’s current directory using <code>setwd()</code>).</p>
 <p>In the example below, the to be imported text-file has variable names in the first line and the columns are separated by commas, hence the arguments <code>header = TRUE</code> and <code>sep = &quot;,&quot;</code>. The data is from <a href="howell_table_15_1.txt" target="_blank">Howell’s Table 15.1</a></p>
-<pre class="r"><code>d &lt;- read.delim(&quot;howell_table_15_1.txt&quot;, header = TRUE, sep = &quot;,&quot;)</code></pre>
+<pre class="r"><code>d &lt;- read.table(&quot;howell_table_15_1.txt&quot;, header = TRUE, sep = &quot;,&quot;)</code></pre>
 <p> </p>
 <div id="initial-data-screening" class="section level4">
 <h4>Initial data screening</h4>
@@ -330,13 +330,19 @@ summary(d)</code></pre>
 ##  Max.   :1107.0   Max.   :83.00   Max.   :22.40  
 ## </code></pre>
 <pre class="r"><code># Here I add two NA's, just for illustration
-d[c(7, 31), 5] &lt;- NA
+d[c(7, 31), c(5, 6)] &lt;- NA
 # Summary statistics again, note the NA's
-summary(d[, 5])</code></pre>
-<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
-##   25.99   31.09   33.29   34.64   38.53   47.95       2</code></pre>
+summary(d[, c(5, 6)])</code></pre>
+<pre><code>##      Salary          PctSAT     
+##  Min.   :25.99   Min.   : 4.00  
+##  1st Qu.:31.09   1st Qu.: 9.00  
+##  Median :33.29   Median :28.00  
+##  Mean   :34.64   Mean   :34.79  
+##  3rd Qu.:38.53   3rd Qu.:61.00  
+##  Max.   :47.95   Max.   :80.00  
+##  NA's   :2       NA's   :2</code></pre>
 <pre class="r"><code>sum(is.na(d))  # This counts the NA's in the data frame</code></pre>
-<pre><code>## [1] 2</code></pre>
+<pre><code>## [1] 4</code></pre>
 <p>   </p>
 </div>
 </div>
