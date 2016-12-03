@@ -1,5 +1,5 @@
 Codebooks for two data files used in the REX seminars, fall 2016
-Mats Nilsson, revised 2016-12-01
+Creted by Mats Nilsson, 2016-12-01, Revised: 2016-12-02
 
 The data is from a listening experiment involving blind and sighted listeners, 
 conducted at the Gösta Ekman Laboratory in 2016. The experiment measured 

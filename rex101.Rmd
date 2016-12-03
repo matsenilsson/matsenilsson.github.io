@@ -1,0 +1,124 @@
+---
+title: False
+author: "Mats E. Nilsson"
+---
+
+```{r setup, cache = FALSE, echo = FALSE}
+# THis will allow error messages to be converted to HTML
+knitr::opts_chunk$set(error = TRUE)
+```
+\  
+\
+
+
+# Notes REX101
+This seminar deals with importing data to R. There are many ways to do this;
+we'll use the function `read.table()`. Once this has been mastered, we will import 
+some real data and start working on a full data analysis of data from an 
+experiment (Script2, to be completed in the following REX seminars).
+
+\  
+
+### Set the working directory
+The way to start a data analysis project is to first create a directory 
+dedicated to project. This directory will contain data files, codebooks, your 
+R-scripts, and, later on, output from your analyses (e.g., figures).   
+
+The code below checks the current directory, and then changes it to a directory
+containing the data set to be analysed. The functions `list.dirs()` and 
+`list.files()` do what their names imply (as function names should do!).
+
+```{r }
+getwd()
+list.dirs()  # List directories in the current directory
+setwd("./stat1")  # Move to new directory ( . means current directory)
+getwd()  # Check that we are in the new directory 
+list.files()  # List files in the (new) current directory
+```
+
+\  
+
+### Import data
+We will use the function `read.table()` to import data in R. The function imports 
+a text file with data ordered in columns. The output is a data frame. 
+The function's first argument is the path to the text file. If you just give a 
+file name, R will look in the current directory (if it is not there R will 
+through you an error message). If you want to import a dataset located in 
+another directory you have to specify the path (or change R's current 
+directory using `setwd()`).  
+
+In the example below, the to be imported text-file has variable names in the first 
+line and the columns are separated by commas, hence the arguments 
+`header = TRUE` and `sep = ","`. The data is from 
+<a href="howell_table_15_1.txt" target="_blank">Howell's Table 15.1</a> 
+
+```{r }
+d <- read.table("howell_table_15_1.txt", header = TRUE, sep = ",")
+```
+
+
+\  
+
+#### Initial data screening
+Below some initial checks of teh imported data. Note from the output of `strd(d)` 
+that R imports variables with decimal values as type `num`, variables with integers
+as type `int`, and that variables with characters (strings) are imported as
+factors.
+```{r }
+# Check that d is a data frame. 
+str(d)
+# List column names
+colnames(d)
+# Check that the data looks alright, by looking at the first few lines
+head(d)
+# ... and at the last few lines
+tail(d)
+# Some summary statistics
+summary(d)
+# Here I add two NA's, just for illustration
+d[c(7, 31), c(5, 6)] <- NA
+# Summary statistics of selected variables, note the NA's
+summary(d[, c(5, 6)])
+sum(is.na(d))  # This counts the NA's in the data frame
+```
+
+\  
+\  
+
+### Script2: Analysing data from a psychoacoustic experiment
+Click
+<a href="script2_0.R" target="_blank">here</a>
+for a script file (Script2), to be completed it in the following seminars.  
+
+The data is from a listening experiment involving blind and sighted 
+listeners, conducted at the Gösta Ekman Laboratory in 2016. The experiment measured 
+auditory thresholds for abilities potentially involved in human echolocation.  
+
+The data is stored in two files. The first file contains 
+<a href="./stat1/threshold_data.txt" target="_blank">threshold data</a>, the 
+second file contains 
+<a href="./stat1/background_data.txt" target="_blank">background data</a> 
+(age, sex, ...). Please see the file 
+<a href="./stat1/codebooks.txt" target="_blank">codebooks.txt</a>
+for details on the variables stored in the data files.
+
+The hypotheses of the experiment were straight forward: (1) Blind listeners were 
+expected  to perform better (have lower thresholds) than the sighted listeners on 
+all four conditions, but (2) age may moderate this effect, so differences between groups 
+of blind and sighted listeners were expected to be larger for the age-matched than 
+the young group of sighted listeners.  
+
+Today we will just import the data files and do some preliminary screening tests 
+to make sure the data was imported correctly.
+
+\ 
+
+#### Exercises
+Try to do some initial between-group comparisons of thresholds, separately for 
+each of the four experimental conditions.
+
+\  
+\  
+
+
+

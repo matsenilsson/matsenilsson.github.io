@@ -25,6 +25,9 @@ set.seed(123)
 # Set these parameters ---------------------------------------------------------
 n <- 6e2  # Sample size
 p_ses <- c(0.7, 0.3)  # Proportions ses = lo and ses = hi
+base <- c(50, 10)  # N(mean, sd) math at 'baseline' (no hi-ses and no treatment)
+cses <- c(6, 2)  # N(mean, sd) casual effect of ses on math
+ctreat <- c(2, 1)  # N(mean, sd) casual effect of treatment (music) on math
 # ------------------------------------------------------------------------------
 
 

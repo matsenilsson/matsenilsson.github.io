@@ -144,8 +144,8 @@ check_order(pi, 4, 2^2)
 
 ## Script 1: Randomized experiment (finalized)
 Click
-<a href="script1_5.R" target="_blank">for</a>
-Script1 as we left it after the last seminar.  
+<a href="script1_5.R" target="_blank">here</a>
+for Script1 as we left it after the last seminar.  
 
 We will end our work on the simulated experiment by:
 
@@ -162,3 +162,7 @@ may differ. Illustrate this by modifying the simulation.
 \  
 \  
 
+### Final script
+Click
+<a href="script1_fin.R" target="_blank">here</a>
+for the final script. 

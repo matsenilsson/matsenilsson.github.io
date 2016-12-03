@@ -81,6 +81,7 @@ Below a simulation of this linear model, using random numbers drawn
 from the standard normal distribution (mean = 0, sd = 1, default values of 
 `rnorm()`).
 ```{r}
+set.seed(123)
 # One possible set of beta weights
 betaw <- c(0, 0.5, 0.5) 
 # Sample size
@@ -90,22 +91,22 @@ iq <- rnorm(n)
 # Random numbers representing ss
 ss <- rnorm(n) 
 # Income influenced by both iq and ss (added to 'baseline' income)
-income <- betaw[1] + betaw[2] * iq + betaw[2] * ss + rnorm(n)  
-simul <- data.frame(iq, ss, income)
+income <- betaw[1] + betaw[2] * iq + betaw[3] * ss + rnorm(n)  
+simul <- data.frame(iq, ss, income)  # Put all in a data frame (not necessary)
 ```
 
 A scatter plot matrix and a correlation matrix suggest that our simulation is 
 consistent with the model: iq and ss are independent, and both are positively
 correlated with income.
 ```{r}
-pairs(~iq + ss + income, data = simul)  # Scatter plot matrix
+pairs(~simul$iq + simul$ss + simul$income)  # Scatter plot matrix
 round(cor(simul), 3)  # Pearson coefficients of correlation (to 3 decimals)
 ```
 
 As expected, a multiple regression model will recover the beta coefficients, 
 plus minus some random error.
 ```{r}
-lm(income ~ iq + ss)
+lm(simul$income ~ simul$iq + simul$ss)
 ```
   
 We may use this simulated data to illustrate *Collider stratification bias*

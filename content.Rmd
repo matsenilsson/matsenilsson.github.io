@@ -21,7 +21,7 @@ Seminar| R topics               | by EXample: Writing a script
 [005](rex005.html) | Random numbers  | Script1,  introduce non-compliance 
 [006](rex006.html) | All of the above | Script1, as-treated, intent-to-treat, and instrumental variable analyses
 ---                |---         | ---
-101 | R again (review), importing data | Script2: Analyzing a real data set
+[101](rex101.html) | R again (review), importing data | Script2: Analyzing a real data set
 102 | Missing data   | Script2, data screening 
 103 | Recoding     | Script2, descriptive analyses and plots
 104 | Outputs are objects   | Script2, model fitting

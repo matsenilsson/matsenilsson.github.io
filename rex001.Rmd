@@ -125,7 +125,7 @@ The expression equals:
 ```{r, echo = FALSE}
 abs(sqrt(10) / (pi - 4))
 ```
-2. Use R's help function to find out what the `combn()´ function does. If the help 
+2. Use R's help function to find out what the `combn()` function does. If the help 
 page doesn't make sense, use Google to find out (R's help-pages take some
 time to get used to).
 ```{r}
@@ -157,20 +157,21 @@ Click
 <a href="script1_0.R" target="_blank">here</a>
 for a script file (Script1), to be completed it in the following seminars.  
 
-The simulated scenario is a simple randomized experiment on the effect of extra 
-music lessons during a semester on sixth-graders performance on a math test taken
-at the end of the semester.  
+The simulated scenario is a simple randomized experiment conducted at a large 
+school. At the beginning of the semester, all sixth-graders are randomly 
+assigned to receive extra music lessons (tratement) or no extra lessons (control). 
+The outcome is performance on a math test taken at the end of the semester.  
 (loosely inspired by Schellenberg, E.G. (2004). Music lessons enhance IQ. 
 *Psychological Science*, 15, 511-514.) 
 
 Key variables:
 
-1. Independent variable: At the start of grade 6, all children at a school
+1. Independent variable: At the start of grade 6, all children at the school
 are randomly assigned to receive either extra music lessons (treatment) or no extra
 music lessons (control).    
 2. Background (or pre-treatment) variable: Socioeconomic status, defined based 
-on residential area. The children are either from a high-income
-or a low-income residential area. 
+on residential area. The pupils in this school are from one of two nearby 
+residential areas: one high-income and one low-income area. 
 3. Outcome variable: Score on a math test taken at the end of the semester.
 
 Today, we will just set the scene:

@@ -1,4 +1,4 @@
-# Script1. Randomized experiment (final) 
+# Script1. Randomized experiment (under construction) 
 #
 # The simulated scenario is a simple randomized experiment on the effect of extra 
 # music lessons on math performance.
@@ -11,6 +11,6 @@
 #     on residential area (either high-income or low-income area). 
 #  3. Outcome variable: Score on math test taken at the end of the semester.
 #
-# Mats Nilsson (mats.nilsson@psychology.su.se), revised: 2016-09-28
+# Mats Nilsson (mats.nilsson@psychology.su.se), revised: 2016-10-29
 
 # To be started at REX001 ...
