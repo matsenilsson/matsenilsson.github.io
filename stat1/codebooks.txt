@@ -1,5 +1,5 @@
 Codebooks for two data files used in the REX seminars, fall 2016
-Creted by Mats Nilsson, 2016-12-01, Revised: 2016-12-02
+Created by Mats Nilsson, 2016-12-01, Revised: 2016-12-02
 
 The data is from a listening experiment involving blind and sighted listeners, 
 conducted at the Gösta Ekman Laboratory in 2016. The experiment measured 
@@ -25,8 +25,8 @@ Column 2: cond
 Column 3: th
 Threshold estimate, mean of five runs of each condition (less then five if 
 outliers were excluded). Thresholds for conditions 1, 2 and 4 art in decibel, 
-threholds for condition 3 are in samples (sampling frequency = 96 kHz). Please 
-note that low values mean good hearing abilitiy (the lower, the better!).
+thresholds for condition 3 are in samples (sampling frequency = 96 kHz). Please 
+note that low values mean good hearing ability (the lower, the better!).
 
 Column 4: outlier
 The number of outliers excluded from the threshold estimates.
@@ -46,18 +46,18 @@ Column 2: sex
 2 = male
 
 Column 3: age
-Age in years. Calculated from biorth date and test date; age rounded to nearest
-integer (45.6 years old -> 67 y)
+Age in years. Calculated from birth date and test date; age rounded to nearest
+integer (45.6 years old -> 46 y)
 
 Column 4: group
 As for threshold_data.txt, see above
 
 Columns 5-11: right250, ..., right6000
-Audiometric threhold right ear, for frequencies 250, 500, 1k, 2k, 3k, 4k, 
+Audiometric threshold right ear, for frequencies 250, 500, 1k, 2k, 3k, 4k, 
 and 6k Hz. Missing data: NA
 
-Columsn 12-18: left250, ..., left6000
-Audiometric threhold left ear, for frequencies 250, 500, 1k, 2k, 3k, 4k, 
+Columns 12-18: left250, ..., left6000
+Audiometric threshold left ear, for frequencies 250, 500, 1k, 2k, 3k, 4k, 
 and 6k Hz. Missing data: NA
 
 Column 19: echolocator
