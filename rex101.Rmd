@@ -21,7 +21,7 @@ experiment (Script2, to be completed in the following REX seminars).
 
 ### Set the working directory
 The way to start a data analysis project is to first create a directory 
-dedicated to project. This directory will contain data files, codebooks, your 
+dedicated to project. This directory will contain data files, code books, your 
 R-scripts, and, later on, output from your analyses (e.g., figures).   
 
 The code below checks the current directory, and then changes it to a directory
@@ -60,7 +60,7 @@ d <- read.table("howell_table_15_1.txt", header = TRUE, sep = ",")
 \  
 
 #### Initial data screening
-Below some initial checks of teh imported data. Note from the output of `strd(d)` 
+Below some initial checks of the imported data. Note from the output of `str(d)` 
 that R imports variables with decimal values as type `num`, variables with integers
 as type `int`, and that variables with characters (strings) are imported as
 factors.
