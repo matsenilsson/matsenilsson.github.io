@@ -214,6 +214,9 @@ $(document).ready(function () {
     <li>
       <a href="rex102.html">102</a>
     </li>
+    <li>
+      <a href="rex102.html">103</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -243,7 +246,7 @@ $(document).ready(function () {
 <p>The way to start a data analysis project is to first create a directory dedicated to project. This directory will contain data files, code books, your R-scripts, and, later on, output from your analyses (e.g., figures).</p>
 <p>The code below checks the current directory, and then changes it to a directory containing the data set to be analysed. The functions <code>list.dirs()</code> and <code>list.files()</code> do what their names imply (as function names should do!).</p>
 <pre class="r"><code>getwd()</code></pre>
-<pre><code>## [1] &quot;c:/Users/MATNI/Dropbox/_MN2015/undervisning/rex_website&quot;</code></pre>
+<pre><code>## [1] &quot;C:/Users/MATNI/Dropbox/_MN2015/undervisning/rex_website&quot;</code></pre>
 <pre class="r"><code>list.dirs()  # List directories in the current directory</code></pre>
 <pre><code>##  [1] &quot;.&quot;                                    
 ##  [2] &quot;./rex001_files&quot;                       
@@ -263,7 +266,7 @@ $(document).ready(function () {
 ## [16] &quot;./stat1&quot;</code></pre>
 <pre class="r"><code>setwd(&quot;./stat1&quot;)  # Move to new directory ( . means current directory)
 getwd()  # Check that we are in the new directory </code></pre>
-<pre><code>## [1] &quot;c:/Users/MATNI/Dropbox/_MN2015/undervisning/rex_website/stat1&quot;</code></pre>
+<pre><code>## [1] &quot;C:/Users/MATNI/Dropbox/_MN2015/undervisning/rex_website/stat1&quot;</code></pre>
 <pre class="r"><code>list.files()  # List files in the (new) current directory</code></pre>
 <pre><code>## [1] &quot;background_data.txt&quot;  &quot;codebooks.txt&quot;        &quot;script2_dataanalys.R&quot;
 ## [4] &quot;threshold_data.txt&quot;</code></pre>

@@ -235,135 +235,23 @@ $(document).ready(function () {
 </div>
 
 
-<p>   </p>
-<div id="notes-rex006" class="section level1">
-<h1>Notes REX006</h1>
-<p>Today we will mainly work with finalizing our script. First just a brief quiz on R fundamentals (a few questions of this type will be included in the written exam of Method1).</p>
+<p> <br />
+</p>
+<div id="notes-rex103" class="section level1">
+<h1>Notes REX103</h1>
+<p>Under construction…</p>
 <p> </p>
-<div id="r-quiz" class="section level2">
-<h2>R quiz</h2>
-<p>For each block of code, select the output you would expect. Use R to check your answers.</p>
-<p><strong>Q1</strong></p>
-<pre class="r"><code>5 + 4 - 3 * 3</code></pre>
-<ol style="list-style-type: decimal">
-<li>18</li>
-<li>0</li>
-<li>8</li>
-<li>error message</li>
-</ol>
-<p><strong>Q2</strong></p>
-<pre class="r"><code>a &lt;- c(1, 2, 3.5)
-str(a)</code></pre>
-<ol style="list-style-type: decimal">
-<li>chr [1:3] 1 2 3.5</li>
-<li>int [1:3] 1 2 3.5</li>
-<li>num [1:3] 1 2 3.5</li>
-<li>error message</li>
-</ol>
-<p><strong>Q3</strong></p>
-<pre class="r"><code>a &lt;- 100
-b &lt;- 50
-c &lt;- 25
-test &lt;- (b &gt; c) &amp; !(a &lt; b)
-test</code></pre>
-<ol style="list-style-type: decimal">
-<li>FALSE</li>
-<li>TRUE</li>
-<li>NA</li>
-<li>error message</li>
-</ol>
-<p><strong>Q4</strong></p>
-<pre class="r"><code>a &lt;- 100
-b &lt;- c(25, 50, 100)
-test &lt;- b &gt; a
-test</code></pre>
-<ol style="list-style-type: decimal">
-<li>FALSE</li>
-<li>FALSE FALSE FALSE</li>
-<li>FALSE FALSE TRUE</li>
-<li>error message</li>
-</ol>
-<p><strong>Q5</strong></p>
-<pre class="r"><code>a &lt;- c(&#39;red&#39;, &#39;blue&#39;, &#39;green&#39;)
-b &lt;- c(25, 50)
-d &lt;- data.frame(a, b)
-d$a[1]</code></pre>
-<ol style="list-style-type: decimal">
-<li>‘red’</li>
-<li>‘red’, ‘blue’, ‘green’</li>
-<li>25, 50</li>
-<li>error message</li>
-</ol>
-<p><strong>Q6</strong></p>
-<pre class="r"><code>a &lt;- c(3, 7, 4, 5, 6)
-a[c(3, 5)]</code></pre>
-<ol style="list-style-type: decimal">
-<li>3 5</li>
-<li>4 6</li>
-<li>NA</li>
-<li>error message</li>
-</ol>
-<p><strong>Q7</strong></p>
-<pre class="r"><code>b &lt;- c(3, 7, 4, 5, 6)
-b[-2]</code></pre>
-<ol style="list-style-type: decimal">
-<li>3 4 5 6</li>
-<li>-7</li>
-<li>7</li>
-<li>error message</li>
-</ol>
-<p><strong>Q8</strong></p>
-<pre class="r"><code>a &lt;- c(1, 3, 5)
-b &lt;- c(2, 1, 6, 3, 10)
-b[a]</code></pre>
-<ol style="list-style-type: decimal">
-<li>1 3 5</li>
-<li>2 6 10</li>
-<li>NA NA NA</li>
-<li>error message</li>
-</ol>
-<p><strong>Q9</strong></p>
-<pre class="r"><code>a &lt;- c(1, 3, 5)
-b &lt;- c(7, 3, 4)
-c &lt;- c(3, 4, 5)
-d &lt;- data.frame(a, b, c)
-d[ , 2]</code></pre>
-<ol style="list-style-type: decimal">
-<li>3 3 4</li>
-<li>7 3 4</li>
-<li>3</li>
-<li>error message</li>
-</ol>
-<p><strong>Q10</strong></p>
-<pre class="r"><code>check_order &lt;- function(x, y, z) {
-  strict_order &lt;- 1 * ((x &lt; y) &amp; (y &lt; z))
-  strict_order
-}
-check_order(pi, 4, 2^2)</code></pre>
-<ol style="list-style-type: decimal">
-<li>1</li>
-<li>0</li>
-<li>FALSE</li>
-<li>error message</li>
-</ol>
+<p>       </p>
+<div id="script2-analysing-data-from-a-psychoacoustic-experiment" class="section level3">
+<h3>Script2: Analysing data from a psychoacoustic experiment</h3>
+<p>Click <a href="script2_2.R" target="_blank">here</a> for the script file (Script2) as we left after last time.<br />
+(Data sets: <a href="./stat1/threshold_data.txt" target="_blank">threshold data</a>, and <a href="./stat1/background_data.txt" target="_blank">background data</a>. See <a href="./stat1/codebooks.txt" target="_blank">codebooks.txt</a> for details on the variables).</p>
+<p>Today we will do more detailed group comparisons, including statistical tests and calculations of confidence intervals around between-group differences. We may also have time to make some preliminary checks of the relationship between auditory abilities and age using regression techniques.</p>
+<p> </p>
+<div id="exercises" class="section level4">
+<h4>Exercises</h4>
+<p>How would you evaluate statistically the observed differences in auditory abilities between the blind group and the sighted groups?</p>
 <p>   </p>
-</div>
-<div id="script-1-randomized-experiment-finalized" class="section level2">
-<h2>Script 1: Randomized experiment (finalized)</h2>
-<p>Click <a href="script1_5.R" target="_blank">here</a> for Script1 as we left it after the last seminar.</p>
-<p>We will end our work on the simulated experiment by:</p>
-<ol style="list-style-type: decimal">
-<li>Calculating the Locale average treatment effect (LATE), i.e., the true average causal effect on the compliers.</li>
-<li>Do an instrumental-variable analysis to estimate LATE from observed data</li>
-</ol>
-<div id="exercises" class="section level3">
-<h3>Exercises</h3>
-<p>In our scenario, LATE is the same as ATT. If we include always-takers and assume that the causal effect of music lessons is larger on them than on the compliers because the former are more motivated (still assuming no defiers), LATE and ATT may differ. Illustrate this by modifying the simulation.</p>
-<p>   </p>
-</div>
-<div id="final-script" class="section level3">
-<h3>Final script</h3>
-<p>Click <a href="script1_fin.R" target="_blank">here</a> for the final script.</p>
 </div>
 </div>
 </div>
