@@ -276,7 +276,7 @@ t_out</code></pre>
 <pre><code>## [1] -0.203874  3.363874
 ## attr(,&quot;conf.level&quot;)
 ## [1] 0.95</code></pre>
-<p>This code combines selected output in a vector called <code>my_result</code>. Use <code>names()</code> to remember what each element represents.</p>
+<p>This code combines selected output in a vector called <code>t_result</code>. Use <code>names()</code> to remember what each element represents.</p>
 <pre class="r"><code># Difference between group means is not stored in t_out, so calculate below
 mean_diff &lt;- mean(d$extra[d$group == 1]) - mean(d$extra[d$group == 0])  
 t_result &lt;- c(mean_diff, t_out$conf.int, t_out$p.value)
