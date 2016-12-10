@@ -307,9 +307,9 @@ lm_out</code></pre>
 ## [1] &quot;lm&quot;</code></pre>
 <pre class="r"><code># Confidence intervals are not in lm_out, calculated below
 b_ci &lt;- confint(lm_out)[2, ]  # Confidence interval about coefficient for group-dummy
-# A bit hard to find teh p-value for the coefficinet, but here it is:
+# A bit hard to find the p-value of the regr. coefficient, but here it is:
 pvalue &lt;- summary(lm_out)$coefficients[2, 4]
-
+# Packaging the results in a numeric vector
 lm_result &lt;- c(lm_out$coefficients[2], b_ci, pvalue)
 names(lm_result) &lt;- c('regr.coeff', 'ci95%lo', 'ci95%hi', 'p-value')
 round(lm_result, 3)  # Print to screen with three decimals</code></pre>
