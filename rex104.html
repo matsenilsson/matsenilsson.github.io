@@ -323,11 +323,12 @@ round(lm_result, 3)  # Print to screen with three decimals</code></pre>
 <p> </p>
 <div id="output-as-input" class="section level4">
 <h4>Output as input</h4>
-<p>Output stored as object may be used as input to other functions. Here is a plot of the relationship between extra sleep and the dummy coded group variable. <code>lm_result</code> was used as input to the function <code>abline()</code> to draw the regression line.</p>
+<p>Output stored as an object may be used as input to other functions. Here is a plot of the relationship between extra sleep and the dummy coded group variable. <code>lm_result</code> was used as input to the function <code>abline()</code> to draw the regression line.</p>
 <pre class="r"><code>plot(d$group, d$extra, xlab = &#39;Group \n(0 = group1, 1 = group2)&#39;,  
      ylab = &#39;Extra sleep&#39;, xlim = c(-0.1, 1.1), axes = FALSE)
 axis(1, at = c(0, 1), tck = 0.02)
 axis(2, las = 1, tck = 0.03)
+lm_out &lt;- lm(d$extra ~ d$group)
 abline(lm_out)</code></pre>
 <p><img src="rex104_files/figure-html/unnamed-chunk-6-1.png" width="288" /></p>
 <p>     </p>

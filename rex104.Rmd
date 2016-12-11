@@ -42,7 +42,7 @@ attributes(t_out)
 t_out$conf.int
 ```
 
-This code combines selected output in a vector called `my_result`. Use 
+This code combines selected output in a vector called `t_result`. Use 
 `names()` to remember what each element represents.
 ```{r}
 # Difference between group means is not stored in t_out, so calculate below
@@ -67,9 +67,9 @@ attributes(lm_out)
 ```{r}
 # Confidence intervals are not in lm_out, calculated below
 b_ci <- confint(lm_out)[2, ]  # Confidence interval about coefficient for group-dummy
-# A bit hard to find teh p-value for the coefficinet, but here it is:
+# A bit hard to find the p-value of the regr. coefficient, but here it is:
 pvalue <- summary(lm_out)$coefficients[2, 4]
-
+# Packaging the regression results in a numeric vector
 lm_result <- c(lm_out$coefficients[2], b_ci, pvalue)
 names(lm_result) <- c('regr.coeff', 'ci95%lo', 'ci95%hi', 'p-value')
 round(lm_result, 3)  # Print to screen with three decimals
@@ -81,14 +81,17 @@ round(t_result, 3)  # ... and t-test results again for comparison
 
 #### Output as input
 
-Output stored as object may be used as input to other functions. Here is a plot 
+Output stored as an object may be used as input to other functions. Here is a plot 
 of the relationship between extra sleep and the dummy coded group 
 variable. `lm_result` was used as input to the function `abline()` to draw the 
 regression line.
 
 ```{r, fig.width = 3}
 plot(d$group, d$extra, xlab = 'Group \n(0 = group1, 1 = group2)',  
-     ylab = 'Extra sleep', xlim = c(-0.5, 1.5), xaxt='n')
+     ylab = 'Extra sleep', xlim = c(-0.1, 1.1), axes = FALSE)
+axis(1, at = c(0, 1), tck = 0.02)
+axis(2, las = 1, tck = 0.03)
+lm_out <- lm(d$extra ~ d$group)
 abline(lm_out)
 ```
  
@@ -117,8 +120,8 @@ auditory abilities and age using regression techniques.
 \ 
 
 #### Exercises
-How would you evaluate the observed differences in group medians of thresholds 
-between the listener groups?  
+How would you evaluate the observed differences between group medians of 
+auditory thresholds?  
 
 
 \  
