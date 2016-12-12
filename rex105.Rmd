@@ -1,0 +1,44 @@
+---
+title: False
+author: "Mats E. Nilsson"
+---
+
+```{r setup, cache = FALSE, echo = FALSE}
+# THis will allow error messages to be converted to HTML
+knitr::opts_chunk$set(error = TRUE)
+```
+\  
+\
+
+
+# Notes REX104
+Under construction ....
+
+
+
+\  
+\  
+\ 
+
+
+### Script2: Analysing data from a psychoacoustic experiment
+Click
+<a href="script2_4.R" target="_blank">here</a>
+for the script file (Script2) as we left after last time.  
+(Data sets:  <a href="./stat1/threshold_data.txt" target="_blank">threshold data</a>, and 
+<a href="./stat1/background_data.txt" target="_blank">background data</a>. See 
+<a href="./stat1/codebooks.txt" target="_blank">codebooks.txt</a>
+for details on the variables).
+
+Today some bootstrapping  of differences bewteen group medians. Maybe there will 
+be time also for some robust regression (least absolute value regression). 
+
+#### Exercises
+Google to find out various ways to implement least absolute value regression.  
+
+
+\  
+\  
+
+
+

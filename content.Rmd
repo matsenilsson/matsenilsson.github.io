@@ -25,7 +25,7 @@ Seminar| R topics               | by EXample: Writing a script
 [102](rex102.html) | Missing data   | Script2, data screening 
 [103](rex103.html) | Recoding     | Script2, descriptive analyses and plots
 [104](rex104.html) | Outputs are objects   | Script2, model fitting
-105 | Write functions | Script2, model fitting, continued
+[105](rex105.html) | Write functions | Script2, model fitting, continued
 106 | Customize plots  | Script2, plots for publication
 107 | Export plots   | Script2, plots for publication, continued
 
