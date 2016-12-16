@@ -32,6 +32,8 @@ navbar:
           href: rex104.htm
         - text: "105"
           href: rex105.html
+        - text: "106"
+          href: rex106.html
 output:
   html_document:
     theme: spacelab

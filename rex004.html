@@ -222,6 +222,9 @@ $(document).ready(function () {
     <li>
       <a href="rex105.html">105</a>
     </li>
+    <li>
+      <a href="rex106.html">106</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -249,7 +252,7 @@ $(document).ready(function () {
 <h2>Functions</h2>
 <p>Functions are small programs that do things. Most functions require that you specify what you want to be done by providing arguments, but some functions can be run without arguments:</p>
 <pre class="r"><code>date()</code></pre>
-<pre><code>## [1] &quot;Mon Dec 12 17:41:53 2016&quot;</code></pre>
+<pre><code>## [1] &quot;Fri Dec 16 09:23:19 2016&quot;</code></pre>
 <p>A function’s arguments is listed in its help page. Many functions have arguments with default values. For example, the <code>mean()</code> function has as default not to excluded missing data: <code>na.rm = FALSE</code>. This is a bit annoying, because R will give you an NA where you expected a number. But it is in fact helpful since it reminds you that your data contain missing values.</p>
 <pre class="r"><code>my_data &lt;- rnorm(1000)
 my_data[my_data &gt; 2 ] &lt;- NA  # Turn values &gt; 2 into missing data (NA)
