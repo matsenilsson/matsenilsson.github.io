@@ -145,7 +145,7 @@ mean_table <- function(x) {
 # To be continued at REX104 ...
 
 # Log-transform of d$th.3 (Why? Look for your self: screen_th(d$th.3) ----------
-d$th.4 <- log2(d$th.3)  # Any log base will do, I like base 2.
+d$log2th.3 <- log2(d$th.3)  # Any log base will do, I like base 2.
 # ------------------------------------------------------------------------------
 
 
