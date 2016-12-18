@@ -12,7 +12,24 @@ knitr::opts_chunk$set(error = TRUE)
 
 
 # Notes REX103
-Under construction ...
+Today a little about recoding in R. There are many situations in which one wants 
+to recode a variable. Below some examples of how to do this.
+
+### Factors
+If you have categorical data coded with integers, its easy to turn them into factors. This is not really a recoding, but rather naming your categories. We have used 
+factors earlier, here an illustration that demonstrates the difference between 
+unordered and ordered factors.
+```{r}
+# Simulate questionnaire data on residential area.
+area <- sample(x = c(1, 2, 3), size = 500, replace = TRUE)
+table(area)
+area <- factor(area, levels = c(1, 2, 3), 
+                         labels = c('rural', 'small-town', 'city'))
+table(area)
+```
+
+\  
+
 
 \  
 \  

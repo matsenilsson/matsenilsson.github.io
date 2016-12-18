@@ -459,11 +459,39 @@ text(x = -0, y = 4.5, labels = &quot;Bars:\nquartile 1 - quartile 3&quot;,
 <p><img src="rex106_files/figure-html/unnamed-chunk-7-1.png" width="384" /></p>
 <p> </p>
 </div>
+<div id="exporting-plots-to-.pdf-or-.png" class="section level3">
+<h3>Exporting plots to .pdf or .png</h3>
+<p>For publication, you need to expprt your plot to a suitable file format. The pdf-format is vector based and thereby possible to scale up and down without loss of information. This format is accepted by most publishers. Unfortunately it is not easily incorporated in a standard word-prcessor file or on a web page. For this you need a pixel based file format, and teh one most seem to be recommending nowdays is the png-format.</p>
+<p>Use the function <code>pdf()</code> to export your figure in a specified size to a pdf-file. The code generates no output except the file so you have to open the file to see what you got. I warn you: Your figure will probably look terribly the first time; you need to practice trial-and-error for a while to get it right, primarily by changing sizes of symbols, axis numbers, text elements, etc.</p>
+<pre class="r"><code># pdf() takes inches as input, dived by 25.4 to get mm
+inch &lt;- 25.4
+
+# The figure generated below this line will be exported in pdf-format, with
+# size 160 mm x 90 mm
+pdf(&quot;fig01.pdf&quot;, width = 150/inch, height = 90/inch)
+
+# Just a histogram
+set.seed(123)
+hist(x = rexp(1e4), breaks = 100, main = &#39;&#39;, axes = FALSE, ann = FALSE)
+axis(side = 1, at = seq(0, 10, 1), tck = 0.01, pos = 0, 
+     cex.axis = 0.7, mgp = c(3, 0, 0))
+axis(side = 2, at = seq(0, 1e3, 100), tck = 0.01, pos = 0, 
+     cex.axis = 0.7, mgp = c(3, 0.5, 0), las = 1)
+mtext(text = &quot;x&quot;, side = 1, line = 1, cex = 0.9)
+mtext(text = &quot;Frequency&quot;, side = 2, line = 1.2, cex = 0.9)
+info &lt;- &#39;10,000 observations drawn from an exponential distribution&#39;
+text(x = 1, y = 900, info, cex = 0.6, font = 3, pos = 4)
+dev.off()  # You have to close the &#39;device&#39; before you can open your pdf</code></pre>
+<p>For a .png file, replace the above line <code>pdf(...)</code> with<br />
+<code>png(&quot;fig01.png&quot;, width = 150, height = 90, unit = 'mm', res = 600)</code>, for a png file with a resolution of 600 pixels per inch.</p>
+<p>Here is what it looks like after I saved it as .png, and then red it into this webside: <img src="fig01.png" alt="" /></p>
+<p>   </p>
+</div>
 <div id="script2-analysing-data-from-a-psychoacoustic-experiment" class="section level3">
 <h3>Script2: Analysing data from a psychoacoustic experiment</h3>
 <p>Click <a href="script2_5.R" target="_blank">here</a> for the script file (Script2) as we left after last time.<br />
 (Data sets: <a href="./stat1/threshold_data.txt" target="_blank">threshold data</a>, and <a href="./stat1/background_data.txt" target="_blank">background data</a>. See <a href="./stat1/codebooks.txt" target="_blank">codebooks.txt</a> for details on the variables).</p>
-<p>Today some quantile regression analyses using the library quantreg. Then we will start creating plots for publication.</p>
+<p>Today we will start creating some nice plots for publication.</p>
 <p>   </p>
 </div>
 </div>
