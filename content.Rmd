@@ -27,7 +27,6 @@ Seminar| R topics               | by EXample: Writing a script
 [104](rex104.html) | Outputs are objects   | Script2, model fitting
 [105](rex105.html) | Write functions | Script2, model fitting, continued
 [106](rex106.html) | Customize plots  | Script2, plots for publication
-107 | Export plots   | Script2, plots for publication, continued
 
 
 
