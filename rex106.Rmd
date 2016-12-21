@@ -320,11 +320,17 @@ for the script file (Script2) as we left after last time.
 <a href="./stat1/codebooks.txt" target="_blank">codebooks.txt</a>
 for details on the variables).
 
-Today we will start creating some nice plots for publication. 
+Today we will create a nice plots for publication. (More plots would of course be needed for a full report of this data, but time only allows one figure as illustration in this seminar series.)
 
 
 \  
 \  
 
+\  
+\  
 
+### Final script
+Click
+<a href="script2_fin.R" target="_blank">here</a>
+for the final script. 
 
