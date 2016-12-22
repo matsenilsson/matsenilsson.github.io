@@ -248,8 +248,144 @@ $(document).ready(function () {
 </p>
 <div id="notes-rex103" class="section level1">
 <h1>Notes REX103</h1>
-<p>Under construction …</p>
-<p>       </p>
+<p>Today a little about recoding in R. There are many situations in which one wants to recode a variable. Below some examples of how to do this.</p>
+<p> </p>
+<div id="factors" class="section level3">
+<h3>Factors</h3>
+<p>If you have categorical data coded with integers, its easy to turn them into factors. This is not really recoding, but rather naming your categories. We have used factors earlier, here an example demonstrating the difference between unordered and ordered factors.</p>
+<pre class="r"><code># Simulate data on residential area, where 1 = city, 2 = rural, and 
+# 3 = town.
+set.seed(123)
+area &lt;- sample(x = c(1, 2, 3), size = 500, replace = TRUE)
+table(area)</code></pre>
+<pre><code>## area
+##   1   2   3 
+## 173 164 163</code></pre>
+<pre class="r"><code># Make (unordered) factor variable
+area_unordered &lt;- factor(area, levels = c(1, 2, 3), 
+                         labels = c(&#39;city&#39;, &#39;rural&#39;, &#39;town&#39;))
+table(area_unordered)</code></pre>
+<pre><code>## area_unordered
+##  city rural  town 
+##   173   164   163</code></pre>
+<pre class="r"><code>str(area_unordered)</code></pre>
+<pre><code>##  Factor w/ 3 levels &quot;city&quot;,&quot;rural&quot;,..: 1 3 2 3 3 1 2 3 2 2 ...</code></pre>
+<p>Here the same but now ordering the factor levels with regard to population density</p>
+<pre class="r"><code># Make ordered factor variable (entered in the desired order)
+area_ordered &lt;- factor(area, levels = c(2, 3, 1), ordered = TRUE,
+                         labels = c(&#39;rural&#39;, &#39;town&#39;, &#39;city&#39;))
+table(area_ordered)</code></pre>
+<pre><code>## area_ordered
+## rural  town  city 
+##   164   163   173</code></pre>
+<pre class="r"><code>str(area_ordered)</code></pre>
+<pre><code>##  Ord.factor w/ 3 levels &quot;rural&quot;&lt;&quot;town&quot;&lt;..: 3 2 1 2 2 3 1 2 1 1 ...</code></pre>
+<p>Ordered factors are useful when you want to display the categories in the right order, e.g., in a table as above.</p>
+<p>   </p>
+</div>
+<div id="recoding-using-coercion-of-logicals-to-numericals" class="section level3">
+<h3>Recoding using coercion of logicals to numericals</h3>
+<p>Variables can be recoded in many ways. Below I illustrate the method that I use the most. It uses R’s automatic coercion to numericals when arithmetic operations are conducted on logicals.</p>
+<pre class="r"><code># Simulate some data (BMI in a population with overweight problems)
+set.seed(123)
+bmi &lt;- rnorm(n = 1e4, mean = 29, sd = 4)
+
+# Recode into four groups
+bmi_group &lt;- 1 * (bmi &lt; 18) +
+             2 * (bmi &gt;= 18 &amp; bmi &lt; 25) +
+             3 * (bmi &gt;= 25 &amp; bmi &lt; 30) +
+             4 * (bmi &gt; 30)
+table(bmi_group)</code></pre>
+<pre><code>## bmi_group
+##    1    2    3    4 
+##   26 1586 4397 3991</code></pre>
+<pre class="r"><code># Followed by making the new variabel a factor, if so desired
+bmi_group &lt;- factor(bmi_group, levels = c(1, 2, 3, 4), 
+                    labels = c(&#39;underweight&#39;, &#39;normal&#39;, &#39;overweight&#39;, &#39;obese&#39;))
+table(bmi_group)</code></pre>
+<pre><code>## bmi_group
+## underweight      normal  overweight       obese 
+##          26        1586        4397        3991</code></pre>
+<p>The same could be achieved in a shorter, but less transparent way using the function <code>cut()</code>:</p>
+<pre class="r"><code># Recode into four groups
+bmi_group &lt;- cut(bmi, breaks = c(-Inf, 18, 25, 30, +Inf), 
+                 labels = c(&#39;underweight&#39;, &#39;normal&#39;, &#39;overweight&#39;, &#39;obese&#39;))
+table(bmi_group)</code></pre>
+<pre><code>## bmi_group
+## underweight      normal  overweight       obese 
+##          26        1586        4397        3991</code></pre>
+<p>    Coercion of logicals can be used for recodings based on several variables. Here an example with BMI and ill-health:</p>
+<pre class="r"><code># Simulate some data (BMI and ill-health in a population with overweight problems)
+set.seed(123)
+bmi &lt;- rnorm(n = 1e4, mean = 29, sd = 4)
+health &lt;- sample(x = c(&#39;healthy&#39;, &#39;ill&#39;), size = length(bmi), replace = TRUE,
+                 prob = c(0.8, 0.2))
+
+# Recode into three groups
+obese_ill &lt;- 1 * (bmi &lt;= 30) +
+             2 * (bmi &gt; 30  &amp;  health == &#39;healthy&#39;) +
+             3 * (bmi &gt; 30  &amp;  health == &#39;ill&#39;)
+
+obese_ill &lt;- factor(obese_ill, levels = c(1, 2, 3), 
+                    labels = c(&#39;non-obese&#39;, &#39;obese-healthy&#39;, &#39;obese-ill&#39;))
+
+table(obese_ill)</code></pre>
+<pre><code>## obese_ill
+##     non-obese obese-healthy     obese-ill 
+##          6009          3186           805</code></pre>
+<p>A slightly shorter, but less transparent code for recoding in k groups is to define k-1 groups, and let the remaining group take on the value 0 (the numeric coercion of FALSE):</p>
+<pre class="r"><code># Recode into three groups with only two definitions
+obese_ill &lt;- 1 * (bmi &gt; 30  &amp;  health == &#39;healthy&#39;) +
+             2 * (bmi &gt; 30  &amp;  health == &#39;ill&#39;)
+obese_ill &lt;- factor(obese_ill, levels = c(0, 1, 2), 
+                    labels = c(&#39;non-obese&#39;, &#39;obese-healthy&#39;, &#39;obese-ill&#39;))
+table(obese_ill)</code></pre>
+<pre><code>## obese_ill
+##     non-obese obese-healthy     obese-ill 
+##          6009          3186           805</code></pre>
+<p>   </p>
+</div>
+<div id="combining-vectors" class="section level3">
+<h3>Combining vectors</h3>
+<p>Combining vectors is a common operation. For example, multiple items may be combined into a sum score or an indicator variable may be created based on the response pattern over a set of items. Combining vectors in a data frame is easy in R:</p>
+<pre class="r"><code># Simulate data: five questionnaire items, scored from 1 to 5, stored in a data 
+# frame called d. To complicate things, I also include a character vector in d
+set.seed(123)
+n = 999
+d &lt;- data.frame(paste(rep(&#39;id&#39;, n),as.character(1:n), sep = &#39;&#39;))
+d[, 2:6] &lt;- replicate(5, sample(x = 1:5, size = n, replace = TRUE))
+colnames(d) &lt;- c(&#39;id&#39;, &#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;, &#39;item4&#39;, &#39;item5&#39;)
+
+# Add vector with sum score to the data frame d
+d$sumscore = d$item1 + d$item2 + d$item3 + d$item4 + d$item5
+
+# Add vector indicating if at least one of the items had value = 5
+d$topscore &lt;- 1 * (d$item1 == 5 | d$item2 == 5 | d$item3 == 5 | 
+                    d$item4 == 5 | d$item5 == 5)
+head(d)</code></pre>
+<pre><code>##    id item1 item2 item3 item4 item5 sumscore topscore
+## 1 id1     2     1     3     1     4       11        0
+## 2 id2     4     2     3     3     4       16        0
+## 3 id3     3     3     1     4     2       13        0
+## 4 id4     5     1     1     2     3       12        1
+## 5 id5     5     5     1     5     2       18        1
+## 6 id6     1     5     3     2     5       16        1</code></pre>
+<p>This works OK with only five items. But with 20 or 30 or more items, the approach taken above would be unfeasible. Here is a smarter way, using the function <code>apply()</code>. It’s input is a matrix, that is, a 2-dimensional object with one type of data. Therefore I cannot input the whole data frame, as it contains one character vector (d$id).</p>
+<pre class="r"><code># Use apply() to add vector with sum score
+d$sum_apply = apply(d[, 2:6], 1, sum)
+
+# Use apply() to add vector with top score (again using logi-to-num coercion) 
+d$top_apply &lt;- apply(d[, 2:6], 1, function(x) 1 * (5 %in% x))
+head(d)</code></pre>
+<pre><code>##    id item1 item2 item3 item4 item5 sumscore topscore sum_apply top_apply
+## 1 id1     2     1     3     1     4       11        0        11         0
+## 2 id2     4     2     3     3     4       16        0        16         0
+## 3 id3     3     3     1     4     2       13        0        13         0
+## 4 id4     5     1     1     2     3       12        1        12         1
+## 5 id5     5     5     1     5     2       18        1        18         1
+## 6 id6     1     5     3     2     5       16        1        16         1</code></pre>
+<p>     </p>
+</div>
 <div id="script2-analysing-data-from-a-psychoacoustic-experiment" class="section level3">
 <h3>Script2: Analysing data from a psychoacoustic experiment</h3>
 <p>Click <a href="script2_2.R" target="_blank">here</a> for the script file (Script2) as we left after last time.<br />

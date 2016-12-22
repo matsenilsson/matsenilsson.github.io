@@ -12,12 +12,145 @@ knitr::opts_chunk$set(error = TRUE)
 
 
 # Notes REX103
-Under construction ...
+Today a little about recoding in R. There are many situations in which one wants 
+to recode a variable. Below some examples of how to do this.
+
+\  
+
+### Factors 
+If you have categorical data coded with integers, its easy to turn them into factors. This is not really recoding, but rather naming your categories. We have used factors earlier, here an example demonstrating the difference between
+unordered and ordered factors.
+```{r}
+# Simulate data on residential area, where 1 = city, 2 = rural, and 
+# 3 = town.
+set.seed(123)
+area <- sample(x = c(1, 2, 3), size = 500, replace = TRUE)
+table(area)
+
+# Make (unordered) factor variable
+area_unordered <- factor(area, levels = c(1, 2, 3), 
+                         labels = c('city', 'rural', 'town'))
+table(area_unordered)
+str(area_unordered)
+```
+Here the same but now ordering the factor levels with regard to population density
+```{r}
+# Make ordered factor variable (entered in the desired order)
+area_ordered <- factor(area, levels = c(2, 3, 1), ordered = TRUE,
+                         labels = c('rural', 'town', 'city'))
+table(area_ordered)
+str(area_ordered)
+```
+
+Ordered factors are useful when you want to display the categories in the right 
+order, e.g., in a table as above. 
 
 \  
 \  
+
+### Recoding using coercion of logicals to numericals
+
+Variables can be recoded in many ways. Below I illustrate 
+the method that I use the most. It uses R's automatic coercion to numericals when arithmetic operations are conducted on logicals.
+
+```{r}
+# Simulate some data (BMI in a population with overweight problems)
+set.seed(123)
+bmi <- rnorm(n = 1e4, mean = 29, sd = 4)
+
+# Recode into four groups
+bmi_group <- 1 * (bmi < 18) +
+             2 * (bmi >= 18 & bmi < 25) +
+             3 * (bmi >= 25 & bmi < 30) +
+             4 * (bmi > 30)
+table(bmi_group)
+
+# Followed by making the new variabel a factor, if so desired
+bmi_group <- factor(bmi_group, levels = c(1, 2, 3, 4), 
+                    labels = c('underweight', 'normal', 'overweight', 'obese'))
+table(bmi_group)
+```
+
+The same could be achieved in a shorter, but less transparent way using the function `cut()`:
+```{r}
+# Recode into four groups
+bmi_group <- cut(bmi, breaks = c(-Inf, 18, 25, 30, +Inf), 
+                 labels = c('underweight', 'normal', 'overweight', 'obese'))
+table(bmi_group)
+```
 \  
+\  
+Coercion of logicals can be used for recodings based on several variables. Here 
+an example with BMI and ill-health:
+```{r}
+# Simulate some data (BMI and ill-health in a population with overweight problems)
+set.seed(123)
+bmi <- rnorm(n = 1e4, mean = 29, sd = 4)
+health <- sample(x = c('healthy', 'ill'), size = length(bmi), replace = TRUE,
+                 prob = c(0.8, 0.2))
+
+# Recode into three groups
+obese_ill <- 1 * (bmi <= 30) +
+             2 * (bmi > 30  &  health == 'healthy') +
+             3 * (bmi > 30  &  health == 'ill')
+
+obese_ill <- factor(obese_ill, levels = c(1, 2, 3), 
+                    labels = c('non-obese', 'obese-healthy', 'obese-ill'))
+
+table(obese_ill)
+```
+A slightly shorter, but less transparent code for recoding in k groups is to define k-1 groups, and let the remaining group take on the value 0 (the numeric coercion of FALSE):
+```{r}
+# Recode into three groups with only two definitions
+obese_ill <- 1 * (bmi > 30  &  health == 'healthy') +
+             2 * (bmi > 30  &  health == 'ill')
+obese_ill <- factor(obese_ill, levels = c(0, 1, 2), 
+                    labels = c('non-obese', 'obese-healthy', 'obese-ill'))
+table(obese_ill)
+```
+  
 \ 
+\ 
+
+### Combining vectors
+Combining vectors is a common operation. For example, multiple items may be 
+combined into a sum score or an indicator variable may be created based on the 
+response pattern over a set of items. Combining vectors in a data frame is easy
+in R:
+```{r}
+# Simulate data: five questionnaire items, scored from 1 to 5, stored in a data 
+# frame called d. To complicate things, I also include a character vector in d
+set.seed(123)
+n = 999
+d <- data.frame(paste(rep('id', n),as.character(1:n), sep = ''))
+d[, 2:6] <- replicate(5, sample(x = 1:5, size = n, replace = TRUE))
+colnames(d) <- c('id', 'item1', 'item2', 'item3', 'item4', 'item5')
+
+# Add vector with sum score to the data frame d
+d$sumscore = d$item1 + d$item2 + d$item3 + d$item4 + d$item5
+
+# Add vector indicating if at least one of the items had value = 5
+d$topscore <- 1 * (d$item1 == 5 | d$item2 == 5 | d$item3 == 5 | 
+                    d$item4 == 5 | d$item5 == 5)
+head(d)
+```
+This works OK with only five items. But with 20 or 30 or more items, the approach 
+taken above would be unfeasible. Here is a smarter way, using the function 
+`apply()`. It's input is a matrix, that is, a 2-dimensional object with one type of data. Therefore I cannot input the whole data frame, as it contains one 
+character vector (d$id).
+```{r}
+# Use apply() to add vector with sum score
+d$sum_apply = apply(d[, 2:6], 1, sum)
+
+# Use apply() to add vector with top score (again using logi-to-num coercion) 
+d$top_apply <- apply(d[, 2:6], 1, function(x) 1 * (5 %in% x))
+head(d)
+```
+
+\ 
+\  
+\  
+
 
 
 ### Script2: Analysing data from a psychoacoustic experiment
