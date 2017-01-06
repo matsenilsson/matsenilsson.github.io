@@ -38,7 +38,11 @@ At the REX seminars we work on scripts designed to solve given tasks: simulating
 a randomized experiment (Script1) and conducting a full data analysis of a 
 given data set (script2). The scripts will evolve gradually over the seminars and 
 the current version of a script will be available for download before the start
-of each seminar. Seminar notes are available 
+of each seminar. (Here are links to the final scripts:
+<a href="script1_fin.R" target="_blank">Script1</a>, 
+<a href="script2_fin.R" target="_blank">Script2</a>.)
+
+Seminar notes are available 
 on this website summarizing the topics discussed
 at each seminar. If you find the content elementary, you probably don't need to
 attend the seminar. If the notes make no sense at all, please visit the seminar

@@ -19,7 +19,9 @@ set.seed(123)   # Makes it reproducable also if random number generators are use
 #-------------------------------------------------------------------------------
 
 # Import data ------------------------------------------------------------------
+# Change the path below to where you have stored the data files
 setwd('c:/Users/MATNI/Dropbox/_MN2015/undervisning/rex_website/stat1')
+
 th_long <- read.table('threshold_data.txt', header = TRUE, sep = ',')
 bg <- read.table('background_data.txt', header = TRUE, sep = ',')
 # ------------------------------------------------------------------------------
