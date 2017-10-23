@@ -4,7 +4,7 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
@@ -20,12 +20,11 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
-<link rel="stylesheet"
-      href="site_libs/highlight/default.css"
-      type="text/css" />
-<script src="site_libs/highlight/highlight.js"></script>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
@@ -95,6 +94,7 @@ button.code-folding-btn:focus {
 }
 </style>
 
+
 <style type="text/css">
 /* padding for bootstrap navbar */
 body {
@@ -151,7 +151,6 @@ $(document).ready(function () {
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
-<script src="site_libs/navigation-1.0/tabsets.js"></script>
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
@@ -261,14 +260,14 @@ $(document).ready(function () {
 </div>
 <div id="whats-in-it" class="section level3">
 <h3>What’s in it?</h3>
-<p>At the REX seminars we work on scripts designed to solve given tasks: simulating a randomized experiment (Script1) and conducting a full data analysis of a given data set (script2). The scripts will evolve gradually over the seminars and the current version of a script will be available for download before the start of each seminar. (Here are links to the final scripts: <a href="script1_fin.R" target="_blank">Script1</a>, <a href="script2_fin.R" target="_blank">Script2</a>.)</p>
+<p>At the REX seminars we work on scripts designed to solve given tasks: simulating a data set (Script1) and conducting a full data analysis of a given data set (script2). The scripts will evolve gradually over the seminars and the current version of a script will be available for download before the start of each seminar. (Here are links to the final scripts: <a href="script1_fin.R" target="_blank">Script1</a>, <a href="script2_fin.R" target="_blank">Script2</a>.)</p>
 <p>Seminar notes are available on this website summarizing the topics discussed at each seminar. If you find the content elementary, you probably don’t need to attend the seminar. If the notes make no sense at all, please visit the seminar where everything will be explained in detail. A list of seminars is found <a href="content.html">here</a></p>
 <p> </p>
 </div>
 <div id="when-and-where" class="section level3">
 <h3>When and where?</h3>
-<p>Part 1 (seminars 001, 002, …) run as satellite to the master-program course <strong>Method1</strong>: Click here for <a href="https://fastreg.psychology.su.se/KursWeb/ScheduleKronologisk.aspx?MomentID=71&amp;termin=H16">Schedule fall semester 2016</a></p>
-<p>Part 2 (seminars 101, 102, …) run as satellite to the master-program course <strong>Stat1</strong>: Click here for <a href="https://fastreg.psychology.su.se/KursWeb/ScheduleKronologisk.aspx?MomentID=61&amp;termin=H16">Schedule fall semester 2016</a></p>
+<p>Part 1 (seminars 001, 002, …) run as satellite to the master-program course <strong>Method1</strong>: Click here for <a href="https://fastreg.psychology.su.se/KursWeb/ScheduleKronologisk.aspx?MomentID=71&amp;termin=H17">Schedule fall semester 2017</a></p>
+<p>Part 2 (seminars 101, 102, …) run as satellite to the master-program course <strong>Stat1</strong>: Click here for <a href="https://fastreg.psychology.su.se/KursWeb/ScheduleKronologisk.aspx?MomentID=61&amp;termin=H17">Schedule fall semester 2017</a></p>
 <p>   </p>
 </div>
 </div>
@@ -289,9 +288,13 @@ Department of Psychology, Stockholm University</p>
 <script>
 
 // add bootstrap table styles to pandoc tables
-$(document).ready(function () {
+function bootstrapStylePandocTables() {
   $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
 });
+
 
 </script>
 

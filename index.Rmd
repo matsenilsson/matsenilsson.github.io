@@ -35,7 +35,7 @@ as you already know, the best way to learn R is to use R.
 
 ### What's in it?
 At the REX seminars we work on scripts designed to solve given tasks: simulating
-a randomized experiment (Script1) and conducting a full data analysis of a 
+a data set (Script1) and conducting a full data analysis of a 
 given data set (script2). The scripts will evolve gradually over the seminars and 
 the current version of a script will be available for download before the start
 of each seminar. (Here are links to the final scripts:
@@ -55,11 +55,11 @@ where everything will be explained in detail. A list of seminars is found
 ### When and where?
 Part 1 (seminars 001, 002, ...) run as satellite to the master-program course 
 **Method1**:
-Click here for [Schedule fall semester 2016](https://fastreg.psychology.su.se/KursWeb/ScheduleKronologisk.aspx?MomentID=71&termin=H16)
+Click here for [Schedule fall semester 2017](https://fastreg.psychology.su.se/KursWeb/ScheduleKronologisk.aspx?MomentID=71&termin=H17)
 
 Part 2 (seminars 101, 102, ...) run as satellite to the master-program course 
 **Stat1**:
-Click here for [Schedule fall semester 2016](https://fastreg.psychology.su.se/KursWeb/ScheduleKronologisk.aspx?MomentID=61&termin=H16)
+Click here for [Schedule fall semester 2017](https://fastreg.psychology.su.se/KursWeb/ScheduleKronologisk.aspx?MomentID=61&termin=H17)
 
 \ 
 \ 

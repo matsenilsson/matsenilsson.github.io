@@ -4,7 +4,7 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
@@ -19,12 +19,11 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
-<link rel="stylesheet"
-      href="site_libs/highlight/default.css"
-      type="text/css" />
-<script src="site_libs/highlight/highlight.js"></script>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
@@ -94,6 +93,7 @@ button.code-folding-btn:focus {
 }
 </style>
 
+
 <style type="text/css">
 /* padding for bootstrap navbar */
 body {
@@ -150,7 +150,6 @@ $(document).ready(function () {
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
-<script src="site_libs/navigation-1.0/tabsets.js"></script>
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
@@ -252,7 +251,7 @@ $(document).ready(function () {
 <h2>Functions</h2>
 <p>Functions are small programs that do things. Most functions require that you specify what you want to be done by providing arguments, but some functions can be run without arguments:</p>
 <pre class="r"><code>date()</code></pre>
-<pre><code>## [1] &quot;Fri Jan 06 17:43:06 2017&quot;</code></pre>
+<pre><code>## [1] &quot;Mon Oct 23 10:49:05 2017&quot;</code></pre>
 <p>A function’s arguments is listed in its help page. Many functions have arguments with default values. For example, the <code>mean()</code> function has as default not to excluded missing data: <code>na.rm = FALSE</code>. This is a bit annoying, because R will give you an NA where you expected a number. But it is in fact helpful since it reminds you that your data contain missing values.</p>
 <pre class="r"><code>my_data &lt;- rnorm(1000)
 my_data[my_data &gt; 2 ] &lt;- NA  # Turn values &gt; 2 into missing data (NA)
@@ -369,9 +368,13 @@ Department of Psychology, Stockholm University</p>
 <script>
 
 // add bootstrap table styles to pandoc tables
-$(document).ready(function () {
+function bootstrapStylePandocTables() {
   $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
 });
+
 
 </script>
 
