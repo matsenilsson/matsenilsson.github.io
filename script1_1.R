@@ -11,30 +11,6 @@
 #     on residential area (either high-income or low-income area). 
 #  3. Outcome variable: Score on math test taken at the end of the semester.
 #
-# Mats Nilsson (mats.nilsson@psychology.su.se), revised: 2016-11-03
+# Mats Nilsson (mats.nilsson@psychology.su.se), revised: 2016-10-29
 
-
-# Clear things and set random seed ---------------------------------------------
-rm(list = ls())
-graphics.off()
-cat("\014")
-set.seed(123)
-# ------------------------------------------------------------------------------
-
-
-# Set these parameters ---------------------------------------------------------
-n <- 6e2  # Sample size
-p_ses <- c(0.7, 0.3)  # Proportions ses = lo and ses = hi
-# ------------------------------------------------------------------------------
-
-
-# Simulate pre-treatment variables ---------------------------------------------
-id <- seq(from = 1, to = n)  # Participant id-numbers
-
-# Family socio-economic status (ses): low = 0, high = 1
-ses <- sample(c(0, 1), replace = TRUE, size = n, prob = p_ses)
-table(ses) / n  # Sanity check
-# ------------------------------------------------------------------------------
-
-
-# To be continued at REX002 ...
+# To be started at REX001 ...

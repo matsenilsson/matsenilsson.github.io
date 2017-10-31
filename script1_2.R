@@ -11,7 +11,9 @@
 #     on residential area (either high-income or low-income area). 
 #  3. Outcome variable: Score on math test taken at the end of the semester.
 #
-# Mats Nilsson (mats.nilsson@psychology.su.se), revised: 2016-11-03
+# Mats Nilsson (mats.nilsson@psychology.su.se), revised: 2016-10-29
+
+# To be started at REX001 ...
 
 
 # Clear things and set random seed ---------------------------------------------
@@ -22,35 +24,27 @@ set.seed(123)
 # ------------------------------------------------------------------------------
 
 
-# Set these parameters ---------------------------------------------------------
-n <- 6e2  # Sample size
-p_ses <- c(0.7, 0.3)  # Proportions ses = lo and ses = hi
-base <- c(50, 10)  # N(mean, sd) math at 'baseline' (no hi-ses and no treatment)
-cses <- c(6, 2)  # N(mean, sd) casual effect of ses on math
-ctreat <- c(2, 1)  # N(mean, sd) casual effect of treatment (music) on math
+# Simulate data ----------------------------------------------------------------
+n <- 40  # Sample size
+
+id <- 1:n # Unique id number for each participant
+
+# Random assignment
+rand_assign <- sample(c(0, 1), replace = TRUE, size = n) # Bernoulli trial method
+
+# Music lessons (for the moment assuming 100 % compliance)
+music_lessons <- rand_assign
+
+# Performance math test (for the moment assuming independent of treatment)
+math <- rnorm(n, m = 50, sd = 10)  # Math test, mean = 50; sd = 10
+
+# Make data set
+d <- data.frame(id, rand_assign, music_lessons, math)
 # ------------------------------------------------------------------------------
 
 
-# Simulate pre-treatment variables ---------------------------------------------
-id <- seq(from = 1, to = n)  # Participant id-numbers
-
-# Family socio-economic status (ses): low = 0, high = 1
-ses <- sample(c(0, 1), replace = TRUE, size = n, prob = p_ses)
-table(ses) / n  # Sanity check
+# Check data -------------------------------------------------------------------
+summary(d)
+hist(d$math)
+t.test(d$math ~ d$music_lessons)
 # ------------------------------------------------------------------------------
-
-# Create data-frame ------------------------------------------------------------
-d <- data.frame(id, ses)
-rm(id, ses)  # Not necssary, but it doesnt hurt to clean up
-# ------------------------------------------------------------------------------
-
-# Randomly assign to treat and control -----------------------------------------
-d$assign <- sample(c(0, 1), replace = TRUE, size = n)  # Ebrnoulli trial method
-table(d$assign, dnn = "group")
-#Balance check
-table(d$ses, d$assign, dnn = c('ses', 'group'))
-# ------------------------------------------------------------------------------
-
-
-# Simulate potential outcomes --------------------------------------------------
-# To be continued at REX003 ...

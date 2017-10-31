@@ -154,7 +154,7 @@ just put the cursor on the line and hit Ctrl-R.
 
 ### Script1: Randomized experiment
 Click
-<a href="script1_0.R" target="_blank">here</a>
+<a href="script1_1.R" target="_blank">here</a>
 for a script file (Script1), to be completed it in the following seminars.  
 
 The simulated scenario is a simple randomized experiment conducted at a large 
