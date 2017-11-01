@@ -286,11 +286,7 @@ $(document).ready(function () {
 <p>Randomly select (with replacement) 10 integers between 1 and 20, and store them in a vector called y</p>
 <pre class="r"><code>y &lt;- sample(seq(1, 20), size = 10, replace = TRUE)
 y</code></pre>
-<<<<<<< HEAD
-<pre><code>##  [1] 16 20 19  8 18 15  3  8 20  1</code></pre>
-=======
-<pre><code>##  [1] 17  8  5 12  5 16  4  3 15  3</code></pre>
->>>>>>> Changes to Script 1
+<pre><code>##  [1]  5  7 20 20 13 18  2 18  8  2</code></pre>
 <p>Repeat ‘red’, ‘green’ four times and store them in a vector called condition</p>
 <pre class="r"><code>condition &lt;- rep(c(&#39;red&#39;, &#39;green&#39;), 4)
 condition</code></pre>
@@ -354,7 +350,7 @@ b &lt;- order(my_data)</code></pre>
 <p>1a. Independent variable (R): At the start of grade 6, all children at the school are randomly assigned to receive either extra music lessons (treatment) or no extra music lessons (control).<br />
 1b. Independent variable (Music): Music lessons or not. In case of non-compliance, received treatment will differ from assigned treatment (R) are randomly assigned to receive either extra music lessons (treatment) or no extra music lessons (control).<br />
 2. Background (or pre-treatment) variable (SES): Socioeconomic status, defined based on residential area. The pupils in this school are from one of two nearby residential areas: one high-income and one low-income area. 3. Outcome variable (Mathscore): Score on a math test taken at the end of the semester.</p>
-<p>Here is a Directed Acyclical Graph (DAG) of the simulated</p>
+<p>This is a Directed Acyclical Graph (DAG) of the simulated scenario.</p>
 <p><img src="rex001_files/figure-html/unnamed-chunk-16-1.png" width="480" /></p>
 <p>Today, we will just simulate some data:</p>
 <ol style="list-style-type: decimal">

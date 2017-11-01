@@ -178,7 +178,7 @@ on residential area. The pupils in this school are from one of two nearby
 residential areas: one high-income and one low-income area. 
 3. Outcome variable (Mathscore): Score on a math test taken at the end of the semester.
   
-Here is a Directed Acyclical Graph (DAG) of the simulated
+This is a Directed Acyclical Graph (DAG) of the simulated scenario.
 
 ```{r echo = FALSE}
 library(dagitty)
