@@ -25,7 +25,7 @@ set.seed(123)
 
 
 # Simulate data ----------------------------------------------------------------
-n <- 40  # Sample size
+n <- 600  # Sample size
 
 id <- 1:n # Unique id number for each participant
 
@@ -35,16 +35,10 @@ rand_assign <- sample(c(0, 1), replace = TRUE, size = n) # Bernoulli trial metho
 # Music lessons (for the moment assuming 100 % compliance)
 music_lessons <- rand_assign
 
-# Performance math test (for the moment assuming independent of treatment)
+# Performance math test (for the moment assuming it is independent of treatment)
 math <- rnorm(n, m = 50, sd = 10)  # Math test, mean = 50; sd = 10
 
 # Make data set
 d <- data.frame(id, rand_assign, music_lessons, math)
 # ------------------------------------------------------------------------------
 
-
-# Check data -------------------------------------------------------------------
-summary(d)
-hist(d$math)
-t.test(d$math ~ d$music_lessons)
-# ------------------------------------------------------------------------------
