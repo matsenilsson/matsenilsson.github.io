@@ -170,9 +170,7 @@ Key variables:
 are randomly assigned to receive either extra music lessons (treatment) or no extra
 music lessons (control).    
 1b. Independent variable (Music): Music lessons or not. In case of non-compliance, 
-received treatment will differ from assigned treatment (R) 
-are randomly assigned to receive either extra music lessons (treatment) or no extra
-music lessons (control).    
+received treatment will differ from assigned treatment (R).    
 2. Background (or pre-treatment) variable (SES): Socioeconomic status, defined based 
 on residential area. The pupils in this school are from one of two nearby 
 residential areas: one high-income and one low-income area. 
