@@ -225,13 +225,11 @@ for Script1 as we left it after the last seminar.
 
 Today we will do the following:
 
-1. Combine created variables in a data frame using the function `data.frame()`
-2. Randomly assign to treatment conditions, using the function call
-`sample(c(0, 1), replace = TRUE, size = n)`, where `size = n` refer to sample size. 
-That is, random assignment using the Bernoulli trial method.
-3. Do some checks of balance between treatment and control group in socio-economic
+1. Simulate socioeconomic status (1 = high, 0 = low) as related to math performance and compliance
+2. Do some checks of balance between treatment and control group in socio-economic
 status (SES). If random assignment works, the groups should be approximately equal 
 in SES (indeed on all variables, measured and unmeasured!)
+3. Some preliminary data analysis
 
 \ 
 
