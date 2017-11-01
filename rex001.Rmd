@@ -166,27 +166,46 @@ The outcome is performance on a math test taken at the end of the semester.
 
 Key variables:
 
-1. Independent variable: At the start of grade 6, all children at the school
+1a. Independent variable (R): At the start of grade 6, all children at the school
 are randomly assigned to receive either extra music lessons (treatment) or no extra
 music lessons (control).    
-2. Background (or pre-treatment) variable: Socioeconomic status, defined based 
+1b. Independent variable (Music): Music lessons or not. In case of non-compliance, 
+received treatment will differ from assigned treatment (R) 
+are randomly assigned to receive either extra music lessons (treatment) or no extra
+music lessons (control).    
+2. Background (or pre-treatment) variable (SES): Socioeconomic status, defined based 
 on residential area. The pupils in this school are from one of two nearby 
 residential areas: one high-income and one low-income area. 
-3. Outcome variable: Score on a math test taken at the end of the semester.
+3. Outcome variable (Mathscore): Score on a math test taken at the end of the semester.
+  
+Here is a Directed Acyclical Graph (DAG) of the simulated
 
-Today, we will just set the scene:
+```{r echo = FALSE}
+library(dagitty)
+randexp <- dagitty( "dag {
+   R -> Music -> Mathscore
+   Music <- SES -> Mathscore
+}")
+
+coordinates(randexp) <-
+list( x = c(R = 1, Music = 2, Mathscore = 4, SES = 3),
+      y = c(R = 2, Music = 2, Mathscore = 2, SES = 1) )
+
+plot(randexp)
+```
+
+Today, we will just simulate some data:
 
 1. Decide sample size and define a variable with id-numbers for each 
 simulated participant
-2. Simulate values on the pre-treatment variable (socio-economic status), using
-the `sample()` function.
+2. Randomly assign children to treatment, using the `sample()` function. 
 3. Sanity check using the `table()` function.
+4. Simulate outcome, to begin with as independent of treatment using the `rnorm()` function.
+5. Do some preliminary analyses to get a first feeling of how R is used for analyzing data.
 
 #### Exercises
-In the following seminar (REX002), we will randomly assign children to experimental
-conditions. Please try it beforehand. Note that there are different
-approaches to random assignment, and for each, there are different ways to 
-implement them in R-code.
+In the following seminar (REX002), we will simulate socioeconomic status as related 
+to non-compliance. Please try it beforehand. 
 
 
 \  
