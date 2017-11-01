@@ -1,0 +1,29 @@
+Manual for working with Rmarkdown website.
+
+1. Clone website from github:
+PS> git  # Start git
+PS> git clone <github adress>  # Copy using github "Clone or download"
+
+2. Make your changes to the cloned directory, e.g., editing *.Rmd files
+
+3. Clean cloned directory
+> rmarkdown::clean_site()
+
+4. Render revised website
+> rmarkdown::render_site()
+
+5. Stage changes in git
+PS> git add *  # Stage all changes made, you may need to first start git, see 1.
+
+6. Commit changes
+PS> git commit -m "Commit message"
+
+7. Push to github
+PS> git push origin master
+
+
+*********************
+For basic git commands, see this site
+confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html
+
+
