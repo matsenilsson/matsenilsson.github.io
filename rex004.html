@@ -251,7 +251,7 @@ $(document).ready(function () {
 <h2>Functions</h2>
 <p>Functions are small programs that do things. Most functions require that you specify what you want to be done by providing arguments, but some functions can be run without arguments:</p>
 <pre class="r"><code>date()</code></pre>
-<pre><code>## [1] &quot;Wed Nov 08 17:16:53 2017&quot;</code></pre>
+<pre><code>## [1] &quot;Tue Nov 14 16:01:53 2017&quot;</code></pre>
 <p>A function’s arguments is listed in its help page. Many functions have arguments with default values. For example, the <code>mean()</code> function has as default not to excluded missing data: <code>na.rm = FALSE</code>. This is a bit annoying, because R will give you an NA where you expected a number. But it is in fact helpful since it reminds you that your data contain missing values.</p>
 <pre class="r"><code>my_data &lt;- rnorm(1000)
 my_data[my_data &gt; 2 ] &lt;- NA  # Turn values &gt; 2 into missing data (NA)
@@ -336,19 +336,10 @@ If the <code>randint</code> vector defined above would be given as input to this
 </div>
 <div id="script-1-randomized-experiment-continued" class="section level2">
 <h2>Script 1: Randomized experiment (continued)</h2>
-<p>Click <a href="script1_3.R" target="_blank">here</a> for Script1 as we left it after the last seminar.</p>
-<p>Today we will analyse true and estimated casual effects</p>
-<ol style="list-style-type: decimal">
-<li>Single-unit causal effects</li>
-<li>Average treatment effect (ATE) and Average treatment effect on the treated (ATT) in our sample and asymptotically (by increasing the sample size to a very large number)</li>
-<li>Conduct as-treated and intent-to-treat analyses to estimate ATE and ATT</li>
-</ol>
+<p>Click <a href="script1_4.R" target="_blank">here</a> for Script1 as we left it after the last seminar.</p>
+<p>Today we will rewrite the script to include potential outcomes on math scores, we will then calculate (unobservable) Single-unit causal effects and Average treatment effect (ATE), and compare these with estimates based om observed data.</p>
 <p> </p>
-<div id="exercises-1" class="section level3">
-<h3>Exercises</h3>
-<p>Next time we will complicate things by introducing non-compliance. Specifically, we will simulate a causal relationship between socioeconomic status (SES) and risk of being a never-taker (an individual who will not receive treatment, no matter assignment; everyone else in our scenario will be a complier: treated as assigned). Give it a try already now. Start by formulating a plausible model, then try to implement it in R-code (this is an implausible model: “Everyone low in SES is a never-taker, everyone high in SES is a complier”).</p>
 <p>   </p>
-</div>
 </div>
 </div>
 

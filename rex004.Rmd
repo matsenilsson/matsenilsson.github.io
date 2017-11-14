@@ -168,28 +168,16 @@ do_exc1(randint, 10)
 
 ## Script 1: Randomized experiment (continued)
 Click
-<a href="script1_3.R" target="_blank">here</a>
+<a href="script1_4.R" target="_blank">here</a>
 for Script1 as we left it after the last seminar. 
 
-Today we will analyse true and estimated casual effects
+Today we will rewrite the script to include potential outcomes on math scores, we will then 
+calculate (unobservable) Single-unit causal effects and Average treatment effect (ATE), and 
+compare these with estimates based om observed data.
 
-1. Single-unit causal effects
-2. Average treatment effect (ATE) and Average treatment effect on the treated
-(ATT) in our sample and asymptotically (by increasing the sample size to a very 
-large number)
-3. Conduct as-treated and intent-to-treat analyses to estimate ATE and ATT 
-  
 \  
 
 
-### Exercises
-Next time we will complicate things by introducing non-compliance. Specifically,
-we will simulate a causal relationship between socioeconomic status (SES) and 
-risk of being a never-taker (an individual who will not receive treatment, no matter
-assignment; everyone else in our scenario will be a complier: treated as
-assigned). Give it a try already now. Start by formulating a plausible model, 
-then try to implement it in R-code (this is an implausible model: "Everyone low 
-in SES is a never-taker, everyone high in SES is a complier").
 
 \  
 \  
