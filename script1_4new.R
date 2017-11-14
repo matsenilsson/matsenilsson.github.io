@@ -117,12 +117,4 @@ summary(pp_lm)
 
 # To be contined at REX004 ...
 
-ATE <- mean(d$u_delta) # True average treatment effect (if everyone complied)
-
- 
-iv_estimate <- itt_estimate / mean((1 - d$u_nevertaker))
-
-effects <- c(ATE, itt_estimate, at_estimate, pp_estimate, iv_estimate)
-names(effects) <- c('ATE', 'itt', 'at', 'pp', 'iv')
-# ------------------------------------------------------------------------------
 
