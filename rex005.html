@@ -329,26 +329,31 @@ abline(restricted_model, col = &#39;blue&#39;)</code></pre>
 <p> </p>
 </div>
 </div>
-<div id="script-1-randomized-experiment-continued" class="section level2">
-<h2>Script 1: Randomized experiment (continued)</h2>
-<p>Click <a href="script1_4.R" target="_blank">for</a> Script1 as we left it after the last seminar.</p>
-<p>Today we will complicate things by introducing non-compliance. Specifically:</p>
-<ol style="list-style-type: decimal">
-<li>Define ‘never-takers’ (participants who will not receive treatment no matter if they are assigned or not to treatment),</li>
-<li>Simulate that risk for being a never-taker is related to both treatment and outcome</li>
-<li>Explore what this means for the validity of as-treated and intent-to-treat analysis.</li>
-</ol>
+<div id="script-1-simulating-data-consistent-with-a-dag" class="section level2">
+<h2>Script 1: Simulating data consistent with a DAG</h2>
+<p>Click <a href="script1b_5.R" target="_blank">here for</a> Script1b: A new simulation exercise, this time of data consistent with this Directed Acyclical Graph (DAG):</p>
+<pre class="r"><code>library(dagitty) 
+
+vvg_dag &lt;- dagitty( &quot;dag {
+   VVG -&gt; AGG
+   VVG -&gt; PA -&gt; AGG
+   PA -&gt; BMI
+   VVG &lt;- Support -&gt; SProb -&gt; AGG
+   SProb &lt;- Genetic -&gt; AGG
+}&quot;)
+
+coordinates(vvg_dag) &lt;- list(
+  x = c(VVG = 1, Support = 1, BMI = 2, PA = 3, SProb = 3, Genetic = 4, AGG = 4),
+  y = c(VVG = 5, Support = 1, BMI = 3, PA = 4, SProb = 2, Genetic = 1, AGG = 5))
+
+plot(vvg_dag)</code></pre>
+<p><img src="rex005_files/figure-html/unnamed-chunk-7-1.png" width="480" /></p>
+<p>Exposure: Violent video games (VVG)</p>
+<p>Outcome: Adult aggression (AGG)</p>
+<p>Covariates: Physical activity (PA), Parental support (Support), School problems (SProb), BMI (BMI), Genetic factor (Genetic).</p>
+<p><br> <br> <br> (We completed our simulation of the randomized experiment last time (REX004), Click <a href="script1a_fin.R" target="_blank">here for</a> the final script).</p>
 <p> </p>
-<div id="exercises" class="section level3">
-<h3>Exercises</h3>
-<p>In our scenario, the only way to receive treatment (extra music lessons) is to be assigned to the treatment group. This means that there can only be two types of participants: compliers and never-takers. In other scenarios, all four types are possible: compliers, never-takers, always-takers and defiers.</p>
-<ol style="list-style-type: decimal">
-<li><p>Assume a positive causal effect of treatment on outcome. What happens (asymptotically) to the as-treated and intent-to-treat causal estimates in the four extreme scenarios with only one type of individuals.</p></li>
-<li><p>Write code that simulates a scenario in which all four types exists in plausible proportions and relationships with socio-economic status.<br />
-Explore what happens to the as-treated and intent-to-treat causal estimates in your new scenario.</p></li>
-</ol>
 <p>   </p>
-</div>
 </div>
 </div>
 
