@@ -11,4 +11,12 @@
 # SProb <- Genetic -> AGG
 
 
+
+# Clear things and set random seed ---------------------------------------------
+rm(list = ls())
+graphics.off()
+cat("\014")
+set.seed(123)
+# ------------------------------------------------------------------------------
+
 # To be started at REX005 ...
