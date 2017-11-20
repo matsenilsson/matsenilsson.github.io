@@ -144,25 +144,15 @@ check_order(pi, 4, 2^2)
 
 ## Script 1: Randomized experiment (finalized)
 Click
-<a href="script1_5.R" target="_blank">here</a>
-for Script1 as we left it after the last seminar.  
+<a href="script1b_6.R" target="_blank">here</a>
+for Script1b as we left it after the last seminar.  
 
-We will end our work on the simulated experiment by:
 
-1. Calculating the Locale average treatment effect (LATE), i.e., the true
-average causal effect on the compliers.
-2. Do an instrumental-variable analysis to estimate LATE from observed data
-
-### Exercises
-In our scenario, LATE is the same as ATT. If we include always-takers and assume
-that the causal effect of music lessons is larger on them than on the compliers 
-because the former are more motivated (still assuming no defiers), LATE and ATT 
-may differ. Illustrate this by modifying the simulation.
 
 \  
 \  
 
 ### Final script
 Click
-<a href="script1_fin.R" target="_blank">here</a>
+<a href="script1b_fin.R" target="_blank">here</a>
 for the final script. 
