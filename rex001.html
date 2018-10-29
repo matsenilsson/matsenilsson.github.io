@@ -288,7 +288,7 @@ $(document).ready(function () {
 <p>Randomly select (with replacement) 10 integers between 1 and 20, and store them in a vector called y</p>
 <pre class="r"><code>y &lt;- sample(seq(1, 20), size = 10, replace = TRUE)
 y</code></pre>
-<pre><code>##  [1] 11 19 10 17 10  7  5 14 13 11</code></pre>
+<pre><code>##  [1] 17  8  5 12  5 16  4  3 15  3</code></pre>
 <p>Repeat ‘red’, ‘green’ four times and store them in a vector called condition</p>
 <pre class="r"><code>condition &lt;- rep(c(&#39;red&#39;, &#39;green&#39;), 4)
 condition</code></pre>
@@ -345,7 +345,7 @@ b &lt;- order(my_data)</code></pre>
 </div>
 <div id="script1-randomized-experiment" class="section level3">
 <h3>Script1: Randomized experiment</h3>
-<p>Click <a href="script1_1.R" target="_blank">here</a> for a script file (Script1), to be completed it in the following seminars.</p>
+<p>Click <a href="script1_1.R" target="_blank">here</a> for a script file (Script1), to be completed it in the following seminars (at REX002-004, we will do another simulation exercise at REX005-006).</p>
 <p>The simulated scenario is a simple randomized experiment conducted at a large school. At the beginning of the semester, all sixth-graders are randomly assigned to receive extra music lessons (tratement) or no extra lessons (control). The outcome is performance on a math test taken at the end of the semester.<br />
 (loosely inspired by Schellenberg, E.G. (2004). Music lessons enhance IQ. <em>Psychological Science</em>, 15, 511-514.)</p>
 <p>Key variables:</p>
@@ -353,7 +353,6 @@ b &lt;- order(my_data)</code></pre>
 1b. Independent variable (Music): Music lessons or not. In case of non-compliance, received treatment will differ from assigned treatment (R).<br />
 2. Background (or pre-treatment) variable (SES): Socioeconomic status, defined based on residential area. The pupils in this school are from one of two nearby residential areas: one high-income and one low-income area. 3. Outcome variable (Mathscore): Score on a math test taken at the end of the semester.</p>
 <p>This is a Directed Acyclical Graph (DAG) of the simulated scenario.</p>
-<pre><code>## Warning: package &#39;dagitty&#39; was built under R version 3.4.4</code></pre>
 <p><img src="rex001_files/figure-html/unnamed-chunk-16-1.png" width="480" /></p>
 <p>Today, we will just simulate some data:</p>
 <ol style="list-style-type: decimal">
