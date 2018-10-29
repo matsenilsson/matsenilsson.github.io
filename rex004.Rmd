@@ -168,25 +168,13 @@ do_exc1(randint, 10)
 
 ## Script 1: Randomized experiment (continued)
 Click
-<a href="script1_4new.R" target="_blank">here</a>
+<a href="script1_not_yet.R" target="_blank">here</a>
 for Script1 as it looks after some rewriting from last time.  
 
 <br>
-
-(Click
-<a href="script1_4.R" target="_blank">here</a>
-for Script1 as we left it after the last seminar.)
-
 <br>
 
 Today we will rewrite the script to include potential outcomes on math scores, we will then 
 calculate (unobservable) Single-unit causal effects and Average treatment effect (ATE), and 
 compare these with estimates based om observed data.
-
-\  
-
-
-
-\  
-\  
 

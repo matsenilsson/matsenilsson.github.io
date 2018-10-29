@@ -21,8 +21,8 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -31,10 +31,12 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
 }
 </script>
 
@@ -348,11 +350,11 @@ str(conds_factor)</code></pre>
 <pre class="r"><code>iq &lt;- rnorm(500, 100, 15)
 iq_stats &lt;- c(mean(iq), sd(iq), max(iq))
 iq_stats</code></pre>
-<pre><code>## [1] 100.34460  14.82257 140.14161</code></pre>
+<pre><code>## [1] 100.0731  15.6159 146.0621</code></pre>
 <pre class="r"><code>names(iq_stats) &lt;- c(&#39;mean&#39;, &#39;sd&#39;, &#39;maxímum&#39;)
 iq_stats</code></pre>
-<pre><code>##      mean        sd   maxímum 
-## 100.34460  14.82257 140.14161</code></pre>
+<pre><code>##     mean       sd  maxímum 
+## 100.0731  15.6159 146.0621</code></pre>
 <p> </p>
 </div>
 </div>
@@ -367,13 +369,13 @@ my_data &lt;- data.frame(id, group, performance)</code></pre>
 <pre class="r"><code>table(my_data$group)</code></pre>
 <pre><code>## 
 ## female   male 
-##    106     94</code></pre>
+##    109     91</code></pre>
 <p>You have to fix this manually, using <code>levels()</code> (use $ to select a column from a data frame. More on subsetting in REX003):</p>
 <pre class="r"><code>levels(my_data$group) &lt;- c(&#39;male&#39;, &#39;female&#39;, &#39;other&#39;)
 table(my_data$group)</code></pre>
 <pre><code>## 
 ##   male female  other 
-##    106     94      0</code></pre>
+##    109     91      0</code></pre>
 <p>(The may use the argument <code>stringAsFactors = FALSE</code> when calling the <code>data.frame()</code> function to keep character vectors as they are.)</p>
 <p> </p>
 </div>
@@ -397,7 +399,7 @@ str(my_frame)</code></pre>
 </div>
 <div id="script-1-randomized-experiment-continued" class="section level2">
 <h2>Script 1: Randomized experiment (continued)</h2>
-<p>Click <a href="script1_2.R" target="_blank">here</a> for Script1 as we left it after the last seminar.</p>
+<p>Click <a href="script1_not_yet.R" target="_blank">here</a> for Script1 as we left it after the last seminar.</p>
 <p>Today we will do the following:</p>
 <ol style="list-style-type: decimal">
 <li>Simulate socioeconomic status (1 = high, 0 = low) as related to math performance and compliance</li>
@@ -448,7 +450,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

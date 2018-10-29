@@ -21,8 +21,8 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -31,10 +31,12 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
 }
 </script>
 
@@ -286,7 +288,7 @@ $(document).ready(function () {
 <p>Randomly select (with replacement) 10 integers between 1 and 20, and store them in a vector called y</p>
 <pre class="r"><code>y &lt;- sample(seq(1, 20), size = 10, replace = TRUE)
 y</code></pre>
-<pre><code>##  [1]  4 12  8 12 17  1 18  4  1 17</code></pre>
+<pre><code>##  [1] 11 19 10 17 10  7  5 14 13 11</code></pre>
 <p>Repeat ‘red’, ‘green’ four times and store them in a vector called condition</p>
 <pre class="r"><code>condition &lt;- rep(c(&#39;red&#39;, &#39;green&#39;), 4)
 condition</code></pre>
@@ -307,7 +309,7 @@ length(a)  # Number of elements in vector a</code></pre>
 <pre class="r"><code>a + 4</code></pre>
 <pre><code>## Error in a + 4: non-numeric argument to binary operator</code></pre>
 <pre class="r"><code>str(a)</code></pre>
-<pre><code>##  chr [1:60] &quot;Jan&quot; &quot;Feb&quot; &quot;Mar&quot; &quot;Apr&quot; &quot;May&quot; &quot;Jun&quot; &quot;Jul&quot; ...</code></pre>
+<pre><code>##  chr [1:60] &quot;Jan&quot; &quot;Feb&quot; &quot;Mar&quot; &quot;Apr&quot; &quot;May&quot; &quot;Jun&quot; &quot;Jul&quot; &quot;Aug&quot; &quot;Sep&quot; ...</code></pre>
 <p> </p>
 </div>
 <div id="asking-the-console-to-produce-plots-works-fine" class="section level4">
@@ -351,6 +353,7 @@ b &lt;- order(my_data)</code></pre>
 1b. Independent variable (Music): Music lessons or not. In case of non-compliance, received treatment will differ from assigned treatment (R).<br />
 2. Background (or pre-treatment) variable (SES): Socioeconomic status, defined based on residential area. The pupils in this school are from one of two nearby residential areas: one high-income and one low-income area. 3. Outcome variable (Mathscore): Score on a math test taken at the end of the semester.</p>
 <p>This is a Directed Acyclical Graph (DAG) of the simulated scenario.</p>
+<pre><code>## Warning: package &#39;dagitty&#39; was built under R version 3.4.4</code></pre>
 <p><img src="rex001_files/figure-html/unnamed-chunk-16-1.png" width="480" /></p>
 <p>Today, we will just simulate some data:</p>
 <ol style="list-style-type: decimal">
@@ -360,10 +363,11 @@ b &lt;- order(my_data)</code></pre>
 <li>Simulate outcome, to begin with as independent of treatment using the <code>rnorm()</code> function.</li>
 <li>Do some preliminary analyses to get a first feeling of how R is used for analyzing data.</li>
 </ol>
+<p><br> <br></p>
+<p>(If you want to jump ahead, here is the final script from last year, finalized at REX004 Click <a href="script1a_last_year_fin.R" target="_blank">here for</a> the final script).</p>
 <div id="exercises-1" class="section level4">
 <h4>Exercises</h4>
 <p>In the following seminar (REX002), we will simulate socioeconomic status as related to non-compliance. Please try it beforehand.</p>
-<p>   </p>
 </div>
 </div>
 </div>
@@ -400,7 +404,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

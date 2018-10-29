@@ -21,8 +21,8 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -31,10 +31,12 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
 }
 </script>
 
@@ -272,7 +274,7 @@ z</code></pre>
 <pre><code>## numeric(0)</code></pre>
 <p>You have to use square brackets, ordinary brackets are for functions.</p>
 <pre class="r"><code>z(3)</code></pre>
-<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;z&quot;</code></pre>
+<pre><code>## Error in z(3): could not find function &quot;z&quot;</code></pre>
 <p>Here is an example of the power of R: Subsetting one vector based on values in another variable.</p>
 <pre class="r"><code>set.seed(123)
 # IQs of a lot of people 
@@ -344,7 +346,7 @@ identical(g1, g1b)</code></pre>
 </div>
 <div id="script-1-randomized-experiment-continued" class="section level2">
 <h2>Script 1: Randomized experiment (continued)</h2>
-<p>Click <a href="script1_3.R" target="_blank">here</a> for Script1 as we left it after the last seminar.</p>
+<p>Click <a href="script1_not_yet.R" target="_blank">here</a> for Script1 as we left it after the last seminar.</p>
 <p>Today we will do the following:</p>
 <ol style="list-style-type: decimal">
 <li>Simulate potential outcomes</li>
@@ -394,7 +396,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

@@ -201,13 +201,20 @@ simulated participant
 4. Simulate outcome, to begin with as independent of treatment using the `rnorm()` function.
 5. Do some preliminary analyses to get a first feeling of how R is used for analyzing data.
 
+<br>
+<br>
+
+(If you want to jump ahead, here is the final script from last year, finalized at REX004 
+Click
+<a href="script1a_last_year_fin.R" target="_blank">here for</a> the final script). 
+
+
+
 #### Exercises
 In the following seminar (REX002), we will simulate socioeconomic status as related 
 to non-compliance. Please try it beforehand. 
 
-
-\  
-\  
+  
 
 
 
