@@ -16,7 +16,7 @@
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/spacelab.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -100,34 +100,34 @@ button.code-folding-btn:focus {
 <style type="text/css">
 /* padding for bootstrap navbar */
 body {
-  padding-top: 52px;
+  padding-top: 51px;
   padding-bottom: 40px;
 }
 /* offset scroll position for anchor links (for fixed navbar)  */
 .section h1 {
-  padding-top: 57px;
-  margin-top: -57px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 
 .section h2 {
-  padding-top: 57px;
-  margin-top: -57px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h3 {
-  padding-top: 57px;
-  margin-top: -57px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h4 {
-  padding-top: 57px;
-  margin-top: -57px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h5 {
-  padding-top: 57px;
-  margin-top: -57px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h6 {
-  padding-top: 57px;
-  margin-top: -57px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 </style>
 
@@ -350,11 +350,11 @@ str(conds_factor)</code></pre>
 <pre class="r"><code>iq &lt;- rnorm(500, 100, 15)
 iq_stats &lt;- c(mean(iq), sd(iq), max(iq))
 iq_stats</code></pre>
-<pre><code>## [1]  99.73094  15.58524 148.06498</code></pre>
+<pre><code>## [1] 100.96679  15.02213 147.22554</code></pre>
 <pre class="r"><code>names(iq_stats) &lt;- c(&#39;mean&#39;, &#39;sd&#39;, &#39;maxímum&#39;)
 iq_stats</code></pre>
 <pre><code>##      mean        sd   maxímum 
-##  99.73094  15.58524 148.06498</code></pre>
+## 100.96679  15.02213 147.22554</code></pre>
 <p> </p>
 </div>
 </div>
@@ -369,13 +369,13 @@ my_data &lt;- data.frame(id, group, performance)</code></pre>
 <pre class="r"><code>table(my_data$group)</code></pre>
 <pre><code>## 
 ## female   male 
-##    102     98</code></pre>
+##    109     91</code></pre>
 <p>You have to fix this manually, using <code>levels()</code> (use $ to select a column from a data frame. More on subsetting in REX003):</p>
 <pre class="r"><code>levels(my_data$group) &lt;- c(&#39;male&#39;, &#39;female&#39;, &#39;other&#39;)
 table(my_data$group)</code></pre>
 <pre><code>## 
 ##   male female  other 
-##    102     98      0</code></pre>
+##    109     91      0</code></pre>
 <p>(The may use the argument <code>stringAsFactors = FALSE</code> when calling the <code>data.frame()</code> function to keep character vectors as they are.)</p>
 <p> </p>
 </div>

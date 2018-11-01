@@ -15,7 +15,7 @@
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/spacelab.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -99,34 +99,34 @@ button.code-folding-btn:focus {
 <style type="text/css">
 /* padding for bootstrap navbar */
 body {
-  padding-top: 52px;
+  padding-top: 51px;
   padding-bottom: 40px;
 }
 /* offset scroll position for anchor links (for fixed navbar)  */
 .section h1 {
-  padding-top: 57px;
-  margin-top: -57px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 
 .section h2 {
-  padding-top: 57px;
-  margin-top: -57px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h3 {
-  padding-top: 57px;
-  margin-top: -57px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h4 {
-  padding-top: 57px;
-  margin-top: -57px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h5 {
-  padding-top: 57px;
-  margin-top: -57px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h6 {
-  padding-top: 57px;
-  margin-top: -57px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 </style>
 
@@ -253,7 +253,7 @@ $(document).ready(function () {
 <h2>Functions</h2>
 <p>Functions are small programs that do things. Most functions require that you specify what you want to be done by providing arguments, but some functions can be run without arguments:</p>
 <pre class="r"><code>date()</code></pre>
-<pre><code>## [1] &quot;Mon Oct 29 09:25:52 2018&quot;</code></pre>
+<pre><code>## [1] &quot;Thu Nov 01 16:52:34 2018&quot;</code></pre>
 <p>A function’s arguments is listed in its help page. Many functions have arguments with default values. For example, the <code>mean()</code> function has as default not to excluded missing data: <code>na.rm = FALSE</code>. This is a bit annoying, because R will give you an NA where you expected a number. But it is in fact helpful since it reminds you that your data contain missing values.</p>
 <pre class="r"><code>my_data &lt;- rnorm(1000)
 my_data[my_data &gt; 2 ] &lt;- NA  # Turn values &gt; 2 into missing data (NA)

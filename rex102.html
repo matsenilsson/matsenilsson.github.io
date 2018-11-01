@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Mats E. Nilsson" />
+
+
+<title></title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">learn R by EXample</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="content.html">Content</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Seminar notes
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="rex001.html">001</a>
+    </li>
+    <li>
+      <a href="rex002.html">002</a>
+    </li>
+    <li>
+      <a href="rex003.html">003</a>
+    </li>
+    <li>
+      <a href="rex004.html">004</a>
+    </li>
+    <li>
+      <a href="rex005.html">005</a>
+    </li>
+    <li>
+      <a href="rex006.html">006</a>
+    </li>
+    <li>
+      <a href="rex101.html">101</a>
+    </li>
+    <li>
+      <a href="rex102.html">102</a>
+    </li>
+    <li>
+      <a href="rex103.html">103</a>
+    </li>
+    <li>
+      <a href="rex104.htm">104</a>
+    </li>
+    <li>
+      <a href="rex105.html">105</a>
+    </li>
+    <li>
+      <a href="rex106.html">106</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<p> <br />
+</p>
+<div id="notes-rex102" class="section level1">
+<h1>Notes REX102</h1>
+<p>Today a bit about missing data and how to deal with them. Then a few examples of the powerful plotting tools available for data screening in R. And then we will continue our work on Script 2: An analysis of data from a listening experiment.</p>
+<p> </p>
+<div id="missing-data" class="section level3">
+<h3>Missing data</h3>
+<p>As you know, missing data in R is coded <code>NA</code>. However, many data sets contain other error codes, like 999. Some data sets include several error codes, for example 99 for a missing questionnaire response and 999 for an incorrect response (e.g., if two boxes were ticked when only one was allowed). Make sure you don’t analyse these error codes as real data. And make sure no one do the same with your data: document clearly how you coded missing data in the file (code book) explaining your data set.</p>
+<p>Here I create some fake data, with values = 999 representing missing data. Mean values of each variable should be around 0, but are much higher for some thanks to error codes handled as real data. This is easily spotted using the function <code>summary</code>. Note the use of <code>sapply</code> to calculate things for each column of the data frame.</p>
+<pre class="r"><code>set.seed(123)
+x &lt;- rnorm(1000)
+miss &lt;- sample(1000, 7)
+x[miss] &lt;- 999
+d &lt;- data.frame(matrix(x, nrow = 100, ncol = 10))
+summary(d[1:3])  # Just first three columns to illustrate </code></pre>
+<pre><code>##        X1                 X2                 X3          
+##  Min.   :-2.30917   Min.   : -2.0532   Min.   :-1.75653  
+##  1st Qu.:-0.49385   1st Qu.: -0.7522   1st Qu.:-0.53131  
+##  Median : 0.06176   Median : -0.1583   Median : 0.03591  
+##  Mean   : 0.09041   Mean   : 29.8612   Mean   : 0.12047  
+##  3rd Qu.: 0.69182   3rd Qu.:  0.5303   3rd Qu.: 0.76363  
+##  Max.   : 2.18733   Max.   :999.0000   Max.   : 2.29308</code></pre>
+<pre class="r"><code>sum(d == 999)  # Total number of missing values coded 999</code></pre>
+<pre><code>## [1] 7</code></pre>
+<pre class="r"><code>sapply(d, max) # Maximum value of each variable. </code></pre>
+<pre><code>##         X1         X2         X3         X4         X5         X6 
+##   2.187333 999.000000   2.293079   2.571458 999.000000 999.000000 
+##         X7         X8         X9        X10 
+## 999.000000   2.691714   2.684859   2.575450</code></pre>
+<pre class="r"><code>sapply(d, function(x) sum(x == 999)) # How many 999&#39;s per variable?  </code></pre>
+<pre><code>##  X1  X2  X3  X4  X5  X6  X7  X8  X9 X10 
+##   0   3   0   0   2   1   1   0   0   0</code></pre>
+</div>
+<div id="recoding-missing" class="section level3">
+<h3>Recoding missing</h3>
+<p>How to recode the 999’s to NA? Below is an expert’s trick that I learnt from reading Hadley Wickhams book <a href="http://adv-r.had.co.nz/">Advanced R</a>.</p>
+<p>Before reading that book, I might have tried something like: <code>d$X1[d$X1 == 999] &lt;- NA</code>, and then copy-paste and modifying this line for each of the ten variables in <code>d</code>. Would work for this small data set, but what if I had 139 variables: A lot of time and an accumulated risk for introducing errors.</p>
+<p>This is much more efficient and safer:</p>
+<pre class="r"><code>recode_missing &lt;- function(x) {
+  # Takes a vector as input, and recodes any instance of 999 to NA;
+  # outputs the recoded vector
+  x[x == 999] &lt;- NA
+  x
+}
+
+# Use lapply() to recode. d[] keepd d as a data frame (lapply() wants to return a list)
+d[] &lt;- lapply(d, recode_missing)  
+sapply(d, function(x) sum(x == 999, na.rm = TRUE)) # How many 999&#39;s per variable? </code></pre>
+<pre><code>##  X1  X2  X3  X4  X5  X6  X7  X8  X9 X10 
+##   0   0   0   0   0   0   0   0   0   0</code></pre>
+<pre class="r"><code>sapply(d, function(x) sum(is.na(x))) # How many NA&#39;s per variable?</code></pre>
+<pre><code>##  X1  X2  X3  X4  X5  X6  X7  X8  X9 X10 
+##   0   3   0   0   2   1   1   0   0   0</code></pre>
+<p>If your data frame contains vectors of different types, for example some numeric and some characters (with missing coded ‘999’ rather than 999), you may need to do the recoding separately for each type of vector (or make the function <code>recode_missing</code> more advanced to handle different types of input). If you have imported data with characters, R may have turned character vectors into factors without asking and you may need to replace factor levels of 999 with NA’s.</p>
+<p> </p>
+</div>
+<div id="some-basic-plots-for-exploring-data" class="section level3">
+<h3>Some basic plots for exploring data</h3>
+<p>I will use data from Howell’s table 2.1 on reaction time (RT) to illustrate how R’s powerful plotting capabilities may be used to explore a variable. You may download the data here: <a href="howell_table_2_1.txt" target="_blank"
+>Howell Table 2.1</a>.<br />
+Reference: Howell, D.C. (2012). <em>Statistical Methods for Psychology</em> (8th International ed.). Hampshire, UK: Wadsworth.</p>
+<p>The RT data is from one participant (D.C. Howell). The task was to decide as quickly as possible whether a target number (e.g., 5) had been presented in a reference series of numbers (e.g., 1 6 4 3) presented just before the target was shown on the screen. Here we will check the full set of RT’s, and also compare the stimuli in which target was in the reference list (yesno == 1) and those in which it wasn’t (yesno == 2).</p>
+<pre class="r"><code>h &lt;- read.table(&quot;howell_table_2_1.txt&quot;, header = TRUE, sep= &#39;,&#39;)
+# Summary of the reaction time data
+h$rt &lt;- h$rt * 10  # Make unit milliseconds
+summary(h$rt)  # All data</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   360.0   510.0   595.0   602.6   670.0  1250.0</code></pre>
+<pre class="r"><code>tapply(h$rt, list(h$yesno), summary)  # By stimulus group </code></pre>
+<pre><code>## $`1`
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   360.0   470.0   560.0   575.7   640.0   980.0 
+## 
+## $`2`
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   400.0   560.0   615.0   629.5   690.0  1250.0</code></pre>
+<p> </p>
+<div id="histogram-and-kernel-density-plot" class="section level4">
+<h4>Histogram and Kernel Density Plot</h4>
+<p>Here is a simple histogram of the RT data. The distribution is obviously positively skewed (as expected with RTs), with a few very high values (potential outliers).</p>
+<pre class="r"><code># Histogram with bins of 20 ms 
+hist(h$rt, breaks = seq(350, max(h$rt) + 50, by = 20), main = &#39;&#39;,
+     xlab = &#39;Reaction tim [ms]&#39;)</code></pre>
+<p><img src="rex102_files/figure-html/unnamed-chunk-4-1.png" width="576" /></p>
+<p>Some tricks needed to show a histogram with relative frequencies.</p>
+<pre class="r"><code>rel_hist &lt;- hist(h$rt, breaks = seq(350, max(h$rt) + 50, by = 20), plot = FALSE)
+rel_hist$counts &lt;- rel_hist$counts / sum(rel_hist$counts)
+plot(rel_hist, freq = TRUE, ylab = &quot;Relative frequency&quot;, xlab = &#39;Reaction tim [ms]&#39;,
+     main = &#39;&#39;)</code></pre>
+<p><img src="rex102_files/figure-html/unnamed-chunk-5-1.png" width="576" /></p>
+<p> </p>
+<p>Here the histogram with a density plot superimposed. The y-axis now display ‘density’, which means that the total area of the bars sum to 1.</p>
+<pre class="r"><code>hist(h$rt, breaks = seq(350, max(h$rt) + 50, by = 20), freq = FALSE, main = &#39;&#39;,
+     xlab = &#39;Reaction tim [ms]&#39;)
+# These two lines add a kernel density plot to the histogram
+dens &lt;- density(h$rt)
+polygon(dens, col = rgb(0, 1, 0, 0.1))  # Forth argument of rgb() sets transparancy</code></pre>
+<p><img src="rex102_files/figure-html/unnamed-chunk-6-1.png" width="576" /></p>
+<p>Here density plots separately for the two groups of stimuli (In reference list = green; not = red).</p>
+<pre class="r"><code>hist(h$rt, breaks = seq(355, max(h$rt) + 50, by = 20), freq = FALSE, main = &#39;&#39;,
+     lty = &#39;blank&#39;, xlab = &#39;Reaction tim [ms]&#39;)
+dens_yes &lt;- density(h$rt[h$yesno == 1])
+polygon(dens_yes, col = rgb(0, 1, 0, 0.2))
+dens_no &lt;- density(h$rt[h$yesno == 2])
+polygon(dens_no, col = rgb(1, 0, 0, 0.2))</code></pre>
+<p><img src="rex102_files/figure-html/unnamed-chunk-7-1.png" width="576" /></p>
+<p> </p>
+</div>
+<div id="box-plot" class="section level4">
+<h4>Box plot</h4>
+<p>The box plot is our favorite. It gives an immediate feeling for how the data is distributed, and also alerts us to potential outliers (points above or below the whiskers).</p>
+<pre class="r"><code>box_all &lt;- boxplot(h$rt, xlab = &#39;All data&#39;, ylab = &#39;Reaction tim [ms]&#39;)</code></pre>
+<p><img src="rex102_files/figure-html/unnamed-chunk-8-1.png" width="576" /></p>
+<pre class="r"><code>sort(box_all$out)  # Values identifed as outliers</code></pre>
+<pre><code>## [1]  940  940  950  950  980 1040 1040 1250</code></pre>
+<p>Note that the grouped box-plot analysis suggests one additional outlier. Be aware that group differences may mask within-group outliers.</p>
+<pre class="r"><code>box_grouped &lt;- boxplot(h$rt ~ h$yesno, 
+                       xlab = &#39;Stimulus group (1 = On list; 2 = Not on list)&#39;,
+                       ylab = &#39;Reaction time [ms]&#39;)</code></pre>
+<p><img src="rex102_files/figure-html/unnamed-chunk-9-1.png" width="576" /></p>
+<pre class="r"><code>sort(box_grouped$out)</code></pre>
+<pre><code>## [1]  900  940  940  950  950  980 1040 1040 1250</code></pre>
+<p> </p>
+</div>
+<div id="percentile-plot" class="section level4">
+<h4>Percentile plot</h4>
+<p>The percentile plot (or plot of ecdf: empirical cumulative distribution function) is useful for evaluating the shape of the data:</p>
+<pre class="r"><code>plot(ecdf(h$rt), pch = &#39;&#39;, verticals = TRUE, main = &#39;&#39;, 
+     xlab = &#39;Reaction time [ms]&#39;, ylab = &#39;Percentile / 100&#39;)</code></pre>
+<p><img src="rex102_files/figure-html/unnamed-chunk-10-1.png" width="576" /></p>
+<p>It’s especially useful when comparing groups, as below where it is evident that the two groups of stimuli differs for all except the slowest reaction times. The horizontal lines indicate the 25th, 50th (median), and 75th percentile, respectively.</p>
+<pre class="r"><code>plot(ecdf(h$rt[h$yesno == 1]), pch = &#39;&#39;, verticals = TRUE, col = &#39;green&#39;, 
+     main = &#39;&#39;, xlab = &#39;Reaction time [ms]&#39;, ylab = &#39;Percentile / 100&#39;)
+plot(ecdf(h$rt[h$yesno == 2]), pch = &#39;&#39;, verticals = TRUE, add = TRUE, col = &#39;red&#39;)
+lines(c(200, 1200), c(0.5, 0.5), col = &#39;grey&#39;)
+lines(c(200, 1200), c(0.25, 0.25), col = &#39;grey&#39;)
+lines(c(200, 1200), c(0.75, 0.75), col = &#39;grey&#39;)</code></pre>
+<p><img src="rex102_files/figure-html/unnamed-chunk-11-1.png" width="576" /></p>
+<p>       </p>
+</div>
+</div>
+<div id="script2-analysing-data-from-a-psychoacoustic-experiment" class="section level3">
+<h3>Script2: Analysing data from a psychoacoustic experiment</h3>
+<p>Click <a href="script2_1.R" target="_blank">here</a> for the script file (Script2) as we left after last time.<br />
+(Data sets: <a href="./stat1/threshold_data.txt" target="_blank">threshold data</a>, and <a href="./stat1/background_data.txt" target="_blank">background data</a>. See <a href="./stat1/codebooks.txt" target="_blank">codebooks.txt</a> for details on the variables).</p>
+<p>Today we will do some descriptive statistics of the data, including plots for getting an idea of how the data is distributed across the three groups of listeners. We will focus on simple between-group comparisons, and leave the age-variable for a later seminar.</p>
+<p> </p>
+<div id="exercises" class="section level4">
+<h4>Exercises</h4>
+<p>Evaluate the extent to which the listeners age is related to their performance on the four psychoacoustic tasks. Do this separately for the bind and the sighted age matched listeners.</p>
+<p>   </p>
+</div>
+</div>
+</div>
+
+
+
+<span style = grey>
+<hr>
+<p>&copy Mats E. Nilsson<br>Gösta Ekman Laboratory, 
+Department of Psychology, Stockholm University</p>
+
+</span>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

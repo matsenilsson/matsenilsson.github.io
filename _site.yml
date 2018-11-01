@@ -36,7 +36,7 @@ navbar:
           href: rex106.html
 output:
   html_document:
-    theme: spacelab
+    theme: default
     highlight: default
     fig_height: 4
     fig_width: 5
