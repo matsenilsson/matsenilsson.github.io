@@ -220,7 +220,7 @@ str(my_frame)
 
 ## Script 1: Randomized experiment (continued)
 Click
-<a href="script1_not_yet.R" target="_blank">here</a>
+<a href="script1_2.R" target="_blank">here</a>
 for Script1 as we left it after the last seminar. 
 
 Today we will do the following:

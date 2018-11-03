@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Mats E. Nilsson" />
+
+
+<title></title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/spacelab.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 52px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+
+.section h2 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h3 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h4 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h5 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h6 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">learn R by EXample</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="content.html">Content</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Seminar notes
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="rex001.html">001</a>
+    </li>
+    <li>
+      <a href="rex002.html">002</a>
+    </li>
+    <li>
+      <a href="rex003.html">003</a>
+    </li>
+    <li>
+      <a href="rex004.html">004</a>
+    </li>
+    <li>
+      <a href="rex005.html">005</a>
+    </li>
+    <li>
+      <a href="rex006.html">006</a>
+    </li>
+    <li>
+      <a href="rex101.html">101</a>
+    </li>
+    <li>
+      <a href="rex102.html">102</a>
+    </li>
+    <li>
+      <a href="rex103.html">103</a>
+    </li>
+    <li>
+      <a href="rex104.htm">104</a>
+    </li>
+    <li>
+      <a href="rex105.html">105</a>
+    </li>
+    <li>
+      <a href="rex106.html">106</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<p> <br />
+</p>
+<div id="notes-rex104" class="section level1">
+<h1>Notes REX104</h1>
+<p>Today some tips on how extract and repackage results from analysis stored as R objects. User-made functions can be helpful for customize outputs from standard analysis (like the t-test or linear regression). Then we will continue our work with analyzing data from the psychoacoustic experiment (Script 2).</p>
+<div id="outputs-are-objects" class="section level3">
+<h3>Outputs are objects</h3>
+<p>Everything in R is an object. This is true also for outputs of statistical tests. Here is a t-test of the difference in mean sleep improvement between two groups taking two different sleeping pills (1 and 2).</p>
+<pre class="r"><code># Data from R&#39;s set of preloaded data
+d &lt;- sleep
+# Just recoding, so group variabel is dummy coded: group 1 = 0, group2 = 1
+d$group &lt;- as.integer(d$group) - 1
+# t-test, I prefer the Welch test (var.equal = FALSE), but here I use the standard
+# t-test (var.equal = FALSE), to compare with the output of the dummy variable 
+# regression below
+t_out &lt;- t.test(d$extra[d$group == 1], d$extra[d$group == 0], var.equal = TRUE)
+t_out</code></pre>
+<pre><code>## 
+##  Two Sample t-test
+## 
+## data:  d$extra[d$group == 1] and d$extra[d$group == 0]
+## t = 1.8608, df = 18, p-value = 0.07919
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -0.203874  3.363874
+## sample estimates:
+## mean of x mean of y 
+##      2.33      0.75</code></pre>
+<p>I stored the output in <code>t_out</code>. Use <code>attributes()</code> to see the names of the various data structures stored in <code>t_out</code>; use <code>$</code> to extract selected output.</p>
+<pre class="r"><code>attributes(t_out)</code></pre>
+<pre><code>## $names
+## [1] &quot;statistic&quot;   &quot;parameter&quot;   &quot;p.value&quot;     &quot;conf.int&quot;    &quot;estimate&quot;   
+## [6] &quot;null.value&quot;  &quot;alternative&quot; &quot;method&quot;      &quot;data.name&quot;  
+## 
+## $class
+## [1] &quot;htest&quot;</code></pre>
+<pre class="r"><code>t_out$conf.int</code></pre>
+<pre><code>## [1] -0.203874  3.363874
+## attr(,&quot;conf.level&quot;)
+## [1] 0.95</code></pre>
+<p>This code combines selected output in a vector called <code>t_result</code>. Use <code>names()</code> to remember what each element represents.</p>
+<pre class="r"><code># Difference between group means is not stored in t_out, so calculate below
+mean_diff &lt;- mean(d$extra[d$group == 1]) - mean(d$extra[d$group == 0])  
+t_result &lt;- c(mean_diff, t_out$conf.int, t_out$p.value)
+names(t_result) &lt;- c(&#39;mean-diff&#39;, &#39;ci95%lo&#39;, &#39;ci95%hi&#39;, &#39;p-value&#39;)
+round(t_result, 3)  # Print to screen with three decimals</code></pre>
+<pre><code>## mean-diff   ci95%lo   ci95%hi   p-value 
+##     1.580    -0.204     3.364     0.079</code></pre>
+<p> </p>
+<p>Here is a regression analysis using the same data. The fitted model is <span class="math inline">\(\hat{y} = b_0 + b_1D\)</span>,<br />
+where <span class="math inline">\(D\)</span> is a dummy coded variable of group: group1 = 1, group2 = 0.</p>
+<pre class="r"><code># Just to recode to Group1 = 1, Group2 = 0, before the regression analysis, lm()
+lm_out &lt;- lm(d$extra ~ d$group)
+lm_out</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = d$extra ~ d$group)
+## 
+## Coefficients:
+## (Intercept)      d$group  
+##        0.75         1.58</code></pre>
+<pre class="r"><code>attributes(lm_out)</code></pre>
+<pre><code>## $names
+##  [1] &quot;coefficients&quot;  &quot;residuals&quot;     &quot;effects&quot;       &quot;rank&quot;         
+##  [5] &quot;fitted.values&quot; &quot;assign&quot;        &quot;qr&quot;            &quot;df.residual&quot;  
+##  [9] &quot;xlevels&quot;       &quot;call&quot;          &quot;terms&quot;         &quot;model&quot;        
+## 
+## $class
+## [1] &quot;lm&quot;</code></pre>
+<pre class="r"><code># Confidence intervals are not in lm_out, calculated below
+b_ci &lt;- confint(lm_out)[2, ]  # Confidence interval about coefficient for group-dummy
+# A bit hard to find the p-value of the regr. coefficient, but here it is:
+pvalue &lt;- summary(lm_out)$coefficients[2, 4]
+# Packaging the regression results in a numeric vector
+lm_result &lt;- c(lm_out$coefficients[2], b_ci, pvalue)
+names(lm_result) &lt;- c(&#39;regr.coeff&#39;, &#39;ci95%lo&#39;, &#39;ci95%hi&#39;, &#39;p-value&#39;)
+round(lm_result, 3)  # Print to screen with three decimals</code></pre>
+<pre><code>## regr.coeff    ci95%lo    ci95%hi    p-value 
+##      1.580     -0.204      3.364      0.079</code></pre>
+<pre class="r"><code>round(t_result, 3)  # ... and t-test results again for comparison</code></pre>
+<pre><code>## mean-diff   ci95%lo   ci95%hi   p-value 
+##     1.580    -0.204     3.364     0.079</code></pre>
+<p> </p>
+<div id="output-as-input" class="section level4">
+<h4>Output as input</h4>
+<p>Output stored as an object may be used as input to other functions. Here is a plot of the relationship between extra sleep and the dummy coded group variable. <code>lm_result</code> was used as input to the function <code>abline()</code> to draw the regression line.</p>
+<pre class="r"><code>plot(d$group, d$extra, xlab = &#39;Group \n(0 = group1, 1 = group2)&#39;,  
+     ylab = &#39;Extra sleep&#39;, xlim = c(-0.1, 1.1), axes = FALSE)
+axis(1, at = c(0, 1), tck = 0.02)
+axis(2, las = 1, tck = 0.03)
+lm_out &lt;- lm(d$extra ~ d$group)
+abline(lm_out)</code></pre>
+<p><img src="rex104_files/figure-html/unnamed-chunk-6-1.png" width="288" /></p>
+<p>     </p>
+</div>
+</div>
+<div id="script2-analysing-data-from-a-psychoacoustic-experiment" class="section level3">
+<h3>Script2: Analysing data from a psychoacoustic experiment</h3>
+<p>Click <a href="script2_3.R" target="_blank">here</a> for the script file (Script2) as we left after last time.<br />
+(Data sets: <a href="./stat1/threshold_data.txt" target="_blank">threshold data</a>, and <a href="./stat1/background_data.txt" target="_blank">background data</a>. See <a href="./stat1/codebooks.txt" target="_blank">codebooks.txt</a> for details on the variables).</p>
+<p>Today we’ll sum up our group comparisons based on arithmetic means, and then do similar analysis of differences between group medians (robust to influences from the outliers in the data). Finally, we will then do test the relationships between auditory abilities and age using regression techniques.</p>
+<p> </p>
+<div id="exercises" class="section level4">
+<h4>Exercises</h4>
+<p>How would you evaluate the observed differences between group medians of auditory thresholds?</p>
+<p>   </p>
+</div>
+</div>
+</div>
+
+
+
+<span style = grey>
+<hr>
+<p>&copy Mats E. Nilsson<br>Gösta Ekman Laboratory, 
+Department of Psychology, Stockholm University</p>
+
+</span>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -11,26 +11,26 @@
 #     on residential area (either high-income or low-income area). 
 #  3. Outcome variable: Score on math test taken at the end of the semester.
 #
-# Mats Nilsson (mats.nilsson@psychology.su.se), revised: 2016-10-29
+# Mats Nilsson (mats.nilsson@psychology.su.se), revised: 2018-11-03
 
 # To be started at REX001 ...
 
 
-# Clear things and set random seed ---------------------------------------------
-rm(list = ls())
-graphics.off()
-cat("\014")
-set.seed(123)
-# ------------------------------------------------------------------------------
+## Clear things and set random seed --------------------------------------------
+rm(list = ls())  # Clears the global environment
+graphics.off()  # Clear all plots
+cat("\014")  # Clears the console
+set.seed(123)  # Seet sed of random number generator
+## -----------------------------------------------------------------------------
 
 
-# Simulate data ----------------------------------------------------------------
+## Simulate data ---------------------------------------------------------------
 n <- 600  # Sample size
 
 id <- 1:n # Unique id number for each participant
 
-# Random assignment
-rand_assign <- sample(c(0, 1), replace = TRUE, size = n) # Bernoulli trial method
+# Random assignment, Bernoulli trial method
+rand_assign <- sample(c(0, 1), replace = TRUE, size = n) 
 
 # Music lessons (for the moment assuming 100 % compliance)
 music_lessons <- rand_assign
@@ -42,3 +42,5 @@ math <- rnorm(n, m = 50, sd = 10)  # Math test, mean = 50; sd = 10
 d <- data.frame(id, rand_assign, music_lessons, math)
 # ------------------------------------------------------------------------------
 
+
+# To be continued at REX002 ...

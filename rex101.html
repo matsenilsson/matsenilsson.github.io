@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Mats E. Nilsson" />
+
+
+<title></title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/spacelab.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 52px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+
+.section h2 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h3 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h4 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h5 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h6 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">learn R by EXample</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="content.html">Content</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Seminar notes
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="rex001.html">001</a>
+    </li>
+    <li>
+      <a href="rex002.html">002</a>
+    </li>
+    <li>
+      <a href="rex003.html">003</a>
+    </li>
+    <li>
+      <a href="rex004.html">004</a>
+    </li>
+    <li>
+      <a href="rex005.html">005</a>
+    </li>
+    <li>
+      <a href="rex006.html">006</a>
+    </li>
+    <li>
+      <a href="rex101.html">101</a>
+    </li>
+    <li>
+      <a href="rex102.html">102</a>
+    </li>
+    <li>
+      <a href="rex103.html">103</a>
+    </li>
+    <li>
+      <a href="rex104.htm">104</a>
+    </li>
+    <li>
+      <a href="rex105.html">105</a>
+    </li>
+    <li>
+      <a href="rex106.html">106</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<p> <br />
+</p>
+<div id="notes-rex101" class="section level1">
+<h1>Notes REX101</h1>
+<p>This seminar deals with importing data to R. There are many ways to do this; we’ll use the function <code>read.table()</code>. Once this has been mastered, we will import some real data and start working on a full data analysis of data from an experiment (Script2, to be completed in the following REX seminars).</p>
+<p> </p>
+<div id="set-the-working-directory" class="section level3">
+<h3>Set the working directory</h3>
+<p>The way to start a data analysis project is to first create a directory dedicated to project. This directory will contain data files, code books, your R-scripts, and, later on, output from your analyses (e.g., figures).</p>
+<p>The code below checks the current directory, and then changes it to a directory containing the data set to be analysed. The functions <code>list.dirs()</code> and <code>list.files()</code> do what their names imply (as function names should do!).</p>
+<pre class="r"><code>getwd()</code></pre>
+<pre><code>## [1] &quot;C:/Users/MATNI/Dropbox/mn2018/undervisning/method1/methods1_ht18/stamnosslin.github.io&quot;</code></pre>
+<pre class="r"><code>list.dirs()  # List directories in the current directory</code></pre>
+<pre><code>##   [1] &quot;.&quot;                                    
+##   [2] &quot;./.git&quot;                               
+##   [3] &quot;./.git/hooks&quot;                         
+##   [4] &quot;./.git/info&quot;                          
+##   [5] &quot;./.git/logs&quot;                          
+##   [6] &quot;./.git/logs/refs&quot;                     
+##   [7] &quot;./.git/logs/refs/heads&quot;               
+##   [8] &quot;./.git/logs/refs/remotes&quot;             
+##   [9] &quot;./.git/logs/refs/remotes/origin&quot;      
+##  [10] &quot;./.git/objects&quot;                       
+##  [11] &quot;./.git/objects/03&quot;                    
+##  [12] &quot;./.git/objects/04&quot;                    
+##  [13] &quot;./.git/objects/07&quot;                    
+##  [14] &quot;./.git/objects/08&quot;                    
+##  [15] &quot;./.git/objects/10&quot;                    
+##  [16] &quot;./.git/objects/12&quot;                    
+##  [17] &quot;./.git/objects/13&quot;                    
+##  [18] &quot;./.git/objects/17&quot;                    
+##  [19] &quot;./.git/objects/19&quot;                    
+##  [20] &quot;./.git/objects/1e&quot;                    
+##  [21] &quot;./.git/objects/20&quot;                    
+##  [22] &quot;./.git/objects/26&quot;                    
+##  [23] &quot;./.git/objects/30&quot;                    
+##  [24] &quot;./.git/objects/31&quot;                    
+##  [25] &quot;./.git/objects/32&quot;                    
+##  [26] &quot;./.git/objects/33&quot;                    
+##  [27] &quot;./.git/objects/36&quot;                    
+##  [28] &quot;./.git/objects/37&quot;                    
+##  [29] &quot;./.git/objects/38&quot;                    
+##  [30] &quot;./.git/objects/3a&quot;                    
+##  [31] &quot;./.git/objects/3b&quot;                    
+##  [32] &quot;./.git/objects/3c&quot;                    
+##  [33] &quot;./.git/objects/41&quot;                    
+##  [34] &quot;./.git/objects/44&quot;                    
+##  [35] &quot;./.git/objects/46&quot;                    
+##  [36] &quot;./.git/objects/49&quot;                    
+##  [37] &quot;./.git/objects/4a&quot;                    
+##  [38] &quot;./.git/objects/4d&quot;                    
+##  [39] &quot;./.git/objects/50&quot;                    
+##  [40] &quot;./.git/objects/51&quot;                    
+##  [41] &quot;./.git/objects/53&quot;                    
+##  [42] &quot;./.git/objects/55&quot;                    
+##  [43] &quot;./.git/objects/57&quot;                    
+##  [44] &quot;./.git/objects/5d&quot;                    
+##  [45] &quot;./.git/objects/61&quot;                    
+##  [46] &quot;./.git/objects/68&quot;                    
+##  [47] &quot;./.git/objects/6a&quot;                    
+##  [48] &quot;./.git/objects/6e&quot;                    
+##  [49] &quot;./.git/objects/72&quot;                    
+##  [50] &quot;./.git/objects/74&quot;                    
+##  [51] &quot;./.git/objects/78&quot;                    
+##  [52] &quot;./.git/objects/79&quot;                    
+##  [53] &quot;./.git/objects/7d&quot;                    
+##  [54] &quot;./.git/objects/81&quot;                    
+##  [55] &quot;./.git/objects/83&quot;                    
+##  [56] &quot;./.git/objects/84&quot;                    
+##  [57] &quot;./.git/objects/85&quot;                    
+##  [58] &quot;./.git/objects/86&quot;                    
+##  [59] &quot;./.git/objects/87&quot;                    
+##  [60] &quot;./.git/objects/8f&quot;                    
+##  [61] &quot;./.git/objects/90&quot;                    
+##  [62] &quot;./.git/objects/91&quot;                    
+##  [63] &quot;./.git/objects/94&quot;                    
+##  [64] &quot;./.git/objects/97&quot;                    
+##  [65] &quot;./.git/objects/9f&quot;                    
+##  [66] &quot;./.git/objects/a4&quot;                    
+##  [67] &quot;./.git/objects/a7&quot;                    
+##  [68] &quot;./.git/objects/aa&quot;                    
+##  [69] &quot;./.git/objects/af&quot;                    
+##  [70] &quot;./.git/objects/b0&quot;                    
+##  [71] &quot;./.git/objects/b4&quot;                    
+##  [72] &quot;./.git/objects/b7&quot;                    
+##  [73] &quot;./.git/objects/bc&quot;                    
+##  [74] &quot;./.git/objects/c1&quot;                    
+##  [75] &quot;./.git/objects/c2&quot;                    
+##  [76] &quot;./.git/objects/c4&quot;                    
+##  [77] &quot;./.git/objects/c6&quot;                    
+##  [78] &quot;./.git/objects/c7&quot;                    
+##  [79] &quot;./.git/objects/c8&quot;                    
+##  [80] &quot;./.git/objects/cb&quot;                    
+##  [81] &quot;./.git/objects/cd&quot;                    
+##  [82] &quot;./.git/objects/cf&quot;                    
+##  [83] &quot;./.git/objects/d0&quot;                    
+##  [84] &quot;./.git/objects/d7&quot;                    
+##  [85] &quot;./.git/objects/d9&quot;                    
+##  [86] &quot;./.git/objects/da&quot;                    
+##  [87] &quot;./.git/objects/db&quot;                    
+##  [88] &quot;./.git/objects/de&quot;                    
+##  [89] &quot;./.git/objects/df&quot;                    
+##  [90] &quot;./.git/objects/e1&quot;                    
+##  [91] &quot;./.git/objects/e2&quot;                    
+##  [92] &quot;./.git/objects/e5&quot;                    
+##  [93] &quot;./.git/objects/e7&quot;                    
+##  [94] &quot;./.git/objects/eb&quot;                    
+##  [95] &quot;./.git/objects/ec&quot;                    
+##  [96] &quot;./.git/objects/ef&quot;                    
+##  [97] &quot;./.git/objects/fc&quot;                    
+##  [98] &quot;./.git/objects/ff&quot;                    
+##  [99] &quot;./.git/objects/info&quot;                  
+## [100] &quot;./.git/objects/pack&quot;                  
+## [101] &quot;./.git/refs&quot;                          
+## [102] &quot;./.git/refs/heads&quot;                    
+## [103] &quot;./.git/refs/remotes&quot;                  
+## [104] &quot;./.git/refs/remotes/origin&quot;           
+## [105] &quot;./.git/refs/tags&quot;                     
+## [106] &quot;./rex001_files&quot;                       
+## [107] &quot;./rex001_files/figure-html&quot;           
+## [108] &quot;./rex005_files&quot;                       
+## [109] &quot;./rex005_files/figure-html&quot;           
+## [110] &quot;./site_libs&quot;                          
+## [111] &quot;./site_libs/bootstrap-3.3.5&quot;          
+## [112] &quot;./site_libs/bootstrap-3.3.5/css&quot;      
+## [113] &quot;./site_libs/bootstrap-3.3.5/css/fonts&quot;
+## [114] &quot;./site_libs/bootstrap-3.3.5/fonts&quot;    
+## [115] &quot;./site_libs/bootstrap-3.3.5/js&quot;       
+## [116] &quot;./site_libs/bootstrap-3.3.5/shim&quot;     
+## [117] &quot;./site_libs/highlightjs-9.12.0&quot;       
+## [118] &quot;./site_libs/jquery-1.11.3&quot;            
+## [119] &quot;./site_libs/navigation-1.1&quot;           
+## [120] &quot;./stat1&quot;</code></pre>
+<pre class="r"><code>setwd(&quot;./stat1&quot;)  # Move to new directory ( . means current directory)
+getwd()  # Check that we are in the new directory </code></pre>
+<pre><code>## [1] &quot;C:/Users/MATNI/Dropbox/mn2018/undervisning/method1/methods1_ht18/stamnosslin.github.io/stat1&quot;</code></pre>
+<pre class="r"><code>list.files()  # List files in the (new) current directory</code></pre>
+<pre><code>## [1] &quot;background_data.txt&quot;  &quot;codebooks.txt&quot;        &quot;script2_dataanalys.R&quot;
+## [4] &quot;threshold_data.txt&quot;</code></pre>
+<p> </p>
+</div>
+<div id="import-data" class="section level3">
+<h3>Import data</h3>
+<p>We will use the function <code>read.table()</code> to import data in R. The function imports a text file with data ordered in columns. The output is a data frame. The function’s first argument is the path to the text file. If you just give a file name, R will look in the current directory (if it is not there R will through you an error message). If you want to import a dataset located in another directory you have to specify the path (or change R’s current directory using <code>setwd()</code>).</p>
+<p>In the example below, the to be imported text-file has variable names in the first line and the columns are separated by commas, hence the arguments <code>header = TRUE</code> and <code>sep = &quot;,&quot;</code>. The data is from <a href="howell_table_15_1.txt" target="_blank">Howell’s Table 15.1</a></p>
+<pre class="r"><code>d &lt;- read.table(&quot;howell_table_15_1.txt&quot;, header = TRUE, sep = &quot;,&quot;)</code></pre>
+<p> </p>
+<div id="initial-data-screening" class="section level4">
+<h4>Initial data screening</h4>
+<p>Below some initial checks of the imported data. Note from the output of <code>str(d)</code> that R imports variables with decimal values as type <code>num</code>, variables with integers as type <code>int</code>, and that variables with characters (strings) are imported as factors.</p>
+<pre class="r"><code># Check that d is a data frame. 
+str(d)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    50 obs. of  11 variables:
+##  $ id     : int  1 2 3 4 5 6 7 8 9 10 ...
+##  $ State  : Factor w/ 50 levels &quot;Alabama&quot;,&quot;Alaska&quot;,..: 1 2 3 4 5 6 7 8 9 10 ...
+##  $ Expend : num  4.41 8.96 4.78 4.46 4.99 ...
+##  $ PTratio: num  17.2 17.6 19.3 17.1 24 18.4 14.4 16.6 19.1 16.3 ...
+##  $ Salary : num  31.1 48 32.2 28.9 41.1 ...
+##  $ PctSAT : int  8 47 27 6 45 29 81 68 48 65 ...
+##  $ Verbal : int  491 445 448 482 417 462 431 429 420 406 ...
+##  $ Math   : int  538 489 496 523 485 518 477 468 469 448 ...
+##  $ SAT    : int  1029 934 944 1005 902 980 908 897 889 854 ...
+##  $ PctACT : int  61 32 27 66 11 62 3 3 36 16 ...
+##  $ ACT    : num  20.2 21 21.1 20.3 21 21.5 21.7 21 20.7 20.2 ...</code></pre>
+<pre class="r"><code># List column names
+colnames(d)</code></pre>
+<pre><code>##  [1] &quot;id&quot;      &quot;State&quot;   &quot;Expend&quot;  &quot;PTratio&quot; &quot;Salary&quot;  &quot;PctSAT&quot;  &quot;Verbal&quot; 
+##  [8] &quot;Math&quot;    &quot;SAT&quot;     &quot;PctACT&quot;  &quot;ACT&quot;</code></pre>
+<pre class="r"><code># Check that the data looks alright, by looking at the first few lines
+head(d)</code></pre>
+<pre><code>##   id   State Expend PTratio Salary PctSAT Verbal Math  SAT PctACT  ACT
+## 1  1 Alabama  4.405    17.2 31.144      8    491  538 1029     61 20.2
+## 2  2  Alaska  8.963    17.6 47.951     47    445  489  934     32 21.0
+## 3  3 Arizona  4.778    19.3 32.175     27    448  496  944     27 21.1
+## 4  4     Ark  4.459    17.1 28.934      6    482  523 1005     66 20.3
+## 5  5   Calif  4.992    24.0 41.078     45    417  485  902     11 21.0
+## 6  6     Col  5.443    18.4 34.571     29    462  518  980     62 21.5</code></pre>
+<pre class="r"><code># ... and at the last few lines
+tail(d)</code></pre>
+<pre><code>##    id   State Expend PTratio Salary PctSAT Verbal Math  SAT PctACT  ACT
+## 45 45 Vermont  6.750    13.8 35.406     68    429  472  901      7 21.9
+## 46 46      Va  5.327    14.6 33.987     65    428  468  896      6 20.7
+## 47 47    Wash  5.906    20.2 36.151     48    443  494  937     16 22.4
+## 48 48      WV  6.107    14.8 31.944     17    448  484  932     57 20.0
+## 49 49    Wisc  6.930    15.9 37.746      9    501  572 1073     64 22.3
+## 50 50 Wyoming  6.160    14.9 31.285     10    476  525 1001     70 21.4</code></pre>
+<pre class="r"><code># Some summary statistics
+summary(d)</code></pre>
+<pre><code>##        id            State        Expend         PTratio     
+##  Min.   : 1.00   Alabama: 1   Min.   :3.656   Min.   :13.80  
+##  1st Qu.:13.25   Alaska : 1   1st Qu.:4.882   1st Qu.:15.22  
+##  Median :25.50   Arizona: 1   Median :5.768   Median :16.60  
+##  Mean   :25.50   Ark    : 1   Mean   :5.905   Mean   :16.86  
+##  3rd Qu.:37.75   Calif  : 1   3rd Qu.:6.434   3rd Qu.:17.57  
+##  Max.   :50.00   Col    : 1   Max.   :9.774   Max.   :24.30  
+##                  (Other):44                                  
+##      Salary          PctSAT          Verbal           Math      
+##  Min.   :25.99   Min.   : 4.00   Min.   :401.0   Min.   :443.0  
+##  1st Qu.:30.98   1st Qu.: 9.00   1st Qu.:427.2   1st Qu.:474.8  
+##  Median :33.29   Median :28.00   Median :448.0   Median :497.5  
+##  Mean   :34.83   Mean   :35.24   Mean   :457.1   Mean   :508.8  
+##  3rd Qu.:38.55   3rd Qu.:63.00   3rd Qu.:490.2   3rd Qu.:539.5  
+##  Max.   :50.05   Max.   :81.00   Max.   :516.0   Max.   :592.0  
+##                                                                 
+##       SAT             PctACT           ACT       
+##  Min.   : 844.0   Min.   : 2.00   Min.   :18.70  
+##  1st Qu.: 897.2   1st Qu.:11.25   1st Qu.:20.62  
+##  Median : 945.5   Median :47.00   Median :21.30  
+##  Mean   : 965.9   Mean   :40.52   Mean   :21.05  
+##  3rd Qu.:1032.0   3rd Qu.:65.75   3rd Qu.:21.60  
+##  Max.   :1107.0   Max.   :83.00   Max.   :22.40  
+## </code></pre>
+<pre class="r"><code># Here I add two NA&#39;s, just for illustration
+d[c(7, 31), c(5, 6)] &lt;- NA
+# Summary statistics of selected variables, note the NA&#39;s
+summary(d[, c(5, 6)])</code></pre>
+<pre><code>##      Salary          PctSAT     
+##  Min.   :25.99   Min.   : 4.00  
+##  1st Qu.:31.09   1st Qu.: 9.00  
+##  Median :33.29   Median :28.00  
+##  Mean   :34.64   Mean   :34.79  
+##  3rd Qu.:38.53   3rd Qu.:61.00  
+##  Max.   :47.95   Max.   :80.00  
+##  NA&#39;s   :2       NA&#39;s   :2</code></pre>
+<pre class="r"><code>sum(is.na(d))  # This counts the NA&#39;s in the data frame</code></pre>
+<pre><code>## [1] 4</code></pre>
+<p>   </p>
+</div>
+</div>
+<div id="script2-analysing-data-from-a-psychoacoustic-experiment" class="section level3">
+<h3>Script2: Analysing data from a psychoacoustic experiment</h3>
+<p>Click <a href="script2_0.R" target="_blank">here</a> for a script file (Script2), to be completed it in the following seminars.</p>
+<p>The data is from a listening experiment involving blind and sighted listeners, conducted at the Gösta Ekman Laboratory in 2016. The experiment measured auditory thresholds for abilities potentially involved in human echolocation.</p>
+<p>The data is stored in two files. The first file contains <a href="./stat1/threshold_data.txt" target="_blank">threshold data</a>, the second file contains <a href="./stat1/background_data.txt" target="_blank">background data</a> (age, sex, …). Please see the file <a href="./stat1/codebooks.txt" target="_blank">codebooks.txt</a> for details on the variables stored in the data files.</p>
+<p>The hypotheses of the experiment were straight forward: (1) Blind listeners were expected to perform better (have lower thresholds) than the sighted listeners on all four conditions, but (2) age may moderate this effect, so differences between groups of blind and sighted listeners were expected to be larger for the age-matched than the young group of sighted listeners.</p>
+<p>Today we will just import the data files and do some preliminary screening tests to make sure the data was imported correctly.</p>
+<p> </p>
+<div id="exercises" class="section level4">
+<h4>Exercises</h4>
+<p>Try to do some initial between-group comparisons of thresholds, separately for each of the four experimental conditions.</p>
+<p>   </p>
+</div>
+</div>
+</div>
+
+
+
+<span style = grey>
+<hr>
+<p>&copy Mats E. Nilsson<br>Gösta Ekman Laboratory, 
+Department of Psychology, Stockholm University</p>
+
+</span>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
