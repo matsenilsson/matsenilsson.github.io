@@ -350,11 +350,11 @@ str(conds_factor)</code></pre>
 <pre class="r"><code>iq &lt;- rnorm(500, 100, 15)
 iq_stats &lt;- c(mean(iq), sd(iq), max(iq))
 iq_stats</code></pre>
-<pre><code>## [1]  99.23467  14.82472 149.37494</code></pre>
+<pre><code>## [1]  99.64950  14.61067 140.31683</code></pre>
 <pre class="r"><code>names(iq_stats) &lt;- c(&#39;mean&#39;, &#39;sd&#39;, &#39;maxímum&#39;)
 iq_stats</code></pre>
 <pre><code>##      mean        sd   maxímum 
-##  99.23467  14.82472 149.37494</code></pre>
+##  99.64950  14.61067 140.31683</code></pre>
 <p> </p>
 </div>
 </div>
@@ -369,13 +369,13 @@ my_data &lt;- data.frame(id, group, performance)</code></pre>
 <pre class="r"><code>table(my_data$group)</code></pre>
 <pre><code>## 
 ## female   male 
-##     96    104</code></pre>
+##    110     90</code></pre>
 <p>You have to fix this manually, using <code>levels()</code> (use $ to select a column from a data frame. More on subsetting in REX003):</p>
 <pre class="r"><code>levels(my_data$group) &lt;- c(&#39;male&#39;, &#39;female&#39;, &#39;other&#39;)
 table(my_data$group)</code></pre>
 <pre><code>## 
 ##   male female  other 
-##     96    104      0</code></pre>
+##    110     90      0</code></pre>
 <p>(The may use the argument <code>stringAsFactors = FALSE</code> when calling the <code>data.frame()</code> function to keep character vectors as they are.)</p>
 <p> </p>
 </div>
