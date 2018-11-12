@@ -15,7 +15,7 @@
 
 
 
-# To be started at REX001 ...
+# To be continued at REX003 ...
 
 ## Clear things and set random seed --------------------------------------------
 rm(list = ls())
@@ -66,9 +66,6 @@ t.test(d$math ~ d$music_lessons)
 ## -----------------------------------------------------------------------------
 
 
-
-
-# To be contined at REX003 ...
 
 
 
