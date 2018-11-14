@@ -168,7 +168,7 @@ do_exc1(randint, 10)
 
 ## Script 1: Randomized experiment (continued)
 Click
-<a href="script1_not_yet.R" target="_blank">here</a>
+<a href="script1_4.R" target="_blank">here</a>
 for Script1 as it looks after some rewriting from last time.  
 
 <br>
