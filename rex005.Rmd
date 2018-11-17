@@ -186,7 +186,7 @@ School problems (SProb), BMI (BMI), Genetic factor (Genetic).
 
 (We will have have completed our simulation of the randomized experiment at REX004), 
 Click
-<a href="script1a_not_yet.R" target="_blank">here for</a> the final script). 
+<a href="script1a_fin.R" target="_blank">here for</a> the final script). 
 
 
 
