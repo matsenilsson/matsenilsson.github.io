@@ -142,17 +142,10 @@ check_order(pi, 4, 2^2)
 \  
 \  
 
-## Script 1: Randomized experiment (finalized)
+## Script 1: DAG simulation (to be finalized)
 Click
-<a href="script1b_not_yet.R" target="_blank">here</a>
-for Script1b as we left it after the last seminar.  
+<a href="script1b_6.R" target="_blank">here</a>
+for Script1b as we left it after the last seminar (with some changes added later on).  
 
 
 
-\  
-\  
-
-### Final script
-Click
-<a href="script1b_fin.R" target="_blank">here</a>
-for the final script. 
