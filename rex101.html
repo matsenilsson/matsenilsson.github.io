@@ -91,8 +91,14 @@ img {
 .tabbed-pane {
   padding-top: 12px;
 }
+.html-widget {
+  margin-bottom: 20px;
+}
 button.code-folding-btn:focus {
   outline: none;
+}
+summary {
+  display: list-item;
 }
 </style>
 
@@ -108,7 +114,6 @@ body {
   padding-top: 57px;
   margin-top: -57px;
 }
-
 .section h2 {
   padding-top: 57px;
   margin-top: -57px;
@@ -128,6 +133,43 @@ body {
 .section h6 {
   padding-top: 57px;
   margin-top: -57px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
 }
 </style>
 
@@ -149,18 +191,77 @@ $(document).ready(function () {
 });
 </script>
 
-
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
 });
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
 </script>
 
 <!-- code folding -->
-
 
 
 
@@ -268,54 +369,28 @@ $(document).ready(function () {
 ##  [8] &quot;./.git/logs/refs/remotes&quot;             
 ##  [9] &quot;./.git/logs/refs/remotes/origin&quot;      
 ## [10] &quot;./.git/objects&quot;                       
-## [11] &quot;./.git/objects/0c&quot;                    
-## [12] &quot;./.git/objects/12&quot;                    
-## [13] &quot;./.git/objects/13&quot;                    
-## [14] &quot;./.git/objects/2b&quot;                    
-## [15] &quot;./.git/objects/33&quot;                    
-## [16] &quot;./.git/objects/45&quot;                    
-## [17] &quot;./.git/objects/46&quot;                    
-## [18] &quot;./.git/objects/5c&quot;                    
-## [19] &quot;./.git/objects/61&quot;                    
-## [20] &quot;./.git/objects/8f&quot;                    
-## [21] &quot;./.git/objects/9a&quot;                    
-## [22] &quot;./.git/objects/9c&quot;                    
-## [23] &quot;./.git/objects/a5&quot;                    
-## [24] &quot;./.git/objects/b1&quot;                    
-## [25] &quot;./.git/objects/c1&quot;                    
-## [26] &quot;./.git/objects/c7&quot;                    
-## [27] &quot;./.git/objects/cf&quot;                    
-## [28] &quot;./.git/objects/d7&quot;                    
-## [29] &quot;./.git/objects/d8&quot;                    
-## [30] &quot;./.git/objects/e0&quot;                    
-## [31] &quot;./.git/objects/e1&quot;                    
-## [32] &quot;./.git/objects/e2&quot;                    
-## [33] &quot;./.git/objects/e5&quot;                    
-## [34] &quot;./.git/objects/e7&quot;                    
-## [35] &quot;./.git/objects/ec&quot;                    
-## [36] &quot;./.git/objects/fa&quot;                    
-## [37] &quot;./.git/objects/info&quot;                  
-## [38] &quot;./.git/objects/pack&quot;                  
-## [39] &quot;./.git/refs&quot;                          
-## [40] &quot;./.git/refs/heads&quot;                    
-## [41] &quot;./.git/refs/remotes&quot;                  
-## [42] &quot;./.git/refs/remotes/origin&quot;           
-## [43] &quot;./.git/refs/tags&quot;                     
-## [44] &quot;./rex001_files&quot;                       
-## [45] &quot;./rex001_files/figure-html&quot;           
-## [46] &quot;./rex005_files&quot;                       
-## [47] &quot;./rex005_files/figure-html&quot;           
-## [48] &quot;./site_libs&quot;                          
-## [49] &quot;./site_libs/bootstrap-3.3.5&quot;          
-## [50] &quot;./site_libs/bootstrap-3.3.5/css&quot;      
-## [51] &quot;./site_libs/bootstrap-3.3.5/css/fonts&quot;
-## [52] &quot;./site_libs/bootstrap-3.3.5/fonts&quot;    
-## [53] &quot;./site_libs/bootstrap-3.3.5/js&quot;       
-## [54] &quot;./site_libs/bootstrap-3.3.5/shim&quot;     
-## [55] &quot;./site_libs/highlightjs-9.12.0&quot;       
-## [56] &quot;./site_libs/jquery-1.11.3&quot;            
-## [57] &quot;./site_libs/navigation-1.1&quot;           
-## [58] &quot;./stat1&quot;</code></pre>
+## [11] &quot;./.git/objects/info&quot;                  
+## [12] &quot;./.git/objects/pack&quot;                  
+## [13] &quot;./.git/refs&quot;                          
+## [14] &quot;./.git/refs/heads&quot;                    
+## [15] &quot;./.git/refs/remotes&quot;                  
+## [16] &quot;./.git/refs/remotes/origin&quot;           
+## [17] &quot;./.git/refs/tags&quot;                     
+## [18] &quot;./rex001_files&quot;                       
+## [19] &quot;./rex001_files/figure-html&quot;           
+## [20] &quot;./rex005_files&quot;                       
+## [21] &quot;./rex005_files/figure-html&quot;           
+## [22] &quot;./site_libs&quot;                          
+## [23] &quot;./site_libs/bootstrap-3.3.5&quot;          
+## [24] &quot;./site_libs/bootstrap-3.3.5/css&quot;      
+## [25] &quot;./site_libs/bootstrap-3.3.5/css/fonts&quot;
+## [26] &quot;./site_libs/bootstrap-3.3.5/fonts&quot;    
+## [27] &quot;./site_libs/bootstrap-3.3.5/js&quot;       
+## [28] &quot;./site_libs/bootstrap-3.3.5/shim&quot;     
+## [29] &quot;./site_libs/highlightjs-9.12.0&quot;       
+## [30] &quot;./site_libs/jquery-1.11.3&quot;            
+## [31] &quot;./site_libs/navigation-1.1&quot;           
+## [32] &quot;./stat1&quot;</code></pre>
 <pre class="r"><code>setwd(&quot;./stat1&quot;)  # Move to new directory ( . means current directory)
 getwd()  # Check that we are in the new directory </code></pre>
 <pre><code>## [1] &quot;C:/Users/MATNI/Desktop/stamnosslin.github.io/stat1&quot;</code></pre>

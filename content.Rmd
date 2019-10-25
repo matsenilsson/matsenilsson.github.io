@@ -34,10 +34,10 @@ Seminar| R topics               | by EXample: Writing a script
 \ 
 
 ### When and where?
-Seminars 001, 002, ... run as satellite to the master-program course Method1: Click here for [Schedule fall semester 2017](https://fastreg.psychology.su.se/KursWeb/ScheduleKronologisk.aspx?MomentID=71&termin=H17)
+Seminars 001, 002, ... run as satellite to the master-program course Method1.
 
-Seminars 101, 102, ... run as satellite to the master-program course Stat1:
-Click here for [Schedule fall semester 2017](https://fastreg.psychology.su.se/KursWeb/ScheduleKronologisk.aspx?MomentID=61&termin=H17)
+Seminars 101, 102, ... run as satellite to the master-program course Stat1.
+
 
 
 
