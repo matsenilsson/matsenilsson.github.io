@@ -7,6 +7,7 @@
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 <meta name="author" content="Mats E. Nilsson" />
@@ -70,9 +71,7 @@ h6 {
 </style>
 
 
-</head>
 
-<body>
 
 <style type = "text/css">
 .main-container {
@@ -86,7 +85,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -191,8 +189,6 @@ $(document).ready(function () {
 });
 </script>
 
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
 
 <style type="text/css">
@@ -249,20 +245,17 @@ $(document).ready(function () {
 }
 </style>
 
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
-
 <!-- code folding -->
 
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
 
 
 
@@ -363,12 +356,12 @@ d &lt;- data.frame(replicate(10, sample(1:5, 100, replace = TRUE)))
 meanrows &lt;- apply(d, MARGIN = 1, FUN = mean) 
 summary(meanrows)</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   1.700   2.675   3.000   2.989   3.300   4.100</code></pre>
+##   2.000   2.675   3.100   2.985   3.300   4.000</code></pre>
 <pre class="r"><code># Means across columns
 meancols &lt;- apply(d, MARGIN = 2, FUN = mean) 
 meancols</code></pre>
 <pre><code>##   X1   X2   X3   X4   X5   X6   X7   X8   X9  X10 
-## 3.00 3.07 2.92 2.94 2.93 3.09 3.01 3.00 2.92 3.01</code></pre>
+## 2.93 2.95 2.98 3.00 2.92 2.99 2.92 3.01 3.05 3.10</code></pre>
 <p>   </p>
 </div>
 <div id="anonomous-functions" class="section level3">
@@ -378,7 +371,7 @@ meancols</code></pre>
 sscols &lt;- apply(d, MARGIN = 2, FUN = function(x) sum((x - mean(x))^2)) 
 sscols</code></pre>
 <pre><code>##     X1     X2     X3     X4     X5     X6     X7     X8     X9    X10 
-## 190.00 168.51 205.36 199.64 202.51 212.19 210.99 202.00 191.36 198.99</code></pre>
+## 196.51 232.75 221.96 170.00 197.36 198.99 173.36 210.99 222.75 187.00</code></pre>
 <p>   </p>
 </div>
 <div id="lapply" class="section level3">
@@ -484,6 +477,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

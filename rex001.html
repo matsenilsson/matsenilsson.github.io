@@ -7,6 +7,7 @@
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 <meta name="author" content="Mats E. Nilsson" />
@@ -70,9 +71,7 @@ h6 {
 </style>
 
 
-</head>
 
-<body>
 
 <style type = "text/css">
 .main-container {
@@ -86,7 +85,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -191,8 +189,6 @@ $(document).ready(function () {
 });
 </script>
 
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
 
 <style type="text/css">
@@ -249,20 +245,17 @@ $(document).ready(function () {
 }
 </style>
 
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
-
 <!-- code folding -->
 
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
 
 
 
@@ -389,7 +382,7 @@ $(document).ready(function () {
 <p>Randomly select (with replacement) 10 integers between 1 and 20, and store them in a vector called y</p>
 <pre class="r"><code>y &lt;- sample(seq(1, 20), size = 10, replace = TRUE)
 y</code></pre>
-<pre><code>##  [1]  8  9 14  4 18 12  9  1  5 18</code></pre>
+<pre><code>##  [1] 16  8  6  9 11 15  1 18  1  8</code></pre>
 <p>Repeat ‘red’, ‘green’ four times and store them in a vector called condition</p>
 <pre class="r"><code>condition &lt;- rep(c(&#39;red&#39;, &#39;green&#39;), 4)
 condition</code></pre>
@@ -454,7 +447,6 @@ b &lt;- order(my_data)</code></pre>
 1b. Independent variable (Music): Music lessons or not. In case of non-compliance, received treatment will differ from assigned treatment (R).<br />
 2. Background (or pre-treatment) variable (SES): Socioeconomic status, defined based on residential area. The pupils in this school are from one of two nearby residential areas: one high-income and one low-income area. 3. Outcome variable (Mathscore): Score on a math test taken at the end of the semester.</p>
 <p>This is a Directed Acyclical Graph (DAG) of the simulated scenario.</p>
-<pre><code>## Warning: package &#39;dagitty&#39; was built under R version 3.5.3</code></pre>
 <p><img src="rex001_files/figure-html/unnamed-chunk-16-1.png" width="480" /></p>
 <p>Today, we will just simulate some data:</p>
 <ol style="list-style-type: decimal">
@@ -499,6 +491,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

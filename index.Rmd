@@ -36,7 +36,7 @@ as you already know, the best way to learn R is to use R.
 
 ### What's in it?
 At the REX seminars we work on scripts designed to solve given tasks: simulating
-a data set (Script1) and conducting a full data analysis of a 
+data sets (Script1a and 1b) and conducting a full data analysis of a 
 given data set (script2). The scripts will evolve gradually over the seminars and 
 the current version of a script will be available for download before the start
 of each seminar.  

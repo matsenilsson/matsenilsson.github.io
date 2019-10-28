@@ -14,12 +14,12 @@ author: "Mats E. Nilsson"
 
 Seminar| R topics               | by EXample: Writing a script
 -------| ---------------------- | ----------------------
-[001](rex001.html) | Getting started with R and R-studio | Script1: Simulation of a randomized experiment 
-[002](rex002.html) | Data types and structures | Script1, random assignment 
-[003](rex003.html) | Subsetting | Script1, potential outcomes 
-[004](rex004.html) | Functions | Script1, true and estimated causal effects
-[005](rex005.html) | Random numbers  | Script1,  introduce non-compliance 
-[006](rex006.html) | All of the above | Script1, as-treated, intent-to-treat, and instrumental variable analyses
+[001](rex001.html) | Getting started with R and R-studio | Script1a: Simulation of a randomized experiment 
+[002](rex002.html) | Data types and structures | Script1a, continued
+[003](rex003.html) | Subsetting | Script1a, continued
+[004](rex004.html) | Functions | Script1a, finalized
+[005](rex005.html) | Random numbers  | Script1b,  Simulate data consistent with a Directed Acyclical Graph (DAG)
+[006](rex006.html) | All of the above | Script1b, finalized
 ---                |---         | ---
 [101](rex101.html) | R again (review), importing data | Script2: Analyzing a real data set
 [102](rex102.html) | Missing data   | Script2, data screening 

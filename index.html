@@ -7,6 +7,7 @@
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 <meta name="author" content="Mats E. Nilsson" />
@@ -70,9 +71,7 @@ h6 {
 </style>
 
 
-</head>
 
-<body>
 
 <style type = "text/css">
 .main-container {
@@ -86,7 +85,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -191,8 +189,6 @@ $(document).ready(function () {
 });
 </script>
 
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
 
 <style type="text/css">
@@ -249,20 +245,17 @@ $(document).ready(function () {
 }
 </style>
 
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
-
 <!-- code folding -->
 
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
 
 
 
@@ -364,7 +357,7 @@ $(document).ready(function () {
 </div>
 <div id="whats-in-it" class="section level3">
 <h3>What’s in it?</h3>
-<p>At the REX seminars we work on scripts designed to solve given tasks: simulating a data set (Script1) and conducting a full data analysis of a given data set (script2). The scripts will evolve gradually over the seminars and the current version of a script will be available for download before the start of each seminar.</p>
+<p>At the REX seminars we work on scripts designed to solve given tasks: simulating data sets (Script1a and 1b) and conducting a full data analysis of a given data set (script2). The scripts will evolve gradually over the seminars and the current version of a script will be available for download before the start of each seminar.</p>
 <p>Seminar notes are available on this website summarizing the topics discussed at each seminar. If you find the content elementary, you probably don’t need to attend the seminar. If the notes make no sense at all, please visit the seminar where everything will be explained in detail. A list of seminars is found <a href="content.html">here</a></p>
 <p><br></p>
 </div>
@@ -400,6 +393,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
