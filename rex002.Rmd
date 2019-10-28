@@ -218,34 +218,52 @@ str(my_frame)
 \ 
 
 
-## Script 1: Randomized experiment (continued)
+## Script 1: Simple DAGs (continued)
 Click
 <a href="script1_2.R" target="_blank">here</a>
 for Script1 as we left it after the last seminar. 
 
-Today we will do the following:
+Today we will add a variable Z, and explore two scenarios  
 
-1. Simulate socioeconomic status (1 = high, 0 = low) as related to math performance and compliance
-2. Do some checks of balance between treatment and control group in socio-economic
-status (SES). If random assignment works, the groups should be approximately equal 
-in SES (indeed on all variables, measured and unmeasured!)
-3. Some preliminary data analysis
+<br><br><br>
+
+**Z is a confounder**  
+
+```{r echo = FALSE}
+library(dagitty)
+dag2a <- dagitty( "dag {
+   X -> Y
+   X <- Z -> Y
+}")
+
+coordinates(dag2a) <-
+list( x = c(X = 1, Y = 2, Z = 1.5),
+      y = c(X = 2, Y = 2, Z = 1) )
+
+plot(dag2a)
+```
+
+<br><br><br>
+
+**Z is a competing exposure** (cf. http://www.dagitty.net/learn/graphs/roles.html)  
+
+```{r echo = FALSE}
+library(dagitty)
+dag2b <- dagitty( "dag {
+   X -> Y
+   Z -> Y
+}")
+
+coordinates(dag2b) <-
+list( x = c(X = 1, Y = 2, Z = 1.5),
+      y = c(X = 2, Y = 2, Z = 1) )
+
+plot(dag2b)
+```
 
 \ 
 
 ### Exercises
-In the next seminar (REX003) we will simulate potential and observed outcomes.
-Please give it a try already now.  
-Remember from Method1, that the observed outcome
-, $Y_{obs}$ is given by  
-
-\ 
-$Y_{obs} = DY_1 + (1-D)Y_0$,   
-\
-where $Y_0$ is the potential outcome if untreated,$Y_1$ the potential outcome 
-if treated, $D = 1$ for those that received treatment, and $D = 0$
-for those who didn't (assume, for now, that assigned and received
-treatments are identical).
-
-\  
+In the next seminar (REX003) we will simulate Z as a mediating variable, and see what 
+happens if we control for it. Please try it before hand.
 \  

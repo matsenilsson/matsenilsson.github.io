@@ -166,15 +166,29 @@ do_exc1(randint, 10)
 
 \ 
 
-## Script 1: Randomized experiment (continued)
+## Script 1: Simple DAGs (final)
 Click
 <a href="script1_4.R" target="_blank">here</a>
-for Script1 as it looks after some rewriting from last time.  
+for Script1 as it looks after last time.  
 
 <br>
 <br>
 
-Today we will rewrite the script to include potential outcomes on math scores, we will then 
-calculate (unobservable) Single-unit causal effects and Average treatment effect (ATE), and 
-compare these with estimates based om observed data.
+Today we will simulate the "Obesity paradox" (cf. Banack & Kaufman, 2014, doi.org/10.1016/j.ypmed.2014.02.003). 
+
+```{r echo = FALSE}
+library(dagitty)
+dag4 <- dagitty( "dag {
+   Obesity -> Mortality
+   Obesity -> CVD
+   CVD -> Mortality
+   CVD <- U -> Mortality
+}")
+
+coordinates(dag4) <-
+list( x = c(Obesity = 1, Mortality = 2, CVD = 1.5, U = 1.75),
+      y = c(Obesity = 2, Mortality = 2.5, CVD = 2, U = 1.5) )
+
+plot(dag4)
+```
 

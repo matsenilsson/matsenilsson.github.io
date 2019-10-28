@@ -126,33 +126,55 @@ gain in extra sleep.
 
 \  
 
-## Script 1: Randomized experiment (continued)
+## Script 1: Simple DAGs (continued)
 Click
 <a href="script1_3.R" target="_blank">here</a>
 for Script1 as we left it after the last seminar.  
 
-Today we will do the following:
+Today we will simulate a scenario with a mediating variable
 
-1. Simulate potential outcomes
-2. Define observed outcomes from potential outcomes and random assignments
+<br>
 
-The observed outcome, $Y_{obs}$ is given by  
+**Z is a mediator** 
 
-\ 
-$Y_{obs} = DY_1 + (1-D)Y_0$,   
-\
-where $Y_0$ is the potential outcome if untreated,$Y_1$ the potential outcome 
-if treated, $D = 1$ for those that received treatment, and $D = 0$
-for those who didn't (assume, for now, that assigned and received
-treatments are identical).
+```{r echo = FALSE}
+library(dagitty)
+dag3a <- dagitty( "dag {
+   X -> Z
+   Z -> Y
+}")
 
-\  
+coordinates(dag3a) <-
+list( x = c(X = 1, Y = 2, Z = 1.5),
+      y = c(X = 2, Y = 2, Z = 2) )
+
+plot(dag3a)
+```
+
+<br><br><br>
+
+**Z is a descendent of a mediator** 
+
+```{r echo = FALSE}
+library(dagitty)
+dag3b <- dagitty( "dag {
+   X -> W
+   W -> Y
+   W -> Z
+}")
+
+coordinates(dag3b) <-
+list( x = c(X = 1, Y = 2, W = 1.5, Z = 1.5),
+      y = c(X = 2, Y = 2, W = 2, Z = 1) )
+
+plot(dag3b)
+```
+
+
 
 ### Exercises
-Next time we will analyze our outcome data (potential and observed). You may
-start right away, for example by calculating differences between means of potential 
-outcomes (y0 vs y1) and means of experimental groups (treatment vs control).
-Verify that the two differences are close to identical for very large sample sizes.
+Next time we will simulate the simple scenario of the "Obesity Paradox", please try it yourself!
+
 
 
 \  

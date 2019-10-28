@@ -438,22 +438,19 @@ identical(g1, g1b)</code></pre>
 <p> </p>
 </div>
 </div>
-<div id="script-1-randomized-experiment-continued" class="section level2">
-<h2>Script 1: Randomized experiment (continued)</h2>
+<div id="script-1-simple-dags-continued" class="section level2">
+<h2>Script 1: Simple DAGs (continued)</h2>
 <p>Click <a href="script1_3.R" target="_blank">here</a> for Script1 as we left it after the last seminar.</p>
-<p>Today we will do the following:</p>
-<ol style="list-style-type: decimal">
-<li>Simulate potential outcomes</li>
-<li>Define observed outcomes from potential outcomes and random assignments</li>
-</ol>
-<p>The observed outcome, <span class="math inline">\(Y_{obs}\)</span> is given by</p>
-<p>  <span class="math inline">\(Y_{obs} = DY_1 + (1-D)Y_0\)</span>,<br />
-<br />
-where <span class="math inline">\(Y_0\)</span> is the potential outcome if untreated,<span class="math inline">\(Y_1\)</span> the potential outcome if treated, <span class="math inline">\(D = 1\)</span> for those that received treatment, and <span class="math inline">\(D = 0\)</span> for those who didn’t (assume, for now, that assigned and received treatments are identical).</p>
-<p> </p>
+<p>Today we will simulate a scenario with a mediating variable</p>
+<p><br></p>
+<p><strong>Z is a mediator</strong></p>
+<p><img src="rex003_files/figure-html/unnamed-chunk-7-1.png" width="480" /></p>
+<p><br><br><br></p>
+<p><strong>Z is a descendent of a mediator</strong></p>
+<p><img src="rex003_files/figure-html/unnamed-chunk-8-1.png" width="480" /></p>
 <div id="exercises-1" class="section level3">
 <h3>Exercises</h3>
-<p>Next time we will analyze our outcome data (potential and observed). You may start right away, for example by calculating differences between means of potential outcomes (y0 vs y1) and means of experimental groups (treatment vs control). Verify that the two differences are close to identical for very large sample sizes.</p>
+<p>Next time we will simulate the simple scenario of the “Obesity Paradox”, please try it yourself!</p>
 <p>   </p>
 </div>
 </div>

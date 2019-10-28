@@ -152,67 +152,37 @@ just put the cursor on the line and hit Ctrl-R.
 
 \  
 
-### Script1: Randomized experiment
+### Script1a: Simple Directed Acyclical Graphs
 Click
 <a href="script1_1.R" target="_blank">here</a>
 for a script file (Script1), to be completed it in the following seminars (at REX002-004, we will do another simulation exercise at REX005-006).  
 
-The simulated scenario is a simple randomized experiment conducted at a large 
-school. At the beginning of the semester, all sixth-graders are randomly 
-assigned to receive extra music lessons (tratement) or no extra lessons (control). 
-The outcome is performance on a math test taken at the end of the semester.  
-(loosely inspired by Schellenberg, E.G. (2004). Music lessons enhance IQ. 
-*Psychological Science*, 15, 511-514.) 
 
-Key variables:
-
-1a. Independent variable (R): At the start of grade 6, all children at the school
-are randomly assigned to receive either extra music lessons (treatment) or no extra
-music lessons (control).    
-1b. Independent variable (Music): Music lessons or not. In case of non-compliance, 
-received treatment will differ from assigned treatment (R).    
-2. Background (or pre-treatment) variable (SES): Socioeconomic status, defined based 
-on residential area. The pupils in this school are from one of two nearby 
-residential areas: one high-income and one low-income area. 
-3. Outcome variable (Mathscore): Score on a math test taken at the end of the semester.
-  
-This is a Directed Acyclical Graph (DAG) of the simulated scenario.
+This is a Directed Acyclical Graph (DAG) of the very simple scenario of X casuing Y.
 
 ```{r echo = FALSE}
 library(dagitty)
-randexp <- dagitty( "dag {
-   R -> Music -> Mathscore
-   Music <- SES -> Mathscore
+dag1 <- dagitty( "dag {
+   X -> Y
 }")
 
-coordinates(randexp) <-
-list( x = c(R = 1, Music = 2, Mathscore = 4, SES = 3),
-      y = c(R = 2, Music = 2, Mathscore = 2, SES = 1) )
+coordinates(dag1) <-
+list( x = c(X = 1, Y = 2),
+      y = c(X = 2, Y = 2) )
 
-plot(randexp)
+plot(dag1)
 ```
 
-Today, we will just simulate some data:
-
-1. Decide sample size and define a variable with id-numbers for each 
-simulated participant
-2. Randomly assign children to treatment, using the `sample()` function. 
-3. Sanity check using the `table()` function.
-4. Simulate outcome, to begin with as independent of treatment using the `rnorm()` function.
-5. Do some preliminary analyses to get a first feeling of how R is used for analyzing data.
+Today, we will just simulate some data and do some preliminary analyses to get a first feeling of how R is used for analyzing data.
 
 <br>
 <br>
 
-(If you want to jump ahead, here is the final script from last year, finalized at REX004 
-Click
-<a href="script1a_last_year_fin.R" target="_blank">here for</a> the final script). 
 
 
 
 #### Exercises
-In the following seminar (REX002), we will simulate socioeconomic status as related 
-to non-compliance. Please try it beforehand. 
+In the following seminar (REX002), we will simulate a third variable, Z, confounding the X $->$ Y relationship. Please try it beforehand. 
 
   
 

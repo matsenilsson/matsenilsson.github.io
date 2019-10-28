@@ -444,11 +444,11 @@ str(conds_factor)</code></pre>
 <pre class="r"><code>iq &lt;- rnorm(500, 100, 15)
 iq_stats &lt;- c(mean(iq), sd(iq), max(iq))
 iq_stats</code></pre>
-<pre><code>## [1]  99.75427  15.23742 139.54940</code></pre>
+<pre><code>## [1] 100.09230  15.86362 146.01868</code></pre>
 <pre class="r"><code>names(iq_stats) &lt;- c(&#39;mean&#39;, &#39;sd&#39;, &#39;max攼㹤mum&#39;)
 iq_stats</code></pre>
 <pre><code>##       mean         sd max&lt;ed&gt;mum 
-##   99.75427   15.23742  139.54940</code></pre>
+##  100.09230   15.86362  146.01868</code></pre>
 <p> </p>
 </div>
 </div>
@@ -463,13 +463,13 @@ my_data &lt;- data.frame(id, group, performance)</code></pre>
 <pre class="r"><code>table(my_data$group)</code></pre>
 <pre><code>## 
 ## female   male 
-##     99    101</code></pre>
+##    104     96</code></pre>
 <p>You have to fix this manually, using <code>levels()</code> (use $ to select a column from a data frame. More on subsetting in REX003):</p>
 <pre class="r"><code>levels(my_data$group) &lt;- c(&#39;male&#39;, &#39;female&#39;, &#39;other&#39;)
 table(my_data$group)</code></pre>
 <pre><code>## 
 ##   male female  other 
-##     99    101      0</code></pre>
+##    104     96      0</code></pre>
 <p>(The may use the argument <code>stringAsFactors = FALSE</code> when calling the <code>data.frame()</code> function to keep character vectors as they are.)</p>
 <p> </p>
 </div>
@@ -491,24 +491,20 @@ str(my_frame)</code></pre>
 <p>   </p>
 </div>
 </div>
-<div id="script-1-randomized-experiment-continued" class="section level2">
-<h2>Script 1: Randomized experiment (continued)</h2>
+<div id="script-1-simple-dags-continued" class="section level2">
+<h2>Script 1: Simple DAGs (continued)</h2>
 <p>Click <a href="script1_2.R" target="_blank">here</a> for Script1 as we left it after the last seminar.</p>
-<p>Today we will do the following:</p>
-<ol style="list-style-type: decimal">
-<li>Simulate socioeconomic status (1 = high, 0 = low) as related to math performance and compliance</li>
-<li>Do some checks of balance between treatment and control group in socio-economic status (SES). If random assignment works, the groups should be approximately equal in SES (indeed on all variables, measured and unmeasured!)</li>
-<li>Some preliminary data analysis</li>
-</ol>
+<p>Today we will add a variable Z, and explore two scenarios</p>
+<p><br><br><br></p>
+<p><strong>Z is a confounder</strong></p>
+<p><img src="rex002_files/figure-html/unnamed-chunk-14-1.png" width="480" /></p>
+<p><br><br><br></p>
+<p><strong>Z is a competing exposure</strong> (cf. <a href="http://www.dagitty.net/learn/graphs/roles.html" class="uri">http://www.dagitty.net/learn/graphs/roles.html</a>)</p>
+<p><img src="rex002_files/figure-html/unnamed-chunk-15-1.png" width="480" /></p>
 <p> </p>
 <div id="exercises-1" class="section level3">
 <h3>Exercises</h3>
-<p>In the next seminar (REX003) we will simulate potential and observed outcomes. Please give it a try already now.<br />
-Remember from Method1, that the observed outcome , <span class="math inline">\(Y_{obs}\)</span> is given by</p>
-<p>  <span class="math inline">\(Y_{obs} = DY_1 + (1-D)Y_0\)</span>,<br />
-<br />
-where <span class="math inline">\(Y_0\)</span> is the potential outcome if untreated,<span class="math inline">\(Y_1\)</span> the potential outcome if treated, <span class="math inline">\(D = 1\)</span> for those that received treatment, and <span class="math inline">\(D = 0\)</span> for those who didn’t (assume, for now, that assigned and received treatments are identical).</p>
-<p>   </p>
+<p>In the next seminar (REX003) we will simulate Z as a mediating variable, and see what happens if we control for it. Please try it before hand.  </p>
 </div>
 </div>
 </div>
