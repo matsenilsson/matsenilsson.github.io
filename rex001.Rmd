@@ -158,7 +158,7 @@ Click
 for a script file (Script1), to be completed it in the following seminars (at REX002-004, we will do another simulation exercise at REX005-006).  
 
 
-This is a Directed Acyclical Graph (DAG) of the very simple scenario of X casuing Y.
+This is a Directed Acyclical Graph (DAG) of the very simple scenario of X causing Y.
 
 ```{r echo = FALSE}
 library(dagitty)
@@ -182,7 +182,7 @@ Today, we will just simulate some data and do some preliminary analyses to get a
 
 
 #### Exercises
-In the following seminar (REX002), we will simulate a third variable, Z, confounding the X $->$ Y relationship. Please try it beforehand. 
+In the following seminar (REX002), we will simulate a third variable, Z, confounding the $X \rightarrow Y$ relationship. Please try it beforehand. 
 
   
 
